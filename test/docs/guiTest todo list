@@ -1,0 +1,25 @@
+Desarrollar una herramienta para visualizar las distintas variables que está recibiendo
+el agente del servidor ademas de los mensajes que está mandando
+esto con la intecion de proporcionarnos una herramienta para poder depurar mas facilmente
+
+1.	inicializar un agente para conectar al servidor
+
+2.	mostrar en pantalla la informacion que esta mandando y recibiendo el agente en tiempo real asi
+	Como los parametros del servidor
+	hecho	- hay que tomar la respuesta del servidor
+	hecho	- pasarsela al jugador
+			- Esto lo hace el jugadora travez del metodo listenServer()
+		- que el jugador la procese extrayendo la informacion
+			- usando el metodo listenServer() 
+		- clasiifque la informacion dependiendo de que es lo que está llegando, si son datos body o datos see
+			- esto se hara dentro del metodo listenServer()
+		- actualize sus variables
+			- igual el metodo listenServer() se encarga de esto
+	hecho	- construya lo que va a imprimir su informacion
+			- esto lo hace el metodo getState()
+	hecho	- retune la informacion al main que es lo que va a gestionar esa informacion y mostrarla en pantalla
+			- Esto lo hara a trave del metodo getState()
+			
+		- actualizar la pantalla y repetir el ciclo
+	
+3.	establecer una condicion de parada para el programa, ya sea por tiempo o por una tecla
