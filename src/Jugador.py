@@ -34,7 +34,6 @@ class Jugador:
 	def sendCommand(self, message):
 		self.socket.sendto(message.encode(), (self.addres, self.port))
 		
-	# ESTE METODO NO FUNCIONA	
 	def getResponse(self):
 		response, server = self.socket.recvfrom(1024)
 		raw_response = r'{}'.format(response)
@@ -133,12 +132,12 @@ class Jugador:
 		# EL JUGADOR, init, server_param, player_type, sense_body, see
 		response = self.getResponse()
 		# print(response)
-		variable_names = {"view_mode", "stamina", "speed", "head_angle"}
+		variable_names = {"view_mode", "stamina", "speed", "head_angle", "kick", "dash", "turn", "say", "turn_neck", "catch", "move", "change_view"}
+		
+		# TODO updateServerTime(string)
 		
 		index = 0
 		if "sense_body" in response:
-			
-			# TODO updateServerTime(string)
 			
 			for variable in variable_names:
 				

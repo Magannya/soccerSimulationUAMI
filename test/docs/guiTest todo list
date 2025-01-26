@@ -15,6 +15,7 @@ esto con la intecion de proporcionarnos una herramienta para poder depurar mas f
 			- Esto lo hace el jugadora travez del metodo listenServer()
 		- que el jugador la procese extrayendo la informacion
 			- usando el metodo listenServer() 
+			- hay que revisar bien los metodos, que se recorran correctamente los index
 		- clasiifque la informacion dependiendo de que es lo que está llegando, si son datos body o datos see
 			- esto se hara dentro del metodo listenServer()
 		- actualize sus variables

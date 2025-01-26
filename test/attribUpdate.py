@@ -1,10 +1,18 @@
-from src.Jugador import Jugador
+#from src.Jugador import Jugador
 import time
+import sys
 import os
+
+
+src_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src'))
+sys.path.insert(0, src_dir)
+
+from Jugador import Jugador
 
 stop = False
 
 player = Jugador("Goleador")
+player.sayHello()
 player.sendCommand("(init autest (version 7))")
 player.printResponse()
 player.sendCommand("(move -10 10)")
