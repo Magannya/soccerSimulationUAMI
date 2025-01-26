@@ -15,6 +15,7 @@ esto con la intecion de proporcionarnos una herramienta para poder depurar mas f
 			- esto se hara dentro del metodo listenServer()
 		- actualize sus variables
 			- igual el metodo listenServer() se encarga de esto
+			- HACER UN METODO PARA EXTRAER Y ACTUALIZAR EL TIEMPO DEL SERVIDOR(variable serverTime)
 	hecho	- construya lo que va a imprimir su informacion
 			- esto lo hace el metodo getState()
 	hecho	- retune la informacion al main que es lo que va a gestionar esa informacion y mostrarla en pantalla

@@ -19,7 +19,7 @@ class Jugador:
 	serverTime = "0"
 	role = ""
 	equip_name = "test"
-	Uniform_number = ""
+	uniform_number = ""
 	
 	def __init__(self, role):
 		self.role = role
@@ -40,32 +40,95 @@ class Jugador:
 		print(f"change_view = {self.change_view}")
 		
 	# REGRESA UNA STRING CON EL ESTADO DEL JUGADOR
-	def getState()
+	def getState(self):
 		
-		state = (sense_body + "\n" +
-		view_mode + "\n" +
-		stamina + "\n" +
-		head_angle + "\n" +
-		kick + "\n" +
-		dash + "\n" +
-		turn + "\n" +
-		say + "\n" +
-		turn_neck + "\n" +
-		catch + "\n" +
-		move + "\n" +
-		change_view + "\n" +
-		see + "\n" +
-		serverTime + "\n" +
-		role + "\n" +
-		equip_name + "\n" +
-		uniform_number + "\n")
+		state = (self.sense_body + "\n" +
+		self.view_mode + "\n" +
+		self.stamina + "\n" +
+		self.head_angle + "\n" +
+		self.kick + "\n" +
+		self.dash + "\n" +
+		self.turn + "\n" +
+		self.say + "\n" +
+		self.turn_neck + "\n" +
+		self.catch + "\n" +
+		self.move + "\n" +
+		self.change_view + "\n" +
+		self.see + "\n" +
+		self.serverTime + "\n" +
+		self.role + "\n" +
+		self.equip_name + "\n" +
+		self.uniform_number + "\n")
 		
 		return state
 		
+		
+	# RECIBE UNA CADENA Y ACTUALIZA LA VARIABLE A LA QUE ESTA HACIENDO
+	# REFERENCIA DICHA CADENA
+	def update_variable(self, s):
+		if "view_mode" in s:
+			index = s.find("view_mode") + 8
+			sAux = ""
+			while index <  len(s):
+				sAux = sAux + s[index]
+				index += 1
+			self.view_mode = sAux
+		
+		elif "stamina" in s:
+			index = s.find("stamina") + 7
+			sAux = "" + s[index]
+			index += 1
+			while index < len(s):
+				sAux = sAux + s[index]
+				index += 1
+			self.stamina = sAux
+			
+		elif "speed" in s:
+			index = s.find("speed") + 5
+			sAux = "" + s[index]
+			index += 1
+			while index < len(s):
+				sAux = sAux + s[index]
+				index += 1
+			self.speed = sAux
+			
+		elif "head_angle" in s:
+			index = s.find("head_angle") + 10
+			sAux = "" + s[index]
+			index += 1
+			while index < len(s):
+				sAux = sAux + s[index]
+				index += 1
+			self.head_angle = sAux
+			
+	
 	# REVCBE - CLASIFICA - ASIGNA, INFORMACION RECIBIDA DEL SERVIDOR
 	# A SUS VARIABLES
-	def listenServer(response):
+	def listenServer(self, response):
+		# DE MOMENTO IDENTIFICO 4 TIPOS DE COMANDOS QUE PUEDE RECIBIR
+		# EL JUGADOR, init, server_param, player_type, sense_body, see
 		
+		variable_names = {"view_mode", "stamina", "speed", "head_angle"}
+		
+		index = 0
+		if "sense_body" in response:
+			
+			# TODO updateServerTime(string)
+			
+			for variable in variable_names:
+				
+				s = ""
+				index = response.find(variable)
+				print(variable)
+				print(index)
+				
+				while response[index] != ')':
+					s = s + response[index]
+					index += 1
+					
+				self.update_variable(s)
+		
+		return 0
 	
 
 	
