@@ -3,6 +3,10 @@ el agente del servidor ademas de los mensajes que está mandando
 esto con la intecion de proporcionarnos una herramienta para poder depurar mas facilmente
 
 1.	inicializar un agente para conectar al servidor
+	HECHO|		los metodos para conectar al servidor van a ser reescritos para 
+	     |	ser metodos de la clase Jugador, hay que investigar bien sobre
+	     	el metodo con el que recibe la informacion a ver si los errores 
+		que estamos teniendo tengas que ver con como funciona esta funcion
 
 2.	mostrar en pantalla la informacion que esta mandando y recibiendo el agente en tiempo real asi
 	Como los parametros del servidor
