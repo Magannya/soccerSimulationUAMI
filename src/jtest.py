@@ -1,3 +1,5 @@
+# PROBABA SEPARAR EN SUS DIFERENTES VARIABLE UN COOMANDO DE FORMA CORRECTA
+
 from Jugador import Jugador
 
 j = Jugador("test")

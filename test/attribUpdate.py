@@ -16,16 +16,16 @@ player.printResponse()
 player.sendCommand("(move -10 10)")
 start = time.time()
 dif = 0
-deltaT = 15
-
+deltaT = 0.5
 while not stop:
 	
 	if dif > deltaT:
 		os.system('clear')
 		player.printBodyState()
 		deltaT += 0.5
-		
-	player.updateState()
+	response = player.getResponse()
+	if "sense" in response:
+		player.updateState(response)
 	player.sendCommand("(dash 100)")
 	
 	end = time.time()

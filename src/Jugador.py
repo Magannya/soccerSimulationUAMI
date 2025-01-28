@@ -138,7 +138,7 @@ class Jugador:
 			while response[index] != ')':
 				s += response[index]
 				index += 1
-			print(f"in updateState() s: ->{s}<-")
+			#print(f"in updateState() s: <{s}>")
 			
 			# ESTO FUNCIONARA DE MOMENTO PERO LO MAS SEGURO ES QUE
 			# DADO QUE CONOCEMOS EL ORDEN EN EL QUE VIENEN LOS DATOS
