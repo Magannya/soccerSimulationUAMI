@@ -64,6 +64,7 @@ class Jugador:
 		print(f"catch = <{self.catch}>")
 		print(f"move = <{self.move}>")
 		print(f"change_view = <{self.change_view}>")
+		print(f"serverTime: {self.serverTime}")
 		
 	# REGRESA UNA STRING CON LOS VALORES DEL ESTADO DEL JUGADOR
 	def getState(self):
@@ -121,6 +122,27 @@ class Jugador:
 	
 	def printVariableNames(self):
 		print(self.variable_names)
+		
+	def serverTimeSync(self, response):
+		
+		if "see" in response:
+			index = response.find("see") + len("see") + 1
+		elif "sense_body" in response:
+			index = response.find("sense_body") + len("sense_body") + 1
+		else:
+			print("ERROR!!! in syncing serer time")
+			return -1
+		
+		s = ""
+		while response[index] != " ":
+			s += response[index]
+			index += 1
+			
+		self.serverTime = s
+		#print(f"s: <{s}>, serverTime: <{self.serverTime}>")
+		
+		return 0
+		
 	# REVCBE - CLASIFICA - ASIGNA, INFORMACION RECIBIDA DEL SERVIDOR
 	# A SUS VARIABLES
 	def updateState(self, response):
@@ -148,5 +170,7 @@ class Jugador:
 			self.update_variable(s)
 		return 0
 	
+	def getServerTime(self):
+		return self.serverTime
 
 	
