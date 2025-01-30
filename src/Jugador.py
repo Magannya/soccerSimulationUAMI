@@ -27,9 +27,13 @@ class Jugador:
 	#ATRUBUTOS ASOCIADOS AL SERVIDOR
 	see = ""
 	serverTime = "0"
+	previousServerTime = "0"
+	serverTimeChange = False
 	role = ""
 	equip_name = "test"
 	uniform_number = ""
+	
+	errorSumary = "0"
 	
 	def __init__(self, role):
 		self.role = role
@@ -64,7 +68,7 @@ class Jugador:
 		print(f"catch = <{self.catch}>")
 		print(f"move = <{self.move}>")
 		print(f"change_view = <{self.change_view}>")
-		print(f"serverTime: {self.serverTime}")
+		print(f"serverTime: <{self.serverTime}>")
 		
 	# REGRESA UNA STRING CON LOS VALORES DEL ESTADO DEL JUGADOR
 	def getState(self):
@@ -88,10 +92,19 @@ class Jugador:
 		self.uniform_number + "\n")
 		
 		return state
+	
+	def getServerTimeChange(self):
+		return self.serverTimeChange
+	
+	def errorSumaryUpdate(self, error):
+		self.errorSumary += self.errorSumary + "\n" + error
 		
+	def printErrorSumary(self):
+		print(self.errorSumary)
+	
 	# RECIBE UNA CADENA Y ACTUALIZA LA VARIABLE A LA QUE ESTA HACIENDO
 	# REFERENCIA DICHA CADENA
-	def update_variable(self, s):
+	def updateVariable(self, s):
 		if "view_mode" in s:
 			self.view_mode = dataMan.strDiff("view_mode", s)
 		elif "stamina" in s:
@@ -118,56 +131,99 @@ class Jugador:
 		elif "change_view" in s:
 			self.change_view = dataMan.strDiff("change_view", s)
 		else:
-			print(f"in update_variable ERROR!!!\nno coincidence whith: ->{s}<-")
+			error = f"ERROR!!! in updateVariable(): no coincidence whith: <{s}>"
+			self.errorSumaryUpdate(error)
+			print(error)
+			return 1
+		return 0
 	
+	# SOLO ERA PARA UNA PRUEBA, PODEMOS ELIMINARLA SI NO HACE FALTA
 	def printVariableNames(self):
 		print(self.variable_names)
 		
+	
 	def serverTimeSync(self, response):
 		
 		if "see" in response:
-			index = response.find("see") + len("see") + 1
+			s = dataMan.subStrToNextWhite("see", response)
 		elif "sense_body" in response:
-			index = response.find("sense_body") + len("sense_body") + 1
+			s = dataMan.subStrToNextWhite("sense_body", response)	
+		elif "server_param" in response:
+			s = dataMan.subStrToNextWhite("server_param", response)	
+		elif "player_param" in response:
+			s = dataMan.subStrToNextWhite("player_param", response)
+		elif "hear" in response:
+			s = dataMan.subStrToNextWhite("hear", response)
+		elif "player_type" in response:
+			s = dataMan.subStrToNextWhite("player_type", response)
 		else:
-			print("ERROR!!! in syncing serer time")
-			return -1
+			error = f"ERROR!!! in serverTimeSync(), response: <{response}>"
+			self.errorSumaryUpdate(error)
+			print(error)
+			return 1
 		
-		s = ""
-		while response[index] != " ":
-			s += response[index]
-			index += 1
+		
 			
-		self.serverTime = s
 		#print(f"s: <{s}>, serverTime: <{self.serverTime}>")
 		
-		return 0
+		# SOLO SE ACTUALIZA SI HAY UNA DIFERENCIA ENTRE EL TIEMPO
+		# REGISTRADO POR EL JUGADOR Y EL TIEMPO REPORTADO
+		# POR EL SERVIDOR
+		if s != self.previousServerTime:
+			self.previousServerTime = self.serverTime
+			self.serverTime = s
+			self.serverTimeChange = True
+			return 0
+		else:
+			self.serverTimeChange = False
+			return -1
+		
 		
 	# REVCBE - CLASIFICA - ASIGNA, INFORMACION RECIBIDA DEL SERVIDOR
 	# A SUS VARIABLES
-	def updateState(self, response):
+	def updateState(self):
 		# ESTA FUNCION SOLO ES PARA LOS COMANDOS RECIBIDOS YA FILTRADOS
-		# OSEA SOLO PARA LO TIPO sense_body
+		# OSEA SOLO PARA LO TIPO sense_body.
+		
 		# init, server_param, player_type, sense_body, see
-		# print(response)
 		
-		# TODO updateServerTime(string)
+		# SE RECIBEN MUCHOS COMANDO DEL SERVIDOR DEL TIPO
+		# server_param Y player_type
 		
-		for variable in self.variable_names:
-			s = ""
-			index = response.find(variable)
+		# SYNCRONIZACION DEL TIEMPO DEL SERVIDOR CON EL TIEMPO 
+		# REGISTRADO POR EL JUGADOR
+		response = self.getResponse()
+		self.serverTimeSync(response)
+		
+		if "sense_body" in response:
 			
-			while response[index] != ')':
-				s += response[index]
-				index += 1
-			#print(f"in updateState() s: <{s}>")
+			
+			for variable in self.variable_names:
+				s = ""
+				index = response.find(variable)
+			
+				while response[index] != ')':
+					s += response[index]
+					index += 1
+				self.updateVariable(s)
 			
 			# ESTO FUNCIONARA DE MOMENTO PERO LO MAS SEGURO ES QUE
 			# DADO QUE CONOCEMOS EL ORDEN EN EL QUE VIENEN LOS DATOS
 			# EN EL COMANDO PODRIAMOS IR ACTUALIZANDO CADA UNA EN 
 			# ESE ORDEN EN LUGAR DE TENER QUE BUSCAR CUAL ES LA QUE 
 			# VAMOS A ACTUALIZAR EN CADA CICLO
-			self.update_variable(s)
+			
+			
+		elif "see" in response:
+			a = 1
+			# TODO
+			
+		else:
+			#error = f"ERROR !!! in updateState() unknown response: <{response}>"
+			#print(error)
+			#self.errorSumaryUpdate(error)
+			return 1
+			
 		return 0
 	
 	def getServerTime(self):

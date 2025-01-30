@@ -31,3 +31,22 @@ def strDiff(s1, s2):
 	#print(f"<{out}>")
 	return out
 	
+# RECIBE DOS CADENAS Y TE REGRESA LA SUBCADENA DESDE QUE TERMINA
+# LA CADENA 1 HASTA QUE ENCUENTRA UN ESPACIO EN BLANCO
+
+def subStrToNextWhite(s1, s2):
+	
+	if len(s1) > len(s2):
+		aux = s1
+		s1 = s2
+		s2 = aux
+		print(True)
+	
+	index = s2.find(s1) + len(s1) + 1
+	subS = ""
+	while s2[index] != " ":
+		subS += s2[index]
+		index += 1
+	return subS
+	
+
