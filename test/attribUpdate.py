@@ -13,7 +13,7 @@ stop = False
 player = Jugador("Goleador")
 player.sendCommand("(init autest (version 7))")
 player.printResponse()
-player.sendCommand("(move -10 10)")
+player.sendCommand("(move -10 0)")
 start = time.time()
 dif = 0
 deltaT = 0.5
@@ -22,15 +22,19 @@ ciclesAUX = 0
 serverTime = "0"
 prevComm = 0
 commInterval = 0
+c1 = "(dash 50)"
+c2 = "(kick 100 0)"
 
 while not stop:
 	
 	if player.getServerTimeChange():
 		commInterval = time.time() - prevComm
-		player.sendCommand("(dash 50)")
+		if dif > 5 and dif < 6:
+			player.sendCommand(c2)
+		else:
+			player.sendCommand(c1)
+			
 		prevComm = time.time()
-		
-		
 		
 	player.updateState()
 	
