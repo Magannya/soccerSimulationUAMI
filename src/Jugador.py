@@ -35,6 +35,13 @@ class Jugador:
 	
 	errorSumary = "0"
 	
+	# PARA FOCALIZARSE EN UN OBJETO DEL CAMPO Y PODER
+	# TOMAR DESICIONES EN FUNCION DE LA INFORMACION QUE CONOCEMOS DE 
+	# ESE OBJETO, NOMBRE, DISTANCIA Y ANGULO
+	objectFocusName = ""
+	objectFocusDirection = ""
+	objectFocusAngle = ""
+	
 	def __init__(self, role):
 		self.role = role
 	
@@ -92,6 +99,9 @@ class Jugador:
 		self.uniform_number + "\n")
 		
 		return state
+		
+	def printFocusObject(self):
+		print("(" + self.objectFocusName + " " + self.objectFocusDirection + " " + self.objectFocusAngle + ")")
 	
 	def getServerTimeChange(self):
 		return self.serverTimeChange
@@ -215,8 +225,7 @@ class Jugador:
 			
 			
 		elif "see" in response:
-			a = 1
-			# TODO
+			self.see = response
 			
 		else:
 			#error = f"ERROR !!! in updateState() unknown response: <{response}>"
@@ -228,5 +237,61 @@ class Jugador:
 	
 	def getServerTime(self):
 		return self.serverTime
-
+		
+	def setSee(self, response):
+		self.see = response
+		
+	# LE DAS EL NOMBRE DE UN OBJETO EN EL CAMP0 Y TE REGRESA LA
+	# INFORMACION DE SU DISTANCIA Y SU ANGULO
+	def getObjectInfo(self, objectName):
+		
+		if objectName in self.see:
+			
+			objectInfo = ""
+			
+			index = self.see.find(objectName) + len(objectName) + 1
+			
+			while self.see[index] != ')':
+				objectInfo += self.see[index]
+				index += 1
+			
+			return objectInfo
+		else:
+			error = "in setObjectFocus() object not in see response"
+			self.errorSumaryUpdate(error)
+			return None
+		
+	# SETEA LA INFORMACION DEL OBJETO EN CUESTION	
+	def setObjectFocus(self, objectName):
+		objectInfo = self.getObjectInfo(objectName)
+		#print(objectInfo)
+		if objectInfo != None:
+			self.objectFocusName = objectName
+			objectDirection = ""
+			objectAngle = ""
+			b = False
+			
+			for c in objectInfo:
+				if c == " ":
+					b = True
+					continue
+					
+				if b:
+					objectAngle += c
+				else:
+					objectDirection += c
+			
+			self.objectFocusDirection = objectDirection
+			self.objectFocusAngle = objectAngle
+			
+			return True
+		else:
+			return False
+			
+	def getFocusObjectDirection(self):
+		return self.objectFocusDirection
+		
+	def getFocusObjectAngle(self):
+		return self.objectFocusAngle
+		
 	
