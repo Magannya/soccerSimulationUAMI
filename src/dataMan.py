@@ -49,4 +49,14 @@ def subStrToNextWhite(s1, s2):
 		index += 1
 	return subS
 	
+# REGRESA LA SUBCADENA DE s HASTA QUE ENCUENTRA UN ESPACIO EN BLANCO
+# SI NO HAY UNA ESPACIO, REGRESA LA CADENA COMPLETA	
+def subStrToFirtsSpace(s):
+	out = ""
+	for c in s:
+		out += c
+		if c == ' ':
+			break
+			
+	return out
 

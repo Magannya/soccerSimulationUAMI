@@ -22,7 +22,7 @@ ciclesAUX = 0
 serverTime = "0"
 prevComm = 0
 commInterval = 0
-c1 = "(dash 50)"
+c1 = "(dash 100 15)"
 c2 = "(kick 100 0)"
 
 while not stop:
