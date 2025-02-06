@@ -49,22 +49,25 @@ def subStrToNextWhite(s1, s2):
 		index += 1
 	return subS
 	
-# REGRESA LA SUBCADENA DE s HASTA QUE ENCUENTRA UN ESPACIO EN BLANCO
-# SI NO HAY UNA ESPACIO, REGRESA LA CADENA COMPLETA	
+# REGRESA LA SUB CADENA DE s QUE ESTA DESPUES DEL ESPACIO ESPECIFICADO
+# POR LA VARIABLE spaceIndex
 def subStrToSpace(s, spaceIndex):
 	out = ""
 	index = 0
 	
 	for c in s:
 		
+		if c == ' ':
+			index += 1
+			continue
 		if index > spaceIndex:
 			break
-		
-		if index == spaceIndex:
-			if c == ' ':
-				index += 1
-			else:
+		else:
+			if index == spaceIndex:
 				out += c
-					
-	return out
+	
+	if len(out) == 0:
+		return None
+	else:
+		return out
 

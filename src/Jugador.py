@@ -1,5 +1,11 @@
 import socket
 import dataMan
+import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'lib')))
+
+from lib import dataMan
 
 class Jugador:
 	#ATRIBUTOS ASOCIADOS AL ESTADO DEL CUERPO DEL JUGADOR
@@ -52,6 +58,9 @@ class Jugador:
 	
 	def __init__(self, role):
 		self.role = role
+	
+	def hello(self):
+		print("hello from Jugador")
 	
 	def sendCommand(self, message):
 		self.socket.sendto(message.encode(), (self.addres, self.port))
@@ -127,7 +136,7 @@ class Jugador:
 			self.view_mode = dataMan.strDiff("view_mode", s)
 		elif "stamina" in s:
 			cad = dataMan.strDiff("stamina", s)
-			cad1 = datMan.
+			# cad1 = datMan.
 		elif "speed" in s:
 			self.speed = dataMan.strDiff("speed", s)
 		elif "head_angle" in s:
@@ -275,7 +284,7 @@ class Jugador:
 			error = "in setObjectFocus() object not in see response"
 			self.errorSumaryUpdate(error)
 			print(error)
-			self.errorSumaryCount += 1|
+			self.errorSumaryCount += 1
 			return None
 		
 	# SETEA LA INFORMACION DEL OBJETO EN CUESTION	
