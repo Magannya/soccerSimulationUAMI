@@ -9,31 +9,39 @@ class Jugador:
 	socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 	
 	sense_body = "0"
-	view_mode = "high normal"
-	stamina = "8000 1"
-	speed = "0 0"
-	head_angle = "0"
-	kick = "0"
-	dash = "0"
-	turn = "0"
-	say = "0"
-	turn_neck = "0"
-	catch = "0"
-	move = "0"
-	change_view = "0"
+	
+	# TAL VEZ DEBAMOS CAMBIAR ESTE TIPO POR 1, 2, 3 ETC SI QISIERAMOS
+	# OPERAR CON ESTAS DOS VARIABLES
+	view_mode1 = "high"
+	view_mode2 = "normal"
+	
+	stamina = 0
+	stamina_effort = 0
+	speed = 0
+	speed_angle = 0
+	head_angle = 0
+	kick = 0
+	dash = 0
+	turn = 0
+	say = 0
+	turn_neck = 0
+	catch = 0
+	move = 0
+	change_view = 0
 	
 	variable_names = {"view_mode", "stamina", "speed", "head_angle", "kick", "dash", "turn", "say", "turn_neck", "catch", "move", "change_view"}
 	
 	#ATRUBUTOS ASOCIADOS AL SERVIDOR
 	see = ""
-	serverTime = "0"
-	previousServerTime = "0"
+	serverTime = 0
+	previousServerTime = 0
 	serverTimeChange = False
 	role = ""
 	equip_name = "test"
 	uniform_number = ""
 	
-	errorSumary = "0"
+	errorSumary = "-"
+	erorrSumaryCount = 0
 	
 	# PARA FOCALIZARSE EN UN OBJETO DEL CAMPO Y PODER
 	# TOMAR DESICIONES EN FUNCION DE LA INFORMACION QUE CONOCEMOS DE 
@@ -118,7 +126,8 @@ class Jugador:
 		if "view_mode" in s:
 			self.view_mode = dataMan.strDiff("view_mode", s)
 		elif "stamina" in s:
-			self.stamina = dataMan.strDiff("stamina", s)
+			cad = dataMan.strDiff("stamina", s)
+			cad1 = datMan.
 		elif "speed" in s:
 			self.speed = dataMan.strDiff("speed", s)
 		elif "head_angle" in s:
@@ -141,8 +150,9 @@ class Jugador:
 		elif "change_view" in s:
 			self.change_view = dataMan.strDiff("change_view", s)
 		else:
-			error = f"ERROR!!! in updateVariable(): no coincidence whith: <{s}>"
+			error = f"ERROR!!! in updateVariable(): no coincidence whith: <{s}>\n"
 			self.errorSumaryUpdate(error)
+			self.errorSumaryCount += 1
 			print(error)
 			return 1
 		return 0
@@ -167,8 +177,9 @@ class Jugador:
 		elif "player_type" in response:
 			s = dataMan.subStrToNextWhite("player_type", response)
 		else:
-			error = f"ERROR!!! in serverTimeSync(), response: <{response}>"
+			error = f"ERROR!!! in serverTimeSync(), response: <{response}>\n"
 			self.errorSumaryUpdate(error)
+			erorrSumaryCount += 1
 			print(error)
 			return 1
 		
@@ -179,9 +190,11 @@ class Jugador:
 		# SOLO SE ACTUALIZA SI HAY UNA DIFERENCIA ENTRE EL TIEMPO
 		# REGISTRADO POR EL JUGADOR Y EL TIEMPO REPORTADO
 		# POR EL SERVIDOR
-		if s != self.previousServerTime:
+		
+		flotante = float(s)
+		if floatante != self.previousServerTime:
 			self.previousServerTime = self.serverTime
-			self.serverTime = s
+			self.serverTime = floatante
 			self.serverTimeChange = True
 			return 0
 		else:
@@ -228,9 +241,11 @@ class Jugador:
 			self.see = response
 			
 		else:
-			#error = f"ERROR !!! in updateState() unknown response: <{response}>"
-			#print(error)
-			#self.errorSumaryUpdate(error)
+			error = f"ERROR !!! in updateState() unknown response: <{response}>"
+			self.errorSumaryUpdate(error)
+			self.errorSumaryCount += 1
+			print(error)
+			
 			return 1
 			
 		return 0
@@ -259,6 +274,8 @@ class Jugador:
 		else:
 			error = "in setObjectFocus() object not in see response"
 			self.errorSumaryUpdate(error)
+			print(error)
+			self.errorSumaryCount += 1|
 			return None
 		
 	# SETEA LA INFORMACION DEL OBJETO EN CUESTION	

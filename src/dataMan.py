@@ -51,12 +51,20 @@ def subStrToNextWhite(s1, s2):
 	
 # REGRESA LA SUBCADENA DE s HASTA QUE ENCUENTRA UN ESPACIO EN BLANCO
 # SI NO HAY UNA ESPACIO, REGRESA LA CADENA COMPLETA	
-def subStrToFirtsSpace(s):
+def subStrToSpace(s, spaceIndex):
 	out = ""
+	index = 0
+	
 	for c in s:
-		out += c
-		if c == ' ':
+		
+		if index > spaceIndex:
 			break
-			
+		
+		if index == spaceIndex:
+			if c == ' ':
+				index += 1
+			else:
+				out += c
+					
 	return out
 
