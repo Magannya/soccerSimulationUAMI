@@ -33,6 +33,7 @@ class Jugador:
 	change_view = 0
 	
 	see = ""
+	hear = ""
 	
 	# ESTA VARIABLE ES USADA PARA ACTUALIZAR LOS DATOS 
 	variable_names = {"view_mode", "stamina", "speed", "head_angle", "kick", "dash", "turn", "say", "turn_neck", "catch", "move", "change_view"}
@@ -54,8 +55,8 @@ class Jugador:
 	# TOMAR DESICIONES EN FUNCION DE LA INFORMACION QUE CONOCEMOS DE 
 	# ESE OBJETO, NOMBRE, DISTANCIA Y ANGULO
 	objectFocusName = ""
-	objectFocusDirection = ""
-	objectFocusAngle = ""
+	objectFocusDirection = 0
+	objectFocusAngle = 0
 	
 	def __init__(self, role):
 		self.role = role
@@ -120,14 +121,23 @@ class Jugador:
 		
 		return state
 		
+	def setSee(self, s):
+		self.see = s
+		
+	def getSee(self):
+		return self.see
+		
 	def printFocusObject(self):
 		print("(" + self.objectFocusName + " " + self.objectFocusDirection + " " + self.objectFocusAngle + ")")
 	
 	def getServerTimeChange(self):
 		return self.serverTimeChange
 	
+	# TENGO LA SOSPECHA DE QUE ESTE METODO ESTA HAICENDO QUE EL 
+	# SCRIPT LLENE LA MEMORIA
 	def errorSumaryUpdate(self, error):
-		self.errorSumary += self.errorSumary + "\n" + error
+		#self.errorSumary += self.errorSumary + "\n" + error
+		print("-")
 		
 	def printErrorSumary(self):
 		print(self.errorSumary)
@@ -204,7 +214,7 @@ class Jugador:
 		else:
 			error = f"ERROR!!! in serverTimeSync(), response: <{response}>\n"
 			self.errorSumaryUpdate(error)
-			erorrSumaryCount += 1
+			self.errorSumaryCount += 1
 			print(error)
 			return 1
 		
@@ -262,8 +272,11 @@ class Jugador:
 			
 			
 		elif "see" in response:
-			self.see = response
-			
+			self.setSee(response)
+		
+		elif "hear" in response:
+			self.hear = response
+				
 		else:
 			error = f"ERROR !!! in updateState() unknown response: <{response}>"
 			self.errorSumaryUpdate(error)
@@ -276,10 +289,7 @@ class Jugador:
 	
 	def getServerTime(self):
 		return self.serverTime
-		
-	def setSee(self, response):
-		self.see = response
-		
+			
 	# LE DAS EL NOMBRE DE UN OBJETO EN EL CAMP0 Y TE REGRESA LA
 	# INFORMACION DE SU DISTANCIA Y SU ANGULO
 	def getObjectInfo(self, objectName):
@@ -303,7 +313,7 @@ class Jugador:
 			return None
 		
 	# SETEA LA INFORMACION DEL OBJETO EN CUESTION	
-	def setObjectFocus(self, objectName):
+	def setFocusObject(self, objectName):
 		objectInfo = self.getObjectInfo(objectName)
 		#print(objectInfo)
 		if objectInfo != None:
@@ -322,8 +332,15 @@ class Jugador:
 				else:
 					objectDirection += c
 			
-			self.objectFocusDirection = objectDirection
-			self.objectFocusAngle = objectAngle
+			try:
+				self.objectFocusDirection = float(objectDirection)
+			except Exception as e:
+				print(f"failed to convert objectDirection: {objectDirection}.")
+				
+			try:	
+				self.objectFocusAngle = float(objectAngle)
+			except Exception as e:
+				print(f"failed to convert objectAngle: {objectAngle}.")
 			
 			return True
 		else:
@@ -335,6 +352,9 @@ class Jugador:
 	def getFocusObjectAngle(self):
 		return self.objectFocusAngle
 		
+		
+	def getFocusObjectAll(self):
+		return f"(<{self.objectFocusName}> <{self.objectFocusDirection}> <{self.objectFocusAngle}>)"
 	# CHECAR ESTO POR QUE NO ME CUADRA BIEN LA FORMA DE CASTEAR
 	# TODOS LOS DATOS DEL AGENTE PARA OPERAR CON ELLOS
 	
@@ -348,4 +368,6 @@ class Jugador:
 	def getStamina(self):
 		out = dataMan.subStrToFirtsSpace(self.stamina)
 		return float(out)
+	
+	# METODO PARA DEFINIR UNA DIRECCION EN FUNCION DEL 
 	

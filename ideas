@@ -1,0 +1,8 @@
+-	Hacer un sistema para gestionar los errores
+	Esto es, cada que haya un error definido por nosotros abrir un archivo, anexar el error, y cerrar el archivo
+	esto con la intencion de poder consultar que es lo que pasa aunque el agente no termine su ejecucion, o que tipo de errores no previstos podemos 
+	encontrarnos
+	
+-	Gestion interna del refreshScreen
+	que sea el jugador quien refresque la consola, esto con la intencion de poder anexar o eliminar cualquier informacion deseada a la hora de querer
+	imprimir informacion dinamica.
