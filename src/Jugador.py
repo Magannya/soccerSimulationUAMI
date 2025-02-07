@@ -3,24 +3,21 @@ import dataMan
 import sys
 import os
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'lib')))
-
-from lib import dataMan
 
 class Jugador:
-	#ATRIBUTOS ASOCIADOS AL ESTADO DEL CUERPO DEL JUGADOR
 	
+	# ATRIBUTOS NESESARIOS PARA CONECTAR CON EL SERVIDOR
 	addres = "localhost"
 	port = 6000
 	socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-	
-	sense_body = "0"
 	
 	# TAL VEZ DEBAMOS CAMBIAR ESTE TIPO POR 1, 2, 3 ETC SI QISIERAMOS
 	# OPERAR CON ESTAS DOS VARIABLES
 	view_mode1 = "high"
 	view_mode2 = "normal"
 	
+	#ATRIBUTOS ASOCIADOS AL ESTADO DEL CUERPO DEL JUGADOR
+	sense_body = "0"
 	stamina = 0
 	stamina_effort = 0
 	speed = 0
@@ -35,10 +32,12 @@ class Jugador:
 	move = 0
 	change_view = 0
 	
+	see = ""
+	
+	# ESTA VARIABLE ES USADA PARA ACTUALIZAR LOS DATOS 
 	variable_names = {"view_mode", "stamina", "speed", "head_angle", "kick", "dash", "turn", "say", "turn_neck", "catch", "move", "change_view"}
 	
 	#ATRUBUTOS ASOCIADOS AL SERVIDOR
-	see = ""
 	serverTime = 0
 	previousServerTime = 0
 	serverTimeChange = False
@@ -46,8 +45,10 @@ class Jugador:
 	equip_name = "test"
 	uniform_number = ""
 	
+	# VARIABLES PARA GENERAR UN DICCIONARIO DE ERRORES 
+	# O COSAS INUSUALES DURANTE LA EJECUCION
 	errorSumary = "-"
-	erorrSumaryCount = 0
+	errorSumaryCount = 0
 	
 	# PARA FOCALIZARSE EN UN OBJETO DEL CAMPO Y PODER
 	# TOMAR DESICIONES EN FUNCION DE LA INFORMACION QUE CONOCEMOS DE 
@@ -58,6 +59,8 @@ class Jugador:
 	
 	def __init__(self, role):
 		self.role = role
+		self.sendCommand("(init eTest (version 7))")
+		self.printResponse()
 	
 	def hello(self):
 		print("hello from Jugador")
@@ -80,7 +83,7 @@ class Jugador:
 	# IMPRIME EN PANTALLA EL ESTADO DEL JUGADOR
 	def printBodyState(self):
 		print(f"sense_body = <{self.sense_body}>")
-		print(f"view_mode = <{self.view_mode}>")
+		print(f"view_mode = <{self.view_mode1}> | <{self.view_mode2}>")
 		print(f"stamina = <{self.stamina}>")
 		print(f"speed = <{self.speed}>")
 		print(f"head_angle = <{self.head_angle}>")
@@ -132,32 +135,45 @@ class Jugador:
 	# RECIBE UNA CADENA Y ACTUALIZA LA VARIABLE A LA QUE ESTA HACIENDO
 	# REFERENCIA DICHA CADENA
 	def updateVariable(self, s):
+		
 		if "view_mode" in s:
 			self.view_mode = dataMan.strDiff("view_mode", s)
 		elif "stamina" in s:
 			cad = dataMan.strDiff("stamina", s)
-			# cad1 = datMan.
+			cad1 = dataMan.subStrToSpace(cad, 0)
+			cad2 = dataMan.subStrToSpace(cad, 1)
+			
+			self.stamina = float(cad1)
+			self.stamina_effort = float(cad2)
+			
 		elif "speed" in s:
-			self.speed = dataMan.strDiff("speed", s)
+			cad = dataMan.strDiff("speed", s)
+			cad1 = dataMan.subStrToSpace(cad, 0)
+			cad2 = dataMan.subStrToSpace(cad, 1)
+			
+			self.speed = float(cad1)
+			self.speed_angle = float(cad2)
+			 
 		elif "head_angle" in s:
-			self.head_angle = dataMan.strDiff("head_angle", s)
+			self.head_angle = float(dataMan.strDiff("head_angle", s))
+			
 		elif "kick" in s:
-			self.kick = dataMan.strDiff("kick", s)
+			self.kick = float(dataMan.strDiff("kick", s))
 		elif "dash" in s:
-			self.dash = dataMan.strDiff("dash", s)
+			self.dash = float(dataMan.strDiff("dash", s))
 		elif "turn" in s:
 			if "neck"in s:
-				self.turn_neck = dataMan.strDiff("turn_neck", s)
+				self.turn_neck = float(dataMan.strDiff("turn_neck", s))
 			else:
-				self.turn = dataMan.strDiff("turn", s)
+				self.turn = float(dataMan.strDiff("turn", s))
 		elif "say" in s:
-			self.say = dataMan.strDiff("say", s)
+			self.say = float(dataMan.strDiff("say", s))
 		elif "catch" in s:
-			self.catch = dataMan.strDiff("catch", s)
+			self.catch = float(dataMan.strDiff("catch", s))
 		elif "move" in s:
-			self.move = dataMan.strDiff("move", s)
+			self.move = float(dataMan.strDiff("move", s))
 		elif "change_view" in s:
-			self.change_view = dataMan.strDiff("change_view", s)
+			self.change_view = float(dataMan.strDiff("change_view", s))
 		else:
 			error = f"ERROR!!! in updateVariable(): no coincidence whith: <{s}>\n"
 			self.errorSumaryUpdate(error)
@@ -201,9 +217,9 @@ class Jugador:
 		# POR EL SERVIDOR
 		
 		flotante = float(s)
-		if floatante != self.previousServerTime:
+		if flotante != self.previousServerTime:
 			self.previousServerTime = self.serverTime
-			self.serverTime = floatante
+			self.serverTime = flotante
 			self.serverTimeChange = True
 			return 0
 		else:
@@ -228,7 +244,6 @@ class Jugador:
 		self.serverTimeSync(response)
 		
 		if "sense_body" in response:
-			
 			
 			for variable in self.variable_names:
 				s = ""
