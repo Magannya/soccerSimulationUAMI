@@ -1,3 +1,8 @@
+# LOS METODOS EN ESTE ARCHIVO ESTAN PENSADOS PARA EXTRAER INFORMACION
+# COMO EL SERVIDOR RESPONDE CON strings, DEFINIMOS FUNCIONES PARA
+# REALIZAR ACCIONES ESPECIFICAS CON ESAS CADENAS
+
+
 def strDiff2(s1, s2):
 	if len(s1) > len(s2):
 		aux = s2
@@ -44,9 +49,16 @@ def subStrToNextWhite(s1, s2):
 	
 	index = s2.find(s1) + len(s1) + 1
 	subS = ""
+	
 	while s2[index] != " ":
 		subS += s2[index]
 		index += 1
+		# PARCHE TEMPORAL EN RESPUESTA A 
+		# while s2[index] != " ":
+        # IndexError: string index out of range
+		if index > len(s2):
+			break
+			
 	return subS
 	
 # REGRESA LA SUB CADENA DE s QUE ESTA DESPUES DEL ESPACIO ESPECIFICADO
@@ -71,6 +83,7 @@ def subStrToSpace(s, spaceIndex):
 	else:
 		return out
 		
+
 def subStrFirstFloat(s):
 	out = ""
 	seccond = False
