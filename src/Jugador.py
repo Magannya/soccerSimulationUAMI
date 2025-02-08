@@ -63,11 +63,23 @@ class Jugador:
 		#self.sendCommand("(init eTest (version 7))")
 		#self.printResponse()
 	
-	def hello(self):
-		print("hello from Jugador")
+	def setTurn(self, value):
+		self.turn = value
+		
+	def getTurn(self):
+		return self.turn
 	
 	def sendCommand(self, message):
 		self.socket.sendto(message.encode(), (self.addres, self.port))
+		
+	# MANDA UN COMANDO AL SERVIDOR SOLO CUANDO HAY UN NUEVO CICLO EN 
+	# EL SERVIDOR, ESTO PARA EVITAR SATURAR EL SERVIDOR CON EL 
+	# MISMO COMANDO Y TRATAR DE GARANTIZAR LA EJECUCION DE EL COMANDO
+	# QUE SE ESTA TRATANDO DE MANDAR	
+	def sendResponse(self, response):
+		if self.serverTimeChange:
+			self.sendCommand(response)
+			print(f"response sended succesfully: {response}, {self.serverTime}")
 		
 	def getResponse(self):
 		response, server = self.socket.recvfrom(1024)
@@ -310,6 +322,21 @@ class Jugador:
 			self.errorSumaryUpdate(error)
 			print(error)
 			self.errorSumaryCount += 1
+			return None
+	
+	def getObjectAttrib(self, objectName, c):
+		if objectName in self.see:
+			objectInfo = self.getObjectInfo(objectName)
+			if c == 'd':
+				distance = dataMan.subStrToSpace(objectName, 0)
+				return distance
+			elif c == 'a':
+				angle = dataMan.subStrToSpace(objectName, 1)
+				return angle
+			else:
+				error = "Error in getObjectAttrib(), invalid indentifier."
+				print(error)
+		else:
 			return None
 		
 	# SETEA LA INFORMACION DEL OBJETO EN CUESTION	

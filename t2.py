@@ -10,7 +10,7 @@ sys.path.append('./src')
 from src.Jugador import Jugador
 from src import dataMan
 
-teamName = "a"
+teamName = "b"
 
 
 p = Jugador("goleador")
@@ -44,7 +44,7 @@ while not inPosition:
 			
 			if p.getFocusObjectDirection() < 1:
 				
-				objectInfo = p.getObjectInfo("(g r)")
+				objectInfo = p.getObjectInfo("(g l)")
 				
 				if objectInfo != None:
 					kickAngle = dataMan.subStrToSpace(objectInfo, 1)
@@ -54,10 +54,10 @@ while not inPosition:
 				if kickAngle == None:
 					kickAngle = 0
 					
-				print("---------------------------------------")
+				print("-----------------------------------------------------")
 				command = f"(kick 50 {kickAngle})"
 				print(f"obInf: {objectInfo} comm: {command}")
-				print("---------------------------------------")
+				print("-----------------------------------------------------")
 				# inPosition = True
 			else:
 				command = f"(dash 70 {movementAngle})"
