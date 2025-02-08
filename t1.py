@@ -15,11 +15,20 @@ sys.path.append('./src')
 from src.Jugador import Jugador
 from src import dataMan
 
-teamName = "a"
+while True:
+	TeamName = input("TeamName (a)/(b): -> ")
+	if TeamName == "a":
+		break
+	if TeamName == "b":
+		break
 
+if TeamName == "a":
+	goalSide = "(g r)"
+else:
+	goalSide = "(g l)"
 
 p = Jugador("goleador")
-p.sendCommand(f"(init {teamName} (version 7))")
+p.sendCommand(f"(init {TeamName} (version 7))")
 p.sendCommand("(move -10 20)")
 
 stop = False
@@ -49,7 +58,7 @@ while not inPosition:
 			
 			if p.getFocusObjectDirection() < 1:
 				
-				objectInfo = p.getObjectInfo("(g r)")
+				objectInfo = p.getObjectInfo(goalSide)
 				
 				if objectInfo != None:
 					kickAngle = dataMan.subStrToSpace(objectInfo, 1)
