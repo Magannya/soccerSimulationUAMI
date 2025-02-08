@@ -56,12 +56,12 @@ class Jugador:
 	# ESE OBJETO, NOMBRE, DISTANCIA Y ANGULO
 	objectFocusName = ""
 	objectFocusDirection = 0
-	objectFocusAngle = 0
+	objectFocusAngle = 0	
 	
 	def __init__(self, role):
 		self.role = role
-		self.sendCommand("(init eTest (version 7))")
-		self.printResponse()
+		#self.sendCommand("(init eTest (version 7))")
+		#self.printResponse()
 	
 	def hello(self):
 		print("hello from Jugador")
@@ -316,21 +316,18 @@ class Jugador:
 	def setFocusObject(self, objectName):
 		objectInfo = self.getObjectInfo(objectName)
 		#print(objectInfo)
+		
 		if objectInfo != None:
-			self.objectFocusName = objectName
-			objectDirection = ""
-			objectAngle = ""
-			b = False
 			
-			for c in objectInfo:
-				if c == " ":
-					b = True
-					continue
-					
-				if b:
-					objectAngle += c
-				else:
-					objectDirection += c
+			print(f"objectInfo:<{objectInfo}>")
+			self.objectFocusName = objectName
+			objectDirection = dataMan.subStrToSpace(objectInfo, 0)
+			objectAngle = dataMan.subStrToSpace(objectInfo, 1)
+			
+			# USANDO ESTE METODO ESTAMOS PERDIENDO INFORMACION
+			# POR QUE ESTA ECHO PARA PROCESAR COMANDOS COMO EL SIGUIENTE
+			# -x -x -x -x
+			# NO HE INVESTIGADO QUE SIGNIFICAN LOS SIGUIENTES DATOS
 			
 			try:
 				self.objectFocusDirection = float(objectDirection)

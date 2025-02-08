@@ -70,4 +70,32 @@ def subStrToSpace(s, spaceIndex):
 		return None
 	else:
 		return out
+		
+def subStrFirstFloat(s):
+	out = ""
+	seccond = False
+	first = False
+	
+	if s[0] == '-':
+		first = True
+			
+	for c in s:
+		
+		if first:
+			out += c
+			first = False
+			continue
+			
+		else:
+		
+			if c == '-':
+				seccond = True
+			
+			if not seccond:
+				out += c
+		
+		if seccond:
+			break
+		
+	return out
 

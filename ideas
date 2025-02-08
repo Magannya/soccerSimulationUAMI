@@ -6,3 +6,6 @@
 -	Gestion interna del refreshScreen
 	que sea el jugador quien refresque la consola, esto con la intencion de poder anexar o eliminar cualquier informacion deseada a la hora de querer
 	imprimir informacion dinamica.
+	
+-	La saturacion del servidor con tantos mensajes sigue siendo un problema, basicamente hay que tener suerte para que se ejecute segun que comando
+	si tuvieramos alguna forma de mandar mensajes y asegurar su correcta entrega seria de mucha ayuda
