@@ -9,6 +9,7 @@
 import sys
 import os
 import time
+import random
 
 sys.path.append('./src')
 
@@ -27,9 +28,12 @@ if TeamName == "a":
 else:
 	goalSide = "(g l)"
 
+x = random.randint(0, 10)
+y = random.randint(0, 10)
+
 p = Jugador("goleador")
 p.sendCommand(f"(init {TeamName} (version 7))")
-p.sendCommand("(move -10 20)")
+p.sendCommand(f"(move {x} {y})")
 
 stop = False
 inPosition = False
@@ -42,19 +46,21 @@ movementAngle = 0
 
 while not inPosition:
 	
+	p.refresh()
 	p.updateState()
 	if not inPosition:
 		# MOVERSE A LA POSICION
 		inView = p.setFocusObject("(b)")
 		if inView:		
 				
-			print("(b) in see")
-			print(p.getFocusObjectAll())
+			#p.printAppend("(b) in see")
+			#print(p.getFocusObjectAll())
 			
 			if p.getFocusObjectAngle() > movementAngle:
-				movementAngle += 1
+				movementAngle += 5
+				
 			else:
-				movementAngle += -1
+				movementAngle -= 5
 			
 			if p.getFocusObjectDirection() < 1:
 				
@@ -68,20 +74,26 @@ while not inPosition:
 				if kickAngle == None:
 					kickAngle = 0
 					
-				print("---------------------------------------")
+				
 				command = f"(kick 50 {kickAngle})"
-				print(f"obInf: {objectInfo} comm: {command}")
-				print("---------------------------------------")
-				# inPosition = True
+				
+			elif p.getFocusObjectDirection() < 2 and p.getFocusObjectDirection() > 1:
+				command = f"(dash -1 0)"
+				
 			else:
-				command = f"(dash 70 {movementAngle})"
+				if p.getFocusObjectAngle() < 5 and p.getFocusObjectAngle() > -5:
+					turnAngle = p.getFocusObjectAngle() * -1
+					command = f"(turn {turnAngle})"
+					
+				else:
+					command = f"(dash 70 {movementAngle})"
 			
-			print(command)	
-			p.sendCommand(command)
+			#p.printAppend(command)
+			p.sendResponse(command)
 			
 			
 		else:
-			print("(b) not found")
+			#p.printAppend("(b) not found")
 			#turn += 
 			
 			if turn > 360:
@@ -89,18 +101,14 @@ while not inPosition:
 				
 			
 			command = f"(turn {turn})"
-			print(command)
-			print(f"self.turn: <{p.getTurn()}>")
+			#p.printAppend(command)
+			#p.printAppend(f"self.turn: <{p.getTurn()}>")
+			
 			p.sendResponse(command)
 	
-	print(t)
-	if t > deltaT:
-		#os.system('clear')
-		#p.printBodyState()
-		deltaT = t + 0.5
-		
 	t = time.time() - start
-	if t > 60	:
+	#p.printAppend(str(t))
+	if t > 300:
 		p.bye()
 		break
 
@@ -108,7 +116,8 @@ if inPosition:
 	print("success")
 else:
 	print("fail")
-	
+
+p.printFinalReport()
 p.sendCommand("(bye)")
 
 

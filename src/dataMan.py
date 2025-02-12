@@ -50,6 +50,7 @@ def subStrToNextWhite(s1, s2):
 	index = s2.find(s1) + len(s1) + 1
 	subS = ""
 	
+	print(f"s1: <{s1}>, s2: <{s2}>, index: {index}")
 	while s2[index] != " ":
 		subS += s2[index]
 		index += 1

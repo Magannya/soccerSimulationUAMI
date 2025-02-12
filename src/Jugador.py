@@ -2,6 +2,7 @@ import socket
 import dataMan
 import sys
 import os
+import time
 
 
 class Jugador:
@@ -40,6 +41,8 @@ class Jugador:
 	
 	#ATRUBUTOS ASOCIADOS AL SERVIDOR
 	serverTime = 0
+	gamePhase = ""
+	lastCommand = ""
 	previousServerTime = 0
 	serverTimeChange = False
 	role = ""
@@ -57,6 +60,12 @@ class Jugador:
 	objectFocusName = ""
 	objectFocusDirection = 0
 	objectFocusAngle = 0	
+	
+	# VARIABLE PARA IMPRIMIR EN PANTALLA
+	printQueue = ""
+	refreshInterval = 0.1
+	lastRefreshTime = 0
+	finalReport = ""
 	
 	def __init__(self, role):
 		self.role = role
@@ -79,7 +88,8 @@ class Jugador:
 	def sendResponse(self, response):
 		if self.serverTimeChange:
 			self.sendCommand(response)
-			print(f"response sended succesfully: {response}, {self.serverTime}")
+			#print(f"response sended succesfully: {response}, {self.serverTime}")
+			self.lastCommand = response
 		
 	def getResponse(self):
 		response, server = self.socket.recvfrom(1024)
@@ -109,6 +119,9 @@ class Jugador:
 		print(f"move = <{self.move}>")
 		print(f"change_view = <{self.change_view}>")
 		print(f"serverTime: <{self.serverTime}>")
+		print(f"gamePhase: <{self.gamePhase}>")
+		print(f"objectFocus: ((<{self.objectFocusName}>) {self.objectFocusDirection} {self.objectFocusAngle})")
+		print(f"lastCommand: <{self.lastCommand}>")
 		
 	# REGRESA UNA STRING CON LOS VALORES DEL ESTADO DEL JUGADOR
 	def getState(self):
@@ -149,7 +162,8 @@ class Jugador:
 	# SCRIPT LLENE LA MEMORIA
 	def errorSumaryUpdate(self, error):
 		#self.errorSumary += self.errorSumary + "\n" + error
-		print("-")
+		#print("-")
+		return 0
 		
 	def printErrorSumary(self):
 		print(self.errorSumary)
@@ -204,41 +218,33 @@ class Jugador:
 			return 1
 		return 0
 	
-	# SOLO ERA PARA UNA PRUEBA, PODEMOS ELIMINARLA SI NO HACE FALTA
-	def printVariableNames(self):
-		print(self.variable_names)
-		
-	
 	def serverTimeSync(self, response):
 		
-		if "see" in response:
-			s = dataMan.subStrToNextWhite("see", response)
-		elif "sense_body" in response:
-			s = dataMan.subStrToNextWhite("sense_body", response)	
+		if "init" in response:
+			return 0
 		elif "server_param" in response:
-			s = dataMan.subStrToNextWhite("server_param", response)	
+			return 0
 		elif "player_param" in response:
-			s = dataMan.subStrToNextWhite("player_param", response)
-		elif "hear" in response:
-			s = dataMan.subStrToNextWhite("hear", response)
+			return 0
 		elif "player_type" in response:
-			s = dataMan.subStrToNextWhite("player_type", response)
-		else:
-			error = f"ERROR!!! in serverTimeSync(), response: <{response}>\n"
-			self.errorSumaryUpdate(error)
-			self.errorSumaryCount += 1
-			print(error)
-			return 1
-		
-		
+			return 0
+		elif "moving_to" in response:
+			return 0
 			
-		#print(f"s: <{s}>, serverTime: <{self.serverTime}>")
-		
+		auxST = dataMan.subStrToSpace(response, 1)
 		# SOLO SE ACTUALIZA SI HAY UNA DIFERENCIA ENTRE EL TIEMPO
 		# REGISTRADO POR EL JUGADOR Y EL TIEMPO REPORTADO
 		# POR EL SERVIDOR
 		
-		flotante = float(s)
+		flotante = 0
+		
+		try:
+			flotante = float(auxST)
+			
+		except Exception as e:
+			print(f"ERROR!!! in serverTimeSync() failed to convert <{flotante}> to float.")
+			return 1
+		
 		if flotante != self.previousServerTime:
 			self.previousServerTime = self.serverTime
 			self.serverTime = flotante
@@ -248,6 +254,16 @@ class Jugador:
 			self.serverTimeChange = False
 			return -1
 		
+	def gamePhaseUpdate(self, response):
+		
+		index = response.find("referee") + 8
+		out = ""
+		
+		while response[index] != ')':
+			out += response[index]
+			index += 1
+			
+		self.gamePhase = out
 		
 	# REVCBE - CLASIFICA - ASIGNA, INFORMACION RECIBIDA DEL SERVIDOR
 	# A SUS VARIABLES
@@ -263,6 +279,10 @@ class Jugador:
 		# SYNCRONIZACION DEL TIEMPO DEL SERVIDOR CON EL TIEMPO 
 		# REGISTRADO POR EL JUGADOR
 		response = self.getResponse()
+		
+		# OJO POR QUE HAY COMANDOS QUE NO CONTIENEN TIEMPO DEL SERVIDOR
+		# MAS BIEN DEBERIAMOS EMPEZAR A SINCRONIZAR EL TIEMPO 
+		# CUANDO EL PARTIDO HAYA EMPEZADO
 		self.serverTimeSync(response)
 		
 		if "sense_body" in response:
@@ -288,6 +308,9 @@ class Jugador:
 		
 		elif "hear" in response:
 			self.hear = response
+			
+			if "referee" in response:
+				self.gamePhaseUpdate(response)
 				
 		else:
 			error = f"ERROR !!! in updateState() unknown response: <{response}>"
@@ -320,7 +343,7 @@ class Jugador:
 		else:
 			error = "in setObjectFocus() object not in see response"
 			self.errorSumaryUpdate(error)
-			print(error)
+			#print(error)
 			self.errorSumaryCount += 1
 			return None
 	
@@ -346,7 +369,7 @@ class Jugador:
 		
 		if objectInfo != None:
 			
-			print(f"objectInfo:<{objectInfo}>")
+			#print(f"objectInfo:<{objectInfo}>")
 			self.objectFocusName = objectName
 			objectDirection = dataMan.subStrToSpace(objectInfo, 0)
 			objectAngle = dataMan.subStrToSpace(objectInfo, 1)
@@ -368,6 +391,13 @@ class Jugador:
 			
 			return True
 		else:
+			# VOY A RESETEAR LA INFORMACION DEL OBJETO EN EL QUE SE 
+			# ESTA ENFOCANDO PERO SOLO POR CUESTIONES DE IMPRESION EN 
+			# PANTALLA, NO HACE FALTA HACERLO HAY QUE BORRARLO AL FINAL
+			
+			self.objectFocusName = None
+			self.objectFocusDirection = None
+			self.objectFocusAngle = None
 			return False
 			
 	def getFocusObjectDirection(self):
@@ -389,9 +419,40 @@ class Jugador:
 	# QUE ESTAMOS PROCESANDO, EN CASO CONTRARIO HACER UN REPORTE 
 	# PARA SABER SOBRE LOS  NUEVOS DATOS QUE NO ESTAMOS CONTEMPLANDO, 
 	# INVESTIGAR SOBRE ESTOS Y PODER TENER UN MEJOR CONTROL.
-	def getStamina(self):
-		out = dataMan.subStrToFirtsSpace(self.stamina)
-		return float(out)
+
+
+	# LAS SIGUIENTES FUNCIONES SERVIRAN PARA GESTIONAR LA IMPRESION
+	# DE INFORMACION EN PANTALLA Y NO SATURAR DEMAS LA CONSOLA
+	# -> TAL VEZ PODAMOS DIVIDIR ESTAS VARIABLES EN UNA ESTATICA Y 
+	# UNA DINAMICA, ASI OPDRIAOMS TENER INFORMACION POR ALGUNOS CICLOS
+	# Y QUITARLA CUANDO YA NO SEA NESESARIA
+	def printAppend(self, s):
+		self.printQueue += s
+		self.printQueue += "\n"
 	
-	# METODO PARA DEFINIR UNA DIRECCION EN FUNCION DEL 
+	def refresh(self):
+		if time.time() > self.lastRefreshTime + self.refreshInterval:
+			os.system('clear')
+			self.printBodyState()
+			print("printQueue: " + self.printQueue)
+			
+			# RESETEO
+			self.printQueue = ""
+			self.lastRefreshTime = time.time()
+			return 0
+		else:
+			return 1
+				
+	def refreshForce(self):
+		os.system('clear')
+		self.printBodyState()
+		print(self.printQueue)
+	
+	def finalReportAppend(self, s):
+		self.finalReport += f"{s}\n"
+		
+	def printFinalReport(self):
+		print("Final report:")
+		print(self.finalReport)
+		
 	
