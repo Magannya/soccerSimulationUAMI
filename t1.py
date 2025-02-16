@@ -56,13 +56,13 @@ while not inPosition:
 			#p.printAppend("(b) in see")
 			#print(p.getFocusObjectAll())
 			
-			if p.getFocusObjectAngle() > movementAngle:
+			if p.getfoAngle() > movementAngle:
 				movementAngle += 5
 				
 			else:
 				movementAngle -= 5
 			
-			if p.getFocusObjectDirection() < 1:
+			if p.getfoDistance() < 1:
 				
 				objectInfo = p.getObjectInfo(goalSide)
 				
@@ -77,17 +77,21 @@ while not inPosition:
 				
 				command = f"(kick 50 {kickAngle})"
 				
-			elif p.getFocusObjectDirection() < 2 and p.getFocusObjectDirection() > 1:
+			elif p.getfoDistance() < 2 and p.getfoDistance() > 1:
 				command = f"(dash -1 0)"
 				
 			else:
-				if p.getFocusObjectAngle() < 5 and p.getFocusObjectAngle() > -5:
-					turnAngle = p.getFocusObjectAngle() * -1
+				if p.getfoAngle() < 5 and p.getfoAngle() > -5:
+					turnAngle = p.getfoAngle() * -1
 					command = f"(turn {turnAngle})"
 					
 				else:
-					command = f"(dash 70 {movementAngle})"
-			
+					if p.getGamePhase() == "play_on":
+						command = f"(dash 70 {movementAngle})"
+							
+					elif "kick" in p.getGamePhase():
+						command = f"(dash 70 {movementAngle})"
+						
 			#p.printAppend(command)
 			p.sendResponse(command)
 			

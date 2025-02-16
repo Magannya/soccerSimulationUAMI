@@ -9,97 +9,82 @@
 import sys
 import os
 import time
+import random
+
+
 
 sys.path.append('./src')
 
 from src.Jugador import Jugador
 from src import dataMan
 
-teamName = "b"
-
-
 p = Jugador("goleador")
-p.sendCommand(f"(init {teamName} (version 7))")
-p.sendCommand("(move -10 20)")
 
-stop = False
-inPosition = False
-
-start = time.time()
-deltaT = 0
-t = 0
-turn = 40
-movementAngle = 0
-
-while not inPosition:
+def play():
 	
-	p.updateState()
-	if not inPosition:
-		# MOVERSE A LA POSICION
-		inView = p.setFocusObject("(b)")
-		if inView:		
-				
-			print("(b) in see")
-			print(p.getFocusObjectAll())
-			
-			if p.getFocusObjectAngle() > movementAngle:
-				movementAngle += 1
-			else:
-				movementAngle += -1
-			
-			if p.getFocusObjectDirection() < 1:
-				
-				objectInfo = p.getObjectInfo("(g l)")
-				
-				if objectInfo != None:
-					kickAngle = dataMan.subStrToSpace(objectInfo, 1)
-				else:
-					kickAngle = None
-					
-				if kickAngle == None:
-					kickAngle = 0
-					
-				print("-----------------------------------------------------")
-				command = f"(kick 50 {kickAngle})"
-				print(f"obInf: {objectInfo} comm: {command}")
-				print("-----------------------------------------------------")
-				# inPosition = True
-			else:
-				command = f"(dash 70 {movementAngle})"
-			
-			print(command)	
-			p.sendCommand(command)
-			
-			
+	TeamName = input("Team Name: -> ")
+
+	x = random.randint(0, 10)
+	y = random.randint(0, 10)
+
+	p.setTeamName(TeamName)
+	p.sendCommand(f"(init {TeamName} (version 7))")
+	p.sendCommand(f"(move {x} {y})")
+	
+	p.refreshForce()
+	
+	
+	searchBall()
+	runToBall()
+	
+	print("done...")
+	input()
+	p.bye()
+
+def searchBall():
+	
+	p.setFocusObject("(b)")
+	
+	while not p.objectInSight("(b)"):
+		print("object in sight")
+		p.refreshForce()
+		p.sendCommand("(turn 20)")
+		p.updateState()
+	
+	while not p.foAngleInRange(-5, 5):
+		print("angle in range")
+		p.refreshForce()
+		p.updateState()
+		if p.getfoAngle() < 0:
+			p.sendCommand("(turn -2)")
 		else:
-			print("(b) not found")
-			#turn += 
-			
-			if turn > 360:
-				turn = 0
-				
-			
-			command = f"(turn {turn})"
-			print(command)
-			print(f"self.turn: <{p.getTurn()}>")
-			p.sendResponse(command)
-	
-	print(t)
-	if t > deltaT:
-		#os.system('clear')
-		#p.printBodyState()
-		deltaT = t + 0.5
+			p.sendCommand("(turn 2)")
 		
-	t = time.time() - start
-	if t > 60	:
-		p.bye()
-		break
+	return True
 
-if inPosition:
-	print("success")
-else:
-	print("fail")
+def runToBall():
+	while p.getfoDistance() > 0.7:
+		print("distance")
+		p.sendCommand("(dash 50)")
+		p.updateState()
+		p.refreshForce()
+		
+		# ESTO ES UN INTENTO DE FUNCION DE FRENADO
+		# LO QUE DEBERIAMOS HACER ES UNA FUNCION QUE RECIBA
+		# LA DISTANCIA A LA QUE QUEREMOS PARAR, ANALICE LA VELOCIDAD
+		# Y DETERMINE CUANTA FUERZA DEBE APLICAR PARA REDUCIR LA 
+		# VELOCIDAD HASTA ESE PUNTO
+		
+		if p.getfoDistance() < 1.5:
+			p.sendCommand("(dash -100)")
+			
+		if not p.foAngleInRange(-5, 5):
+			if p.getfoAngle() < 0:
+				p.sendCommand("(turn -2)")
+			else:
+				p.sendCommand("(turn 2)")
 	
-p.bye()
+	p.sendCommand("(dash -50)")
 
-
+if __name__ == "__main__":
+	play()

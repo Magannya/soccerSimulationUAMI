@@ -85,6 +85,19 @@ def subStrToSpace(s, spaceIndex):
 		return out
 		
 
+# REGRESA LA SUBCADENA DESDE EL CARACTER 0 HASTA QUE ENCUENTRA
+# EL CARACTER "char"
+def strTrunc(s, char):
+	out = ""
+	
+	for c in s:
+		if c != char:
+			out += c
+		else:
+			break
+			
+	return out
+
 def subStrFirstFloat(s):
 	out = ""
 	seccond = False

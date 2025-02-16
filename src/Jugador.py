@@ -18,7 +18,6 @@ class Jugador:
 	view_mode2 = "normal"
 	
 	#ATRIBUTOS ASOCIADOS AL ESTADO DEL CUERPO DEL JUGADOR
-	sense_body = "0"
 	stamina = 0
 	stamina_effort = 0
 	speed = 0
@@ -27,11 +26,11 @@ class Jugador:
 	kick = 0
 	dash = 0
 	turn = 0
-	say = 0
+	say = ""
 	turn_neck = 0
 	catch = 0
 	move = 0
-	change_view = 0
+	change_view = ""
 	
 	see = ""
 	hear = ""
@@ -46,8 +45,10 @@ class Jugador:
 	previousServerTime = 0
 	serverTimeChange = False
 	role = ""
-	equip_name = "test"
-	uniform_number = ""
+	teamName = ""
+	teamSide = ""
+	enemySide = ""
+	uniformNumber = ""
 	
 	# VARIABLES PARA GENERAR UN DICCIONARIO DE ERRORES 
 	# O COSAS INUSUALES DURANTE LA EJECUCION
@@ -57,9 +58,9 @@ class Jugador:
 	# PARA FOCALIZARSE EN UN OBJETO DEL CAMPO Y PODER
 	# TOMAR DESICIONES EN FUNCION DE LA INFORMACION QUE CONOCEMOS DE 
 	# ESE OBJETO, NOMBRE, DISTANCIA Y ANGULO
-	objectFocusName = ""
-	objectFocusDirection = 0
-	objectFocusAngle = 0	
+	focusObjectName = ""
+	focusObjectDistance = 0
+	focusObjectAngle = 0
 	
 	# VARIABLE PARA IMPRIMIR EN PANTALLA
 	printQueue = ""
@@ -72,24 +73,85 @@ class Jugador:
 		#self.sendCommand("(init eTest (version 7))")
 		#self.printResponse()
 	
+	# SETERS Y GETERS
+	
+	# BODY--------------------------------------------------------------
+	def setSpeedAngle(self, speed_angle):
+		self.speed_angle = speed_angle
+		
+	def getSpeedAngle(self):
+		return self.speed_angle
+	
 	def setTurn(self, value):
 		self.turn = value
 		
 	def getTurn(self):
 		return self.turn
+		
+	def setSee(self, s):
+		self.see = s
+		
+	def getSee(self):
+		return self.see
+		
+	# FOCUS OBJECTS-----------------------------------------------------
+	def getfoDistance(self):
+		return self.focusObjectDistance
+		
+	def getfoAngle(self):
+		return self.focusObjectAngle
+		
+	# PLAYER RELATED----------------------------------------------------
+	def setTeamName(self, teamName):
+		self.teamName = teamName
+	
+	def getTeamName(self):
+		return self.teamName
+		
+	def setTeamSide(self, teamSide):
+		self.teamSide = teamSide
+		
+	def getTeamSide(self):
+		return self.teamSide
+		
+	def setUniformNumber(self, uniformNumber):
+		self.uniformNumber = uniformNumber
+		
+	def getUniformNumber(self):
+		return self.uniformNumber
+		
+	def setEnemySide(self, enemySide):
+		self.enemySide = enemySide
+		
+	def getEnemySide(self):
+		return self.enemySide
+		
+	# SERVER RELATED----------------------------------------------------
+	def setServerTime(self, serverTime):
+		self.serverTime = serverTime
+		
+	def getServerTime(self):
+		return self.serverTime
+		
+	def setGamePhase(self, gamePhase):
+		self.gamePhase = gamePhase
+		
+	def getGamePhase(self):
+		return self.gamePhase
+	
+	#-------------------------------------------------------------------
 	
 	def sendCommand(self, message):
 		self.socket.sendto(message.encode(), (self.addres, self.port))
+		self.lastCommand = message
 		
 	# MANDA UN COMANDO AL SERVIDOR SOLO CUANDO HAY UN NUEVO CICLO EN 
 	# EL SERVIDOR, ESTO PARA EVITAR SATURAR EL SERVIDOR CON EL 
 	# MISMO COMANDO Y TRATAR DE GARANTIZAR LA EJECUCION DE EL COMANDO
 	# QUE SE ESTA TRATANDO DE MANDAR	
-	def sendResponse(self, response):
+	def sendResponse(self, message):
 		if self.serverTimeChange:
-			self.sendCommand(response)
-			#print(f"response sended succesfully: {response}, {self.serverTime}")
-			self.lastCommand = response
+			self.sendCommand(message)
 		
 	def getResponse(self):
 		response, server = self.socket.recvfrom(1024)
@@ -105,7 +167,9 @@ class Jugador:
 	
 	# IMPRIME EN PANTALLA EL ESTADO DEL JUGADOR
 	def printBodyState(self):
-		print(f"sense_body = <{self.sense_body}>")
+		print(f"teamName = <{self.teamName}>")
+		print(f"teamSide = <{self.teamSide}>")
+		print(f"uniformNumber = <{self.uniformNumber}>")
 		print(f"view_mode = <{self.view_mode1}> | <{self.view_mode2}>")
 		print(f"stamina = <{self.stamina}>")
 		print(f"speed = <{self.speed}>")
@@ -120,7 +184,7 @@ class Jugador:
 		print(f"change_view = <{self.change_view}>")
 		print(f"serverTime: <{self.serverTime}>")
 		print(f"gamePhase: <{self.gamePhase}>")
-		print(f"objectFocus: ((<{self.objectFocusName}>) {self.objectFocusDirection} {self.objectFocusAngle})")
+		print(f"focusObject: ({self.focusObjectName} {self.focusObjectDistance} {self.focusObjectAngle})")
 		print(f"lastCommand: <{self.lastCommand}>")
 		
 	# REGRESA UNA STRING CON LOS VALORES DEL ESTADO DEL JUGADOR
@@ -146,14 +210,10 @@ class Jugador:
 		
 		return state
 		
-	def setSee(self, s):
-		self.see = s
-		
-	def getSee(self):
-		return self.see
+	
 		
 	def printFocusObject(self):
-		print("(" + self.objectFocusName + " " + self.objectFocusDirection + " " + self.objectFocusAngle + ")")
+		print("(" + self.focusObjectName + " " + self.focusObjectDistance + " " + self.focusObjectAngle + ")")
 	
 	def getServerTimeChange(self):
 		return self.serverTimeChange
@@ -265,7 +325,7 @@ class Jugador:
 			
 		self.gamePhase = out
 		
-	# REVCBE - CLASIFICA - ASIGNA, INFORMACION RECIBIDA DEL SERVIDOR
+	# RECIBE - CLASIFICA - ASIGNA, INFORMACION RECIBIDA DEL SERVIDOR
 	# A SUS VARIABLES
 	def updateState(self):
 		# ESTA FUNCION SOLO ES PARA LOS COMANDOS RECIBIDOS YA FILTRADOS
@@ -305,25 +365,41 @@ class Jugador:
 			
 		elif "see" in response:
 			self.setSee(response)
+			self.setFocusObject(self.focusObjectName)
 		
 		elif "hear" in response:
 			self.hear = response
 			
 			if "referee" in response:
 				self.gamePhaseUpdate(response)
+		
+		elif "init" in response:
+			
+				self.setTeamSide(dataMan.subStrToSpace(response, 1))
+				self.setUniformNumber(dataMan.subStrToSpace(response, 2))
+				self.setGamePhase(dataMan.subStrToSpace(response, 3))
+				self.setGamePhase(dataMan.strTrunc(self.getGamePhase(), ')'))
 				
+				if self.teamSide == 'l':
+					self.setEnemySide('r')
+				else:
+					self.setEnemySide('l')
+					
+		elif "error" in response:
+			# TODO
+			error = "response"
+		
 		else:
 			error = f"ERROR !!! in updateState() unknown response: <{response}>"
 			self.errorSumaryUpdate(error)
 			self.errorSumaryCount += 1
-			print(error)
+			#print(error)
 			
 			return 1
 			
 		return 0
 	
-	def getServerTime(self):
-		return self.serverTime
+	
 			
 	# LE DAS EL NOMBRE DE UN OBJETO EN EL CAMP0 Y TE REGRESA LA
 	# INFORMACION DE SU DISTANCIA Y SU ANGULO
@@ -341,7 +417,7 @@ class Jugador:
 			
 			return objectInfo
 		else:
-			error = "in setObjectFocus() object not in see response"
+			error = "in setfocusObject() object not in see response"
 			self.errorSumaryUpdate(error)
 			#print(error)
 			self.errorSumaryCount += 1
@@ -362,6 +438,13 @@ class Jugador:
 		else:
 			return None
 		
+	def objectInSight(self, objectName):
+		
+		if objectName in self.see:
+			return True
+		else:
+			return False
+				
 	# SETEA LA INFORMACION DEL OBJETO EN CUESTION	
 	def setFocusObject(self, objectName):
 		objectInfo = self.getObjectInfo(objectName)
@@ -370,7 +453,7 @@ class Jugador:
 		if objectInfo != None:
 			
 			#print(f"objectInfo:<{objectInfo}>")
-			self.objectFocusName = objectName
+			self.focusObjectName = objectName
 			objectDirection = dataMan.subStrToSpace(objectInfo, 0)
 			objectAngle = dataMan.subStrToSpace(objectInfo, 1)
 			
@@ -380,12 +463,12 @@ class Jugador:
 			# NO HE INVESTIGADO QUE SIGNIFICAN LOS SIGUIENTES DATOS
 			
 			try:
-				self.objectFocusDirection = float(objectDirection)
+				self.focusObjectDistance = float(objectDirection)
 			except Exception as e:
 				print(f"failed to convert objectDirection: {objectDirection}.")
 				
 			try:	
-				self.objectFocusAngle = float(objectAngle)
+				self.focusObjectAngle = float(objectAngle)
 			except Exception as e:
 				print(f"failed to convert objectAngle: {objectAngle}.")
 			
@@ -395,20 +478,25 @@ class Jugador:
 			# ESTA ENFOCANDO PERO SOLO POR CUESTIONES DE IMPRESION EN 
 			# PANTALLA, NO HACE FALTA HACERLO HAY QUE BORRARLO AL FINAL
 			
-			self.objectFocusName = None
-			self.objectFocusDirection = None
-			self.objectFocusAngle = None
+			self.focusObjectName = objectName
+			self.focusObjectDistance = 0
+			self.focusObjectAngle = 0
 			return False
-			
-	def getFocusObjectDirection(self):
-		return self.objectFocusDirection
+				
+	def foAngleInRange(self, mn, mx):
 		
-	def getFocusObjectAngle(self):
-		return self.objectFocusAngle
+		if mn > mx:
+			aux = mn
+			mn = mx
+			mx = aux
 		
-		
+		if self.focusObjectAngle > mn and self.focusObjectAngle < mx:
+			return True
+		else:
+			return False			
+	
 	def getFocusObjectAll(self):
-		return f"(<{self.objectFocusName}> <{self.objectFocusDirection}> <{self.objectFocusAngle}>)"
+		return f"(<{self.focusObjectName}> <{self.focusObjectDistance}> <{self.focusObjectAngle}>)"
 	# CHECAR ESTO POR QUE NO ME CUADRA BIEN LA FORMA DE CASTEAR
 	# TODOS LOS DATOS DEL AGENTE PARA OPERAR CON ELLOS
 	
@@ -449,7 +537,7 @@ class Jugador:
 		print(self.printQueue)
 	
 	def finalReportAppend(self, s):
-		self.finalReport += f"{s}\n"
+		self.finalReport += f"{s}	\n"
 		
 	def printFinalReport(self):
 		print("Final report:")
