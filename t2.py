@@ -10,9 +10,7 @@ import sys
 import os
 import time
 import random
-
-
-
+	
 sys.path.append('./src')
 
 from src.Jugador import Jugador
@@ -33,9 +31,9 @@ def play():
 	
 	p.refreshForce()
 	
-	
-	searchBall()
-	runToBall()
+	while True:
+		searchAndRun("(b)")
+		p.sendCommand("(kick 90 90)")
 	
 	print("done...")
 	input()
@@ -63,9 +61,17 @@ def searchBall():
 	return True
 
 def runToBall():
+	angle = 45
+	flag = True
 	while p.getfoDistance() > 0.7:
-		print("distance")
-		p.sendCommand("(dash 50)")
+		
+		if flag:
+			angle = 45
+		else:
+			alngle = -45
+			
+		message = f"(dash 100)(turn_neck {angle})"
+		p.sendCommand(message)
 		p.updateState()
 		p.refreshForce()
 		
@@ -75,7 +81,7 @@ def runToBall():
 		# Y DETERMINE CUANTA FUERZA DEBE APLICAR PARA REDUCIR LA 
 		# VELOCIDAD HASTA ESE PUNTO
 		
-		if p.getfoDistance() < 1.5:
+		if p.getfoDistance() < 1.1:
 			p.sendCommand("(dash -100)")
 			
 		if not p.foAngleInRange(-5, 5):
@@ -85,6 +91,30 @@ def runToBall():
 				p.sendCommand("(turn 2)")
 	
 	p.sendCommand("(dash -50)")
+	
+def searchAndRun(objectName):
+	p.setFocusObject(objectName)
+	
+	message = ""
+	angle = 45;
+	flag = False
+	
+	while not p.objectInSight("(b)"):
+		
+		p.refresh()
+		p.updateState()
+		
+		if flag:
+			angle = -45
+			flag = False
+		else:
+			angle = 45
+			flag = True
+			
+		message = f"(turn 20)(turn_neck {angle})"
+		p.sendCommand(message)
+		
+	runToBall()
 
 if __name__ == "__main__":
 	play()

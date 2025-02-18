@@ -23,7 +23,7 @@ class Jugador:
 	speed = 0
 	speed_angle = 0
 	head_angle = 0
-	kick = 0
+	kick = 0	
 	dash = 0
 	turn = 0
 	say = ""
@@ -33,7 +33,7 @@ class Jugador:
 	change_view = ""
 	
 	see = ""
-	hear = ""
+	hear = "-"
 	
 	# ESTA VARIABLE ES USADA PARA ACTUALIZAR LOS DATOS 
 	variable_names = {"view_mode", "stamina", "speed", "head_angle", "kick", "dash", "turn", "say", "turn_neck", "catch", "move", "change_view"}
@@ -72,6 +72,7 @@ class Jugador:
 		self.role = role
 		#self.sendCommand("(init eTest (version 7))")
 		#self.printResponse()
+		self.hear = ""
 	
 	# SETERS Y GETERS
 	
@@ -184,6 +185,7 @@ class Jugador:
 		print(f"change_view = <{self.change_view}>")
 		print(f"serverTime: <{self.serverTime}>")
 		print(f"gamePhase: <{self.gamePhase}>")
+		print(f"hear: <{self.hear}>")
 		print(f"focusObject: ({self.focusObjectName} {self.focusObjectDistance} {self.focusObjectAngle})")
 		print(f"lastCommand: <{self.lastCommand}>")
 		
@@ -483,6 +485,8 @@ class Jugador:
 			self.focusObjectAngle = 0
 			return False
 				
+	# REGRESA TRUE EN CASO DE QUE EL ANGULO DE UN OBJETO
+	# ESTE DENTRO DE CIERTO RANGO
 	def foAngleInRange(self, mn, mx):
 		
 		if mn > mx:
@@ -543,4 +547,17 @@ class Jugador:
 		print("Final report:")
 		print(self.finalReport)
 		
+		
+	# ------------------------------------------------------------------
+	# METODOS RELATIVOS AL COMPORTAMIENTO
+	
+	# METODOS RELATIVOL AL MODELO DE AUDICION "hear"
+	
+	# REGRESA True SI EL JUGADOR HA ESCUCHADO EL mensaje
+	def listen(self, message):
+		
+		if message in self.hear:
+			return True
+		else:
+			return False
 	
