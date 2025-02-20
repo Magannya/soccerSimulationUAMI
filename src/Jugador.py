@@ -142,6 +142,46 @@ class Jugador:
 	
 	#-------------------------------------------------------------------
 	
+	# INICIA EL BUCLE DEL JUGADOR EN EL QUE SE GESTIONAN TODOS SUS
+	# PROCESOS PARA DETERMINAR SUS ACCIONES
+	def start(self):
+		gameOver = False
+		message = ""
+		while not gameOver:
+			self.updateState()
+			message = self.think()
+			self.sendResponse(message)
+			gameOver = updateGameState()
+			
+		self.bye()
+	
+	# LA FUNCION MAS IMPORTANTE AQUI SE HARAN TOOS LOS CALCULOS 
+	# PARA CONSTRUIR EL COMANDO QUE SE VA A RESPONER AL SERVIDOR
+	# ESTO DEPENDERA DEL ROL DEL JUGADOR ASI COMO DE EL OBJETIVO
+	# INDIVIDUAL EN TIEMPO REAL
+	def think(self):
+		message = ""
+		
+		message = self.buildCommand()
+		return message
+	
+	# ESTA FUNCION MANEJARA TODAS LAS POSIBLES CONDICIONES DE 
+	# PARADA PARA QUE EL JUGADOR MANDE SU COMANDO PARA DESCONECTARSE
+	# DEL SERVIDOR
+	def updateGamestate(self):
+		# TODO
+		gameOver = False
+		
+		return gameOver
+	
+	# DESPUES DE HACER LOS CALCULOS PERTINENTES PARA DETERMINAR CUAL
+	# ES EL NUEVO OBJETIVO INDIVIDUAL SE CONSTRUYE EL COMANDO PARA 
+	# MOVERSE A ESE OBJETIVO
+	def buildCommand(self):
+		#TODO
+		message = ""
+		return message
+	
 	def sendCommand(self, message):
 		self.socket.sendto(message.encode(), (self.addres, self.port))
 		self.lastCommand = message
