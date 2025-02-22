@@ -3,7 +3,10 @@ import dataMan
 import sys
 import os
 import time
+import random
 
+from basic_math import *
+from basic_movement import *
 
 class Jugador:
 	
@@ -49,6 +52,7 @@ class Jugador:
 	teamSide = ""
 	enemySide = ""
 	uniformNumber = ""
+	teamName = ""
 	
 	# VARIABLES PARA GENERAR UN DICCIONARIO DE ERRORES 
 	# O COSAS INUSUALES DURANTE LA EJECUCION
@@ -68,12 +72,17 @@ class Jugador:
 	lastRefreshTime = 0
 	finalReport = ""
 	
-	def __init__(self, role):
+	def __init__(self, role, teamName):
 		self.role = role
-		#self.sendCommand("(init eTest (version 7))")
-		#self.printResponse()
-		self.hear = ""
-	
+		self.teamName = teamName
+		self.sendCommand(f"(init {self.teamName} (version 14))")
+		self.printRespose()
+		
+		#DE MOMENTO VAMOSA INICIALIZARLOS EN UNA POSICION ALEATORIA
+		x = random.randint(-20, 20)
+		y = random.randint(-20, 20)
+		self.sendCommand(f"move({x} {y})")
+		
 	# SETERS Y GETERS
 	
 	# BODY--------------------------------------------------------------
@@ -140,15 +149,18 @@ class Jugador:
 	def getGamePhase(self):
 		return self.gamePhase
 	
-	#-------------------------------------------------------------------
+	#--------------INICIO BUCLE PRINCIPAL-------------------------------
 	
 	# INICIA EL BUCLE DEL JUGADOR EN EL QUE SE GESTIONAN TODOS SUS
 	# PROCESOS PARA DETERMINAR SUS ACCIONES
 	def start(self):
 		gameOver = False
 		message = ""
+		
 		while not gameOver:
+			
 			self.updateState()
+			self.refresh()
 			message = self.think()
 			self.sendResponse(message)
 			gameOver = updateGameState()
@@ -162,6 +174,25 @@ class Jugador:
 	def think(self):
 		message = ""
 		
+		#DEPENDIENDO DEL ESTADO DEL JUGADOR RESPONDEMOS
+		if "before_kickoff" in self.gamePhase:
+			# BUSCA LA PELOTA
+			self.setFocusObject("(b)")
+				
+				# ESCANEA CON LA MIRADA HASTA QUE LA ENCUENTRES;
+				# SI NO LA ENCUENTRAS EN TU RANGO DE GIRO DE CABEZA
+				# ENTONCES GIRA TU CUERPO
+				
+			# GIRA TU POSICION PARA QUEDAR DE FRENTE A ELLA
+				#CALCULA EL ANGULO QUE TIENES QUE GIRAR;
+				#GIRA
+			continue
+		elif "play_on" in self.gamePhase:
+			continue
+		else:
+			# TODO
+			#DEBUG ERROR, gamePhase NO RECONOCIDA
+			
 		message = self.buildCommand()
 		return message
 	
@@ -181,6 +212,8 @@ class Jugador:
 		#TODO
 		message = ""
 		return message
+	
+	#--------------------FIN BUCLE PRINCIPAL----------------------------
 	
 	def sendCommand(self, message):
 		self.socket.sendto(message.encode(), (self.addres, self.port))
@@ -541,18 +574,7 @@ class Jugador:
 	
 	def getFocusObjectAll(self):
 		return f"(<{self.focusObjectName}> <{self.focusObjectDistance}> <{self.focusObjectAngle}>)"
-	# CHECAR ESTO POR QUE NO ME CUADRA BIEN LA FORMA DE CASTEAR
-	# TODOS LOS DATOS DEL AGENTE PARA OPERAR CON ELLOS
 	
-	# ESTO FUNCIONA PERO LO QUE NO ME CONVENCE ES EL DINAMISMO DE LOS
-	# DATOS, PROBABLEMENTE ESTEMOS PERDIENDO INFORMACION POR LA RIGIDEZ
-	# DE ESTOS METODOS, ESOTY PENSANDO EN HACER ALGUN METODO PARA LA 
-	# VALIDACION DE LOS DATOS Y CORROBORAR QUE HAY LA CANTIDAD DE DATOS
-	# QUE ESTAMOS PROCESANDO, EN CASO CONTRARIO HACER UN REPORTE 
-	# PARA SABER SOBRE LOS  NUEVOS DATOS QUE NO ESTAMOS CONTEMPLANDO, 
-	# INVESTIGAR SOBRE ESTOS Y PODER TENER UN MEJOR CONTROL.
-
-
 	# LAS SIGUIENTES FUNCIONES SERVIRAN PARA GESTIONAR LA IMPRESION
 	# DE INFORMACION EN PANTALLA Y NO SATURAR DEMAS LA CONSOLA
 	# -> TAL VEZ PODAMOS DIVIDIR ESTAS VARIABLES EN UNA ESTATICA Y 
