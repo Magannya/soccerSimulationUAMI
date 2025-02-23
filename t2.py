@@ -16,17 +16,20 @@ sys.path.append('./src')
 from src.Jugador import Jugador
 from src import dataMan
 
-p = Jugador("goleador")
+TeamName = input("Team Name: -> ")
+
+p = Jugador("goleador", TeamName)
 
 def play():
 	
-	TeamName = input("Team Name: -> ")
+	
 
 	x = random.randint(0, 10)
 	y = random.randint(0, 10)
 
-	p.setTeamName(TeamName)
-	p.sendCommand(f"(init {TeamName} (version 7))")
+	#p.setTeamName(TeamName)
+	#p.sendCommand(f"(init {TeamName} (version 7))")
+	
 	p.sendCommand(f"(move {x} {y})")
 	
 	p.refreshForce()

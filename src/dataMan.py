@@ -90,6 +90,9 @@ def subStrToSpace(s, spaceIndex):
 def strTrunc(s, char):
 	out = ""
 	
+	if s == None:
+		return None
+	
 	for c in s:
 		if c != char:
 			out += c

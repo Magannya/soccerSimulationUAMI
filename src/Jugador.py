@@ -36,15 +36,16 @@ class Jugador:
 	change_view = ""
 	
 	see = ""
-	hear = "-"
+	hear = ""
 	
+	neckPosition = "0"
+
 	# ESTA VARIABLE ES USADA PARA ACTUALIZAR LOS DATOS 
 	variable_names = {"view_mode", "stamina", "speed", "head_angle", "kick", "dash", "turn", "say", "turn_neck", "catch", "move", "change_view"}
 	
 	#ATRUBUTOS ASOCIADOS AL SERVIDOR
 	serverTime = 0
 	gamePhase = ""
-	lastCommand = ""
 	previousServerTime = 0
 	serverTimeChange = False
 	role = ""
@@ -54,6 +55,9 @@ class Jugador:
 	uniformNumber = ""
 	teamName = ""
 	
+	serverMessage = ""
+
+
 	# VARIABLES PARA GENERAR UN DICCIONARIO DE ERRORES 
 	# O COSAS INUSUALES DURANTE LA EJECUCION
 	errorSumary = "-"
@@ -72,11 +76,16 @@ class Jugador:
 	lastRefreshTime = 0
 	finalReport = ""
 	
+	# CONTROL DE FLUJO
+	fluxphase = ""
+	lastCommand = ""
+	commandQueue = None
+	
 	def __init__(self, role, teamName):
 		self.role = role
 		self.teamName = teamName
 		self.sendCommand(f"(init {self.teamName} (version 14))")
-		self.printRespose()
+		self.printResponse()
 		
 		#DE MOMENTO VAMOSA INICIALIZARLOS EN UNA POSICION ALEATORIA
 		x = random.randint(-20, 20)
@@ -135,134 +144,10 @@ class Jugador:
 		
 	def getEnemySide(self):
 		return self.enemySide
-		
-	# SERVER RELATED----------------------------------------------------
-	def setServerTime(self, serverTime):
-		self.serverTime = serverTime
-		
-	def getServerTime(self):
-		return self.serverTime
-		
-	def setGamePhase(self, gamePhase):
-		self.gamePhase = gamePhase
-		
-	def getGamePhase(self):
-		return self.gamePhase
 	
-	#--------------INICIO BUCLE PRINCIPAL-------------------------------
+	def printFocusObject(self):
+		print("(" + self.focusObjectName + " " + self.focusObjectDistance + " " + self.focusObjectAngle + ")")
 	
-	# INICIA EL BUCLE DEL JUGADOR EN EL QUE SE GESTIONAN TODOS SUS
-	# PROCESOS PARA DETERMINAR SUS ACCIONES
-	def start(self):
-		gameOver = False
-		message = ""
-		
-		while not gameOver:
-			
-			self.updateState()
-			self.refresh()
-			message = self.think()
-			self.sendResponse(message)
-			gameOver = updateGameState()
-			
-		self.bye()
-	
-	# LA FUNCION MAS IMPORTANTE AQUI SE HARAN TOOS LOS CALCULOS 
-	# PARA CONSTRUIR EL COMANDO QUE SE VA A RESPONER AL SERVIDOR
-	# ESTO DEPENDERA DEL ROL DEL JUGADOR ASI COMO DE EL OBJETIVO
-	# INDIVIDUAL EN TIEMPO REAL
-	def think(self):
-		message = ""
-		
-		#DEPENDIENDO DEL ESTADO DEL JUGADOR RESPONDEMOS
-		if "before_kickoff" in self.gamePhase:
-			# BUSCA LA PELOTA
-			self.setFocusObject("(b)")
-				
-				# ESCANEA CON LA MIRADA HASTA QUE LA ENCUENTRES;
-				# SI NO LA ENCUENTRAS EN TU RANGO DE GIRO DE CABEZA
-				# ENTONCES GIRA TU CUERPO
-				
-			# GIRA TU POSICION PARA QUEDAR DE FRENTE A ELLA
-				#CALCULA EL ANGULO QUE TIENES QUE GIRAR;
-				#GIRA
-			continue
-		elif "play_on" in self.gamePhase:
-			continue
-		else:
-			# TODO
-			#DEBUG ERROR, gamePhase NO RECONOCIDA
-			
-		message = self.buildCommand()
-		return message
-	
-	# ESTA FUNCION MANEJARA TODAS LAS POSIBLES CONDICIONES DE 
-	# PARADA PARA QUE EL JUGADOR MANDE SU COMANDO PARA DESCONECTARSE
-	# DEL SERVIDOR
-	def updateGamestate(self):
-		# TODO
-		gameOver = False
-		
-		return gameOver
-	
-	# DESPUES DE HACER LOS CALCULOS PERTINENTES PARA DETERMINAR CUAL
-	# ES EL NUEVO OBJETIVO INDIVIDUAL SE CONSTRUYE EL COMANDO PARA 
-	# MOVERSE A ESE OBJETIVO
-	def buildCommand(self):
-		#TODO
-		message = ""
-		return message
-	
-	#--------------------FIN BUCLE PRINCIPAL----------------------------
-	
-	def sendCommand(self, message):
-		self.socket.sendto(message.encode(), (self.addres, self.port))
-		self.lastCommand = message
-		
-	# MANDA UN COMANDO AL SERVIDOR SOLO CUANDO HAY UN NUEVO CICLO EN 
-	# EL SERVIDOR, ESTO PARA EVITAR SATURAR EL SERVIDOR CON EL 
-	# MISMO COMANDO Y TRATAR DE GARANTIZAR LA EJECUCION DE EL COMANDO
-	# QUE SE ESTA TRATANDO DE MANDAR	
-	def sendResponse(self, message):
-		if self.serverTimeChange:
-			self.sendCommand(message)
-		
-	def getResponse(self):
-		response, server = self.socket.recvfrom(1024)
-		raw_response = r'{}'.format(response)
-		return raw_response
-		
-	def printResponse(self):
-		print(self.getResponse())
-		
-	def bye(self):
-		self.sendCommand("(bye)")
-		self.socket.close()
-	
-	# IMPRIME EN PANTALLA EL ESTADO DEL JUGADOR
-	def printBodyState(self):
-		print(f"teamName = <{self.teamName}>")
-		print(f"teamSide = <{self.teamSide}>")
-		print(f"uniformNumber = <{self.uniformNumber}>")
-		print(f"view_mode = <{self.view_mode1}> | <{self.view_mode2}>")
-		print(f"stamina = <{self.stamina}>")
-		print(f"speed = <{self.speed}>")
-		print(f"head_angle = <{self.head_angle}>")
-		print(f"kick = <{self.kick}>")
-		print(f"dash = <{self.dash}>")
-		print(f"turn = <{self.turn}>")
-		print(f"say = <{self.say}>")
-		print(f"turn_neck = <{self.turn_neck}>")
-		print(f"catch = <{self.catch}>")
-		print(f"move = <{self.move}>")
-		print(f"change_view = <{self.change_view}>")
-		print(f"serverTime: <{self.serverTime}>")
-		print(f"gamePhase: <{self.gamePhase}>")
-		print(f"hear: <{self.hear}>")
-		print(f"focusObject: ({self.focusObjectName} {self.focusObjectDistance} {self.focusObjectAngle})")
-		print(f"lastCommand: <{self.lastCommand}>")
-		
-	# REGRESA UNA STRING CON LOS VALORES DEL ESTADO DEL JUGADOR
 	def getState(self):
 		
 		state = (self.sense_body + "\n" +
@@ -285,10 +170,162 @@ class Jugador:
 		
 		return state
 		
-	
+	# SERVER RELATED----------------------------------------------------
+	def setServerTime(self, serverTime):
+		self.serverTime = serverTime
 		
-	def printFocusObject(self):
-		print("(" + self.focusObjectName + " " + self.focusObjectDistance + " " + self.focusObjectAngle + ")")
+	def getServerTime(self):
+		return self.serverTime
+		
+	def setGamePhase(self, gamePhase):
+		self.gamePhase = gamePhase
+		
+	def getGamePhase(self):
+		return self.gamePhase
+	
+	# FLUX CONTROL------------------------------------------------------
+	def setFluxPhase(self, phase):
+		self.fluxphase = phase
+		
+	def getFluxPhase(self):
+		return self.fluxphase
+		
+	def setLastCommand(self, message):
+		self.lastCommand = message
+	
+	def getLastCommand(self):
+		return self.lastCommand
+		
+	def setCommandQueue(self, message):
+		self.commandQueue = message
+		
+	def getCommandQuere(self):
+		return self.commandQueue
+	
+	#--------------INICIO BUCLE PRINCIPAL-------------------------------
+	
+	# INICIA EL BUCLE DEL JUGADOR EN EL QUE SE GESTIONAN TODOS SUS
+	# PROCESOS PARA DETERMINAR SUS ACCIONES
+	def start(self):
+		gameOver = False
+		message = ""
+		
+		while not gameOver:
+			
+			self.refresh()
+			
+			if self.commandQueue == None:
+				self.updateState()
+				message = self.think()
+				self.sendResponse(message)
+				
+			else:
+				sendResponse(self.commandQueue)
+			
+			gameOver = updateGameState()
+			
+		self.bye()
+	
+	# LA FUNCION MAS IMPORTANTE AQUI SE HARAN TOOS LOS CALCULOS 
+	# PARA CONSTRUIR EL COMANDO QUE SE VA A RESPONER AL SERVIDOR
+	# ESTO DEPENDERA DEL ROL DEL JUGADOR ASI COMO DE EL OBJETIVO
+	# INDIVIDUAL EN TIEMPO REAL
+	def think(self):
+		message = ""
+		
+		#DEPENDIENDO DEL ESTADO DEL JUGADOR RESPONDEMOS
+		if "before_kickoff" in self.gamePhase:
+			
+			# BUSCA LA PELOTA
+			search_object("(b)")
+			
+		elif "play_on" in self.gamePhase:
+			
+			intercept_object("(b)")
+		else:
+			# TODO
+			return 0
+			#DEBUG ERROR, gamePhase NO RECONOCIDA
+			
+		message = self.buildCommand()
+		return message
+	
+	# ESTA FUNCION MANEJARA TODAS LAS POSIBLES CONDICIONES DE 
+	# PARADA PARA QUE EL JUGADOR MANDE SU COMANDO PARA DESCONECTARSE
+	# DEL SERVIDOR
+	def updateGamestate(self):
+		# TODO
+		gameOver = False
+		
+		return gameOver
+	
+	# DESPUES DE HACER LOS CALCULOS PERTINENTES PARA DETERMINAR CUAL
+	# ES EL NUEVO OBJETIVO INDIVIDUAL SE CONSTRUYE EL COMANDO PARA 
+	# MOVERSE A ESE OBJETIVO
+	def buildCommand(self, message):
+		
+		self.serverMessage += message
+	
+	#--------------------FIN BUCLE PRINCIPAL----------------------------
+	
+	# -----METODOS RELACIONADOS A LA COMUNICACION CON EL SERVIDOR-------
+	def sendCommand(self, message):
+		self.socket.sendto(message.encode(), (self.addres, self.port))
+		self.lastCommand = message
+		
+	# MANDA UN COMANDO AL SERVIDOR SOLO CUANDO HAY UN NUEVO CICLO EN 
+	# EL SERVIDOR, ESTO PARA EVITAR SATURAR EL SERVIDOR CON EL 
+	# MISMO COMANDO Y TRATAR DE GARANTIZAR LA EJECUCION DE EL COMANDO
+	# QUE SE ESTA TRATANDO DE MANDAR	
+	def sendResponse(self):
+		
+		if self.serverTimeChange:
+			self.sendCommand(self.serverMessage)
+			self.lastCommand = self.serverMessage
+			self.serverMessage = ""
+			self.commandQueue = None
+		else:
+			self.commandQueue = self.serverMessage
+		
+	def getResponse(self):
+		response, server = self.socket.recvfrom(1024)
+		raw_response = r'{}'.format(response)
+		return raw_response
+		
+	def printResponse(self):
+		print(self.getResponse())
+		
+	def bye(self):
+		self.sendCommand("(bye)")
+		self.socket.close()
+	
+	#--------------------METODOS DEBUG----------------------------------
+	def printBodyState(self):
+		print(f"teamName = <{self.teamName}>")
+		print(f"teamSide = <{self.teamSide}>")
+		print(f"uniformNumber = <{self.uniformNumber}>")
+		print(f"view_mode = <{self.view_mode1}> | <{self.view_mode2}>")
+		print(f"stamina = <{self.stamina}>")
+		print(f"speed = <{self.speed}>")
+		print(f"head_angle = <{self.head_angle}>")
+		print(f"kick = <{self.kick}>")
+		print(f"dash = <{self.dash}>")
+		print(f"turn = <{self.turn}>")
+		print(f"say = <{self.say}>")
+		print(f"turn_neck = <{self.turn_neck}>")
+		print(f"catch = <{self.catch}>")
+		print(f"move = <{self.move}>")
+		print(f"change_view = <{self.change_view}>")
+		print(f"serverTime: <{self.serverTime}>")
+		print(f"gamePhase: <{self.gamePhase}>")
+		print(f"hear: <{self.hear}>")
+		print(f"focusObject: ({self.focusObjectName} {self.focusObjectDistance} {self.focusObjectAngle})")
+		print(f"lastCommand: <{self.lastCommand}>")
+		
+	
+	def getFocusObjectAll(self):
+		return f"(<{self.focusObjectName}> <{self.focusObjectDistance}> <{self.focusObjectAngle}>)"
+	
 	
 	def getServerTimeChange(self):
 		return self.serverTimeChange
@@ -302,6 +339,37 @@ class Jugador:
 		
 	def printErrorSumary(self):
 		print(self.errorSumary)
+	
+	def printAppend(self, s):
+		self.printQueue += s
+		self.printQueue += "\n"
+	
+	def refresh(self):
+		if time.time() > self.lastRefreshTime + self.refreshInterval:
+			os.system('clear')
+			self.printBodyState()
+			print("printQueue: " + self.printQueue)
+			
+			# RESETEO
+			self.printQueue = ""
+			self.lastRefreshTime = time.time()
+			return 0
+		else:
+			return 1
+				
+	def refreshForce(self):
+		os.system('clear')
+		self.printBodyState()
+		print(self.printQueue)
+	
+	def finalReportAppend(self, s):
+		self.finalReport += f"{s}	\n"
+		
+	def printFinalReport(self):
+		print("Final report:")
+		print(self.finalReport)
+		
+	#----------METODOS DE ACTUALIZACION---------------------------------
 	
 	# RECIBE UNA CADENA Y ACTUALIZA LA VARIABLE A LA QUE ESTA HACIENDO
 	# REFERENCIA DICHA CADENA
@@ -549,9 +617,6 @@ class Jugador:
 			
 			return True
 		else:
-			# VOY A RESETEAR LA INFORMACION DEL OBJETO EN EL QUE SE 
-			# ESTA ENFOCANDO PERO SOLO POR CUESTIONES DE IMPRESION EN 
-			# PANTALLA, NO HACE FALTA HACERLO HAY QUE BORRARLO AL FINAL
 			
 			self.focusObjectName = objectName
 			self.focusObjectDistance = 0
@@ -571,49 +636,9 @@ class Jugador:
 			return True
 		else:
 			return False			
-	
-	def getFocusObjectAll(self):
-		return f"(<{self.focusObjectName}> <{self.focusObjectDistance}> <{self.focusObjectAngle}>)"
-	
-	# LAS SIGUIENTES FUNCIONES SERVIRAN PARA GESTIONAR LA IMPRESION
-	# DE INFORMACION EN PANTALLA Y NO SATURAR DEMAS LA CONSOLA
-	# -> TAL VEZ PODAMOS DIVIDIR ESTAS VARIABLES EN UNA ESTATICA Y 
-	# UNA DINAMICA, ASI OPDRIAOMS TENER INFORMACION POR ALGUNOS CICLOS
-	# Y QUITARLA CUANDO YA NO SEA NESESARIA
-	def printAppend(self, s):
-		self.printQueue += s
-		self.printQueue += "\n"
-	
-	def refresh(self):
-		if time.time() > self.lastRefreshTime + self.refreshInterval:
-			os.system('clear')
-			self.printBodyState()
-			print("printQueue: " + self.printQueue)
-			
-			# RESETEO
-			self.printQueue = ""
-			self.lastRefreshTime = time.time()
-			return 0
-		else:
-			return 1
-				
-	def refreshForce(self):
-		os.system('clear')
-		self.printBodyState()
-		print(self.printQueue)
-	
-	def finalReportAppend(self, s):
-		self.finalReport += f"{s}	\n"
 		
-	def printFinalReport(self):
-		print("Final report:")
-		print(self.finalReport)
-		
-		
-	# ------------------------------------------------------------------
-	# METODOS RELATIVOS AL COMPORTAMIENTO
 	
-	# METODOS RELATIVOL AL MODELO DE AUDICION "hear"
+	# -----METODOS RELATIVOL AL MODELO DE AUDICION "hear"---------------
 	
 	# REGRESA True SI EL JUGADOR HA ESCUCHADO EL mensaje
 	def listen(self, message):
@@ -622,4 +647,25 @@ class Jugador:
 			return True
 		else:
 			return False
+		
+	def search_object(self, objectName):
+		if not setFocusObject(objectName):
+			if self.neckPosition == 0:
+				buildCommand("(turn_neck 45)")
+				self.neckPosition = 1
+				self.fluxphase = "search_object"
+			elif self.neckPosition == 1:
+				buildCommand("(turn_neck -90)")
+				self.neckPosition = 2
+				self.fluxphase = "search_object"
+			elif self.neckPosition == 2:
+				buildCommand("(turn 180)(turn_neck 45)")
+				self.neckPosition = 0
+				self.fluxphase = "search_object"
+			else:
+				return 1				# TODO
+				# UN EXPECTED ERROR in search_object()
+				# INVALID neck_position
 	
+	def intercept_object(self, objectName):
+		return False

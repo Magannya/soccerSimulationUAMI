@@ -9,3 +9,6 @@
 	
 -	La saturacion del servidor con tantos mensajes sigue siendo un problema, basicamente hay que tener suerte para que se ejecute segun que comando
 	si tuvieramos alguna forma de mandar mensajes y asegurar su correcta entrega seria de mucha ayuda
+	
+-	Tomar un archivo de partido entre dos equipos HELIOS-Base, filtrar los comandos para un solo jugador y analizarlos a largo del desarollo del
+	partido

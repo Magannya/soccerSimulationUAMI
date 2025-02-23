@@ -16,7 +16,6 @@ sys.path.append('./src')
 from src.Jugador import Jugador
 from src import dataMan
 
-p = Jugador("goleador")
 
 def play():
 	
@@ -24,9 +23,9 @@ def play():
 
 	x = random.randint(0, 10)
 	y = random.randint(0, 10)
-
-	p.setTeamName(TeamName)
-	p.sendCommand(f"(init {TeamName} (version 7))")
+	
+	p = Jugador("goleador", TeamName)
+	
 	p.sendCommand(f"(move {x} {y})")
 	
 	p.refreshForce()
