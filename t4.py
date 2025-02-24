@@ -5,11 +5,8 @@ import random
 	
 sys.path.append('./src')
 
-from src.Jugador import Jugador
-from src import dataMan
+from src.Player import Player
 
-p = Jugador("goleador", "teamNameTest")
+p = Player()
 
-p.bye()
-
-
+p.say_hello()
