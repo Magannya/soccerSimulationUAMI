@@ -4,17 +4,26 @@ import os
 
 class Print_manager:
 	
-	refreshInterval = 0.1
+	REFRESH_INTERVAL = 0.1
+	DINAMIC_ON_SCREEN_TIME = 3
+	staticQueue = ""
+	dinamicQueue = []
+	screenTimeQueue = []
+	lastRefresh = 0
 	
 	def __init__(self):
-		return 0
+		print("Print_amager init")
 		
-	def say_hello(self):
+	def sayHello(self):
 		print("Hello from Print_manager.")
 		
 	# SETTERS Y GETTERS-------------------------------------------------
-	def set_refresh_interval(self, refreshInterval):
-		self.refreshInterval = refreshInterval
+	def setRefreshInterval(self, refreshInterval):
+		self.REFRESH_INTERVAL = refreshInterval
 	
-	def get_refresh_interval(self):
+	def getRefreshInterval(self):
 		return self.refreshInterval
+	
+	def dPrintAppend(message):
+		self.dinamicQueue.append(message)
+		self.screenTimeQueue.append(time.time())

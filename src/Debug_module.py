@@ -1,5 +1,6 @@
-import Error_manager
-import Print_manager
+from Error_manager import Error_manager
+from Print_manager import Print_manager
+
 
 class Debug_module:
 	
@@ -9,6 +10,7 @@ class Debug_module:
 	def __init__(self):
 		self.errorManager = Error_manager()
 		self.printManager = Print_manager()
+		print("debug init")
 		
-	def say_Hello(self):
+	def sayHello(self):
 		print("Hello from Debug.")

@@ -1,11 +1,11 @@
 class Error_manager:
 	
 	def __init__(self):
-		return 0
+		print("Error_manager init.")
 		
-	def file_append(errorMessage):
+	def fileAppend(errorMessage):
 		with open("debug_file", 'a') as file:
 			file.write(errorMessage)
 	
-	def say_Hello(self):
+	def sayHello(self):
 		print("hello from Error_manager.");

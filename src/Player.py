@@ -5,14 +5,18 @@ import os
 import time
 import random
 
-import Debug_module
+from Debug_module import Debug_module
 
 class Player:
 	
 	debugger = None
 	
-	def __init__(self):
-		self.debugger = Debug_module()
+	def __init__(self, debugMode):
+		if debugMode:
+			self.debugger = Debug_module()
 		
-	def say_hello(self):
+		
+	def sayHello(self):
 		print("Hello from Player.")
+		if self.debugger is not None:
+			print("runnig in debugger mode.")
