@@ -4,7 +4,7 @@ import os
 
 class Print_manager:
 	
-	REFRESH_INTERVAL = 0.5
+	REFRESH_INTERVAL = 0.1
 	DINAMIC_ON_SCREEN_TIME = 3
 	
 	staticQueue = []
@@ -46,9 +46,7 @@ class Print_manager:
 	# MAIN--------------------------------------------------------------
 	
 	def dPrintAppend(self, s):
-		self.dinamicQueue.append(s)
-		self.screenTimeQueue.append(time.time())
-		
+		self.dinamicPrintQueue.append([s, time.time()])
 	def sPrintAppend(self, s):
 		self.staticQueue.append(s)
 		
@@ -69,9 +67,8 @@ class Print_manager:
 	def printDQ(self, now):
 		i = 0
 		for s in self.dinamicQueue:
-			if now - self.screenTimeQueue[i] < self.DINAMIC_ON_SCREEN_TIME:
-				print(s)
+			if now - self.dinamicQueue[1] < self.DINAMIC_ON_SCREEN_TIME:
+				print(s[0])
 			else:
 				del self.dinamicQueue[i]
-				del self.screenTimeQueue[i]
 			i += 1
