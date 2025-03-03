@@ -4,7 +4,7 @@ import os
 
 class Print_manager:
 	
-	REFRESH_INTERVAL = 0.1
+	REFRESH_INTERVAL = 0.5
 	DINAMIC_ON_SCREEN_TIME = 3
 	
 	staticQueue = []

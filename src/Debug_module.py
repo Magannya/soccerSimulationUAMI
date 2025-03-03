@@ -14,3 +14,19 @@ class Debug_module:
 		
 	def sayHello(self):
 		print("Hello from Debug.")
+		
+	# MAIN--------------------------------------------------------------
+	
+	def errorMessage(self, message, mode):
+		if mode == "sp":
+			self.printManager.sPrintAppend(message)
+		elif mode == "dp":
+			self.printManager.dPrintAppend(message)
+		elif mode == "f":
+			self.errorManager.fileAppend(message)
+		else:
+			self.errorManager.fileAppend(message)
+			self.printManager.dPrintAppend(message)
+			
+	def screenRefresh(self):
+		self.printManager.refresh()
