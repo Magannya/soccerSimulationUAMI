@@ -46,10 +46,20 @@ class Print_manager:
 	# MAIN--------------------------------------------------------------
 	
 	def dPrintAppend(self, s):
-		self.dinamicPrintQueue.append([s, time.time()])
+		self.dinamicQueue.append([s, time.time()])
+		 
+		 # s DEBE SER UNA LISTA ["name", value]
 	def sPrintAppend(self, s):
 		self.staticQueue.append(s)
 		
+	def sRemove(self, name):
+		i = 0
+		while i < len(self.staticQueue):
+			if name in self.staticQueue[i][0]:
+				del self.staticQueue[i]
+				break	
+			i += 1
+				
 	def refresh(self):
 		now = time.time()
 		if now > self.lastRefresh + self.REFRESH_INTERVAL:
@@ -67,7 +77,7 @@ class Print_manager:
 	def printDQ(self, now):
 		i = 0
 		for s in self.dinamicQueue:
-			if now - self.dinamicQueue[1] < self.DINAMIC_ON_SCREEN_TIME:
+			if now - s[1] < self.DINAMIC_ON_SCREEN_TIME:
 				print(s[0])
 			else:
 				del self.dinamicQueue[i]

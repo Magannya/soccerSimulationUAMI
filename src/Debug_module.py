@@ -18,9 +18,9 @@ class Debug_module:
 	# MAIN--------------------------------------------------------------
 	
 	def errorMessage(self, message, mode):
-		if mode == "sp":
+		if mode == "s":
 			self.printManager.sPrintAppend(message)
-		elif mode == "dp":
+		elif mode == "d":
 			self.printManager.dPrintAppend(message)
 		elif mode == "f":
 			self.errorManager.fileAppend(message)

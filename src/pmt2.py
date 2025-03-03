@@ -10,8 +10,11 @@ pm = Print_manager()
 val = [["name1", 0], ["name2", 0], ["name3", 0], ["name4", 0], ["name5", 0]]
 
 #dinamic
-dval = ["string1", "string2", "string3", "string4", "string5"]
-pm.setDinamicQueue(dval)
+
+dval = ["dstring1", "dstring2", "dstring3"]
+
+for v in dval:
+	pm.dPrintAppend(v)
 
 i = 0
 start = time.time()
@@ -34,9 +37,11 @@ while enlapsedTime < end:
 
 	enlapsedTime = time.time() - start
 
-pm.dPrintAppend("append1")
-pm.dPrintAppend(f"{pm.getDinamicQueue()}")
-pm.sPrintAppend(101)	
+pm.dPrintAppend("dappend1")
+
+sValue = ["sValue", 101]
+pm.sPrintAppend(sValue)
+	
 end = 2
 enlapsedTime = 0
 start = time.time()
@@ -46,16 +51,14 @@ while enlapsedTime < end:
 	
 	i = 0
 	for v in val:
-		v = random.randint(1, 100)
-		val[i] = v
-		i += 1
-		
-	pm.setStaticQueue(val)
-	
+		v[1] = random.randint(1, 100)
+		i += 1	
+
 	enlapsedTime = time.time() - start
 	
 end = 7
-pm.dPrintAppend("append2")
+pm.dPrintAppend("dappend2")
+
 enlapsedTime = 0
 start = time.time()
 while enlapsedTime < end:
@@ -64,12 +67,26 @@ while enlapsedTime < end:
 	
 	i = 0
 	for v in val:
-		v = random.randint(1, 100)
-		val[i] = v
-		i += 1
-		
-	pm.setStaticQueue(val)
-	
+		v[1] = random.randint(1, 100)
+		i += 1	
+
 	enlapsedTime = time.time() - start
+
+pm.sRemove("name2")
+
+end = 7
+enlapsedTime = 0
+start = time.time()
+while enlapsedTime < end:
+	
+	pm.refresh()
+	
+	i = 0
+	for v in val:
+		v[1] = random.randint(1, 100)
+		i += 1	
+
+	enlapsedTime = time.time() - start
+
 
 print("done")
