@@ -24,4 +24,4 @@ while enlapsedTime < 10:
 	enlapsedTime = time.time() - start
 	i += 1
 cm.respondServer("(bye)")
-print(f"cicles: {i}done.")
+print(f"cicles: {i} done.")

@@ -6,7 +6,9 @@ class Error_manager:
 		print("Error_manager init.")
 		
 	def fileAppend(self, errorMessage):
-		with open("debug_file", 'a') as file:
+		with open("debug_file", "a", encoding="utf-8") as file:
+			
+			errorMessage.replace('\00', '')
 			errorMessage += '\n'
 			
 			if self.F_FLAG:
