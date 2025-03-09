@@ -1,0 +1,42 @@
+(sense_body 54 
+
+(view_mode high normal)
+(stamina 8000 1 130600)
+(speed 0 -101)
+(head_angle 0)
+(kick 0)
+(dash 0)
+(turn 54)
+(say 0)
+(turn_neck 0)
+(catch 0)
+(move 1)
+(change_view 0)
+(change_focus 0)
+
+(arm 
+(movable 0)
+(expires 0)
+(target 0 0)
+(count 0))
+
+(focus 
+(target none)
+(count 0))
+
+(tackle
+(expires 0)
+(count 0))
+
+(collision none)
+
+(foul 
+(charged 0)
+(card none))
+
+(focus_point 0 0)
+
+)
+
+original:
+(sense_body 54 (view_mode high normal) (stamina 8000 1 130600) (speed 0 -101) (head_angle 0) (kick 0) (dash 0) (turn 54) (say 0) (turn_neck 0) (catch 0) (move 1) (change_view 0) (change_focus 0) (arm (movable 0) (expires 0) (target 0 0) (count 0)) (focus (target none) (count 0)) (tackle (expires 0) (count 0)) (collision none) (foul (charged 0) (card none)) (focus_point 0 0))

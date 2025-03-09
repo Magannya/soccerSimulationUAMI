@@ -17,7 +17,7 @@ def main(args):
 	cm.serverInit("cmt3")
 	
 	cm.respondServer("(move -10 10)")
-	playerResponse = "(turn 180)"
+	playerResponse = "(turn 150)"
 	
 	
 	end = 15

@@ -13,7 +13,7 @@ class Print_manager:
 	lastRefresh = 0
 	
 	def __init__(self):
-		print("Print_amager init")
+		print("Print_manager init")
 		
 	def sayHello(self):
 		print("Hello from Print_manager.")

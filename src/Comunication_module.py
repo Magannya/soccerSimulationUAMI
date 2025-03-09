@@ -53,8 +53,11 @@ class Comunication_module:
 		self.timeChange = self.checkTimeChange(serverMessage)
 		return serverMessage	
 		
-		
+	
+	# DEBEMOS AGREGAR EL CARACTER '\00' O EL SERVIDOR RESPONDERA:
+	# (warnin message_not_null_terminated)
 	def inGameRespondServer(self, playerResponse):
+		playerResponse += "\00"
 		if self.timeChange:
 			if self.remaningResponse is not None:
 				self.socket.sendto(self.remaningResponse.encode(), (self.address, self.port))
@@ -67,6 +70,7 @@ class Comunication_module:
 			self.remaningResponse = playerResponse
 			
 	def respondServer(self, playerResponse):
+		playerResponse += "\00"
 		self.socket.sendto(playerResponse.encode(), (self.address, self.port))
 		self.debugger.savePlayerResponse(playerResponse)
 	# COMPLEMENTARY ----------------------------------------------------

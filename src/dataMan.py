@@ -2,6 +2,8 @@
 # COMO EL SERVIDOR RESPONDE CON strings, DEFINIMOS FUNCIONES PARA
 # REALIZAR ACCIONES ESPECIFICAS CON ESAS CADENAS
 
+def sayHello():
+	print("Hello from dataMan.")
 
 def strDiff2(s1, s2):
 	if len(s1) > len(s2):
@@ -129,3 +131,93 @@ def subStrFirstFloat(s):
 		
 	return out
 
+# REGRESA LA SUB CADENA QUE ESTA ENTRE EL INDICE index
+# Y EL NUMERO DE ESPACIO CONTANDO A PARTID DEL indice
+def subStrIS(s, strIndex, spaceIndex):
+	
+	if strIndex < 0:
+		return None
+	
+	out = ""
+	i = strIndex
+	spaces = 0
+	
+	c = s[i]
+	
+	while c != ')':
+		if c == ' ':
+			spaces += 1
+			i += 1
+			c = s[i]
+			continue
+		
+		if spaces == spaceIndex:
+			out += c
+			
+		if spaces > spaceIndex:
+			break;
+			
+		i += 1;
+		c = s[i]
+		
+	if len(out) == 0:
+		return None
+	else:
+		return out
+		
+def subStrIStoFloat(s, strIndex, spaceIndex):
+	
+	out = subStrIS(s, strIndex, spaceIndex)
+	
+	if out is None:
+		return None
+	else:
+		
+		floatOut = None
+		try:
+			floatOut = float(out)
+		except Exception as e:
+			print(f"failed to convert: {out} to float.")
+		
+		return floatOut
+			
+def findForward(s, start, target):
+	
+	iString = start
+	iTarget = 0
+	
+	find = False
+	
+	c = s[iStart]
+	
+	while iString < len(s):
+		
+		if c == s[iTarget]:
+			# ITERADOR SOBRE target
+			iAux = 0
+			
+			# ITERADOR SOBRE s
+			iStringAux = iString
+			
+			c2 = s[iStringAux]
+			while iAux < len(target):
+				
+				if c2 != target[iAux]:
+					break
+				else:
+					iAux += 1
+					iStringAux += 1
+					c2 = s[iStringAux]
+			
+			if iAux == len(target)-1:
+				fidn = True
+		
+		if find:
+			return iString
+			break 
+		
+		else:
+			iString += 1
+			c = s[iString]
+		
+	return -1
