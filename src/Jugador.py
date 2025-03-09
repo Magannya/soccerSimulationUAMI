@@ -222,7 +222,12 @@ class Jugador:
 		elif "hear" in response:
 			s = dataMan.subStrToNextWhite("hear", response)
 		elif "player_type" in response:
-			s = dataMan.subStrToNextWhite("player_type", response)
+			
+			if "change" in response:
+				return 1
+				s = dataMan.subStrToNextWhite("change_player_type", response)
+			else:
+				s = dataMan.subStrToNextWhite("player_type", response)
 		else:
 			error = f"ERROR!!! in serverTimeSync(), response: <{response}>\n"
 			self.errorSumaryUpdate(error)

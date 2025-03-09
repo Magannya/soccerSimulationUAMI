@@ -16,7 +16,7 @@ sys.path.append('./src')
 from src.Jugador import Jugador
 from src import dataMan
 
-teamName = "test_team-1"
+teamName = "test_team-2"
 
 
 p = Jugador("goleador")
