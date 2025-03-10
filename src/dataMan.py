@@ -181,43 +181,29 @@ def subStrIStoFloat(s, strIndex, spaceIndex):
 		
 		return floatOut
 			
-def findForward(s, start, target):
-	
-	iString = start
+def findForward(s, i, target):
+	if target == "":
+		return -1
+		
 	iTarget = 0
-	
-	find = False
-	
-	c = s[iStart]
-	
-	while iString < len(s):
-		
-		if c == s[iTarget]:
-			# ITERADOR SOBRE target
-			iAux = 0
+	while i < len(s):
+		c = s[i]
+		if c == target[iTarget]:
+			flag = True
+			iAux = i
 			
-			# ITERADOR SOBRE s
-			iStringAux = iString
-			
-			c2 = s[iStringAux]
-			while iAux < len(target):
-				
-				if c2 != target[iAux]:
-					break
-				else:
+			while iTarget < len(target):
+				cAux = s[iAxu]
+				if cAux == target[iTarget]:
 					iAux += 1
-					iStringAux += 1
-					c2 = s[iStringAux]
+					iTarget += 1
+				else:
+					iTarget = 0
+					flag = False
+					break
 			
-			if iAux == len(target)-1:
-				fidn = True
-		
-		if find:
-			return iString
-			break 
-		
-		else:
-			iString += 1
-			c = s[iString]
-		
+			if flag:
+				return i
+		i += 1
+	
 	return -1
