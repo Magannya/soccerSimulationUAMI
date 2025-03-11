@@ -127,7 +127,7 @@ class Data_process_module:
 		self.senseBody[2][2] = dataMan.subStrIStoFloat(serverMessage, strIndex, 2)
 		
 		i = 3
-		while i < 12:
+		while i < 13:
 			strIndex = serverMessage.find(self.BODY_NAMES[i])
 			self.senseBody[i][1] = dataMan.subStrIStoFloat(serverMessage, strIndex, 1)
 			i += 1
