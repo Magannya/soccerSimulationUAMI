@@ -128,16 +128,16 @@ class Data_process_module:
 		
 		i = 3
 		while i < 12:
-			strIndex = serverMessage.find(BODY_NAMES[i])
+			strIndex = serverMessage.find(self.BODY_NAMES[i])
 			self.senseBody[i][1] = dataMan.subStrIStoFloat(serverMessage, strIndex, 1)
 			i += 1
 		
 		strIndex = serverMessage.find("collision")
-		self.senseBody[12][1] = dataMan.subStrIS(serverMessage, strIndex, 1)
+		self.senseBody[13][1] = dataMan.subStrIS(serverMessage, strIndex, 1)
 		
 		strIndex = serverMessage.find("focus_point")
-		self.senseBody[13][1] = dataMan.subStrIStoFloat(serverMessage, strIndex, 1)
-		self.senseBody[13][2] = dataMan.subStrIStoFloat(serverMessage, strIndex, 2)
+		self.senseBody[14][1] = dataMan.subStrIStoFloat(serverMessage, strIndex, 1)
+		self.senseBody[14][2] = dataMan.subStrIStoFloat(serverMessage, strIndex, 2)
 		
 		
 		# ACTUALIZACION DEL BLOQUE arm
@@ -156,8 +156,25 @@ class Data_process_module:
 		
 		
 		# ACTUALIZACION DEL BLOQUE focus
-		strIndex = serverMessage.find("focus (target")
-		self.focus[0][1] = dataMan.subStrIS(serverMessagel, strIndex, 2)
+		# ESTA VARIABLE TARGET PODRIA CAMBIAR O UMENTAR DE PARAMETROS
+		strIndex = dataMan.findForward(serverMessage, strIndex+1, "target")
+		self.focus[0][1] = dataMan.subStrIS(serverMessage, strIndex, 1)
+		
+		strIndex = dataMan.findForward(serverMessage, strIndex, "count")
 		self.focus[1][1] = dataMan.subStrIStoFloat(serverMessage, strIndex, 1)
+		
+		# ACTUALIZACION DEL BLOQUE tackle
+		strIndex = dataMan.findForward(serverMessage, strIndex, "expires")
+		self.tackle[0][1] = dataMan.subStrIStoFloat(serverMessage, strIndex, 1)
+		
+		strIndex = dataMan.findForward(serverMessage, strIndex, "count")
+		self.tackle[1][1] = dataMan.subStrIStoFloat(serverMessage, strIndex, 1)
+		
+		# ACTUALIZACION DEL BLOCKE foul
+		strIndex = dataMan.findForward(serverMessage, strIndex, "charged")
+		self.foul[0][1] = dataMan.subStrIStoFloat(serverMessage, strIndex, 1)
+		
+		strIndex = dataMan.findForward(serverMessage, strIndex, "card")
+		self.foul[1][1] = dataMan.subStrIS(serverMessage, strIndex, 1)
 		
 		

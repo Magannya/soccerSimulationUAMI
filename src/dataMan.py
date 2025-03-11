@@ -132,7 +132,10 @@ def subStrFirstFloat(s):
 	return out
 
 # REGRESA LA SUB CADENA QUE ESTA ENTRE EL INDICE index
-# Y EL NUMERO DE ESPACIO CONTANDO A PARTID DEL indice
+# Y EL NUMERO DE ESPACIO CONTANDO A PARTIR DEL indice
+# DIREMOS QUE DIVIDIMOS LA CADENA EN PALABRAS Y CADA PALABRA ESTA 
+# IDENTIFICADA POR spaceIndex ENTONCES REGRESARA ESA PALABRA A PARTIR
+# DEL INDICE strIndex
 def subStrIS(s, strIndex, spaceIndex):
 	
 	if strIndex < 0:
@@ -181,6 +184,7 @@ def subStrIStoFloat(s, strIndex, spaceIndex):
 		
 		return floatOut
 			
+# BUSCA LA CADENA target A PARTIR DEL INDICE i
 def findForward(s, i, target):
 	if target == "":
 		return -1
@@ -193,7 +197,7 @@ def findForward(s, i, target):
 			iAux = i
 			
 			while iTarget < len(target):
-				cAux = s[iAxu]
+				cAux = s[iAux]
 				if cAux == target[iTarget]:
 					iAux += 1
 					iTarget += 1
