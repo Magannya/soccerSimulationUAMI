@@ -3,15 +3,18 @@ import dataMan
 
 class Comunication_module:
 	
-	remaningResponse = None	
-	address = "Localhost"
-	port = 6000
-	socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-	timeChange = True
-	previousTime = 0
-	debugger = None
+	
 	
 	def __init__(self):
+		
+		self.remaningResponse = None	
+		self.address = "Localhost"
+		self.port = 6000
+		self.mySocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+		self.timeChange = True
+		self.previousTime = 0
+		self.	debugger = None
+		
 		print("Comunication module init.")
 	
 	def sayHello(self):
@@ -40,13 +43,13 @@ class Comunication_module:
 	# PORT 6000 ESTA RESERVADO PARA INITS
 	def serverInit(self, teamName):
 		self.respondServer(f"(init {teamName} (version 18))")
-		serverMessage, server = self.socket.recvfrom(1024)
+		serverMessage, server = self.mySocket.recvfrom(1024)
 		self.debugger.saveServerMessage(serverMessage.decode("utf-8"))
 		self.updatePort(server[1])
 		print(self.port)
 	
 	def listenServer(self):
-		serverMessage, server = self.socket.recvfrom(1024)
+		serverMessage, server = self.mySocket.recvfrom(1024)
 		serverMessage = serverMessage.decode("utf-8")
 		self.debugger.saveServerMessage(serverMessage)
 		
@@ -60,18 +63,18 @@ class Comunication_module:
 		playerResponse += "\00"
 		if self.timeChange:
 			if self.remaningResponse is not None:
-				self.socket.sendto(self.remaningResponse.encode(), (self.address, self.port))
+				self.mySocket.sendto(self.remaningResponse.encode(), (self.address, self.port))
 				self.debugger.savePlayerResponse(playerResponse)
 				self.remaningResponse = None
 			else:
-				self.socket.sendto(playerResponse.encode(), (self.address, self.port))
+				self.mySocket.sendto(playerResponse.encode(), (self.address, self.port))
 				self.debugger.savePlayerResponse(playerResponse)
 		else:
 			self.remaningResponse = playerResponse
 			
 	def respondServer(self, playerResponse):
 		playerResponse += "\00"
-		self.socket.sendto(playerResponse.encode(), (self.address, self.port))
+		self.mySocket.sendto(playerResponse.encode(), (self.address, self.port))
 		self.debugger.savePlayerResponse(playerResponse)
 	# COMPLEMENTARY ----------------------------------------------------
 	

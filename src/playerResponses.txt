@@ -127,8 +127,4 @@
 (turn 150)
 (turn 150)
 (turn 150)
-(turn 150)
-(turn 150)
-(turn 150)
-(turn 150)
 (bye)

@@ -49,13 +49,13 @@ class Data_process_module:
 	def __init__(self, playerAttrib, dm):
 		
 		# LISTAS sense_body
-		senseBody = []
-		arm = []
-		focus = []
-		tackle = []
-		foul = []
+		self.senseBody = []
+		self.arm = []
+		self.focus = []
+		self.tackle = []
+		self.foul = []
 		
-		attrib = []
+		self.attrib = []
 		
 		print("Comunication module init.")
 		self.debugModule = dm

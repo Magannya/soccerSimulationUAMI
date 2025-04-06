@@ -18,7 +18,7 @@ def start():
 	["move", 0],
 	["change_view", 0],
 	["change_focus", 0],
-	["collision", "none"],
+	["collision", "None"],
 	["focus_point", 0, 0],
 	]
 	
@@ -30,7 +30,7 @@ def start():
 	]
 	
 	focus = [
-	["target", "none"],
+	["target", "None"],
 	["count", 0]
 	]
 	
@@ -65,7 +65,7 @@ def start():
 	
 	dp.printLists()
 	
-	serverMessage = "(sense_body 54 (view_mode 1 2) (stamina 3 4 5) (speed 6 7) (head_angle -8) (kick 9) (dash 10) (turn 11) (say 12) (turn_neck 13) (catch 14) (move 15) (change_view 16) (change_focus 17) (arm (movable 18) (expires 19) (target 20 -21) (count 22)) (focus (target none23) (count 24)) (tackle (expires 25) (count 26)) (collision none27) (foul (charged 28) (card none29)) (focus_point 30 31))"
+	serverMessage = "(sense_body 54 (view_mode 1 2) (stamina 3 4 5) (speed 6 7) (head_angle -8) (kick 9) (dash 10) (turn 11) (say 12) (turn_neck 13) (catch 14) (move 15) (change_view 16) (change_focus 17) (arm (movable 18) (expires 19) (target 20 -21) (count 22)) (focus (target 23) (count 24)) (tackle (expires 25) (count 26)) (collision 27) (foul (charged 28) (card 29)) (focus_point 30 31))"
 	
 	dp.senseBodyUpdate(serverMessage)
 	dp.printLists()
