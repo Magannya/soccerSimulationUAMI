@@ -2,14 +2,6 @@ import dataMan
 
 class Data_process_module:
 	
-	# LISTAS sense_body
-	senseBody = []
-	arm = []
-	focus = []
-	tackle = []
-	foul = []
-	
-	attrib = []
 	# LISTAS see
 	
 	BODY_NAMES = [
@@ -55,6 +47,16 @@ class Data_process_module:
 	debugModule = None
 	
 	def __init__(self, playerAttrib, dm):
+		
+		# LISTAS sense_body
+		senseBody = []
+		arm = []
+		focus = []
+		tackle = []
+		foul = []
+		
+		attrib = []
+		
 		print("Comunication module init.")
 		self.debugModule = dm
 		
