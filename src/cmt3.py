@@ -1,5 +1,5 @@
 from Debug_module import Debug_module
-from Comunication_module import Comunication_module
+from Communication_module import Communication_module
 import time
 
 def stop(start, end):
@@ -10,13 +10,13 @@ def stop(start, end):
 
 def main(args):
 	dm = Debug_module()
-	cm = Comunication_module()
+	cm = Communication_module()
 	cm.setDebugger(dm)
 	
 
 	cm.serverInit("cmt3")
 	
-	cm.respondServer("(move -10 10)")
+	cm.respondServer("(move -10 10)", False)
 	playerResponse = "(turn 150)"
 	
 	
@@ -25,10 +25,10 @@ def main(args):
 	start = time.time()
 	while not stop(start, end):
 		cm.listenServer()
-		cm.inGameRespondServer(playerResponse)
+		cm.respondServer(playerResponse, True)
 		#print(message)
 		
-	cm.respondServer("(bye)")
+	cm.respondServer("(bye)", False)
 		
 	return 0
 
