@@ -44,9 +44,11 @@ class Data_process_module:
     "card"
     ]
     
-    debugModule = None
+    
     
     def __init__(self, playerAttrib, playMode, dm):
+        
+        debugModule = None
         
         # LISTAS sense_body
         self.senseBody = []

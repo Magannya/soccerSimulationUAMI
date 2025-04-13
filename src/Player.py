@@ -9,6 +9,8 @@ from Debug_module import Debug_module
 from Data_process_module import Data_process_module
 from Comunication_module import Comunication_module
 
+from FSM import FSM
+
 class Player:
     
     def __init__(self, debugMode):
@@ -78,7 +80,7 @@ class Player:
         
         self.dataProcessModule = Data_process_module(self.attrib, self.playMode, self.debugger)
         self.communicationModule = Communication_module()
-        self.logicModule = None
+        self.logicModule = FSM(self.attrib, self.see, self.communicationModule)
         
         
         

@@ -1,9 +1,7 @@
-import socket
+	import socket
 import dataMan
 
 class Communication_module:
-    
-    
     
     def __init__(self):
         
