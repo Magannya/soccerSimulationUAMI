@@ -73,6 +73,9 @@ class Player:
         
         self.attrib = (self.senseBody, self.arm, self.focus, self.tackle, self.foul, self.see)
         
+        # atributo para determinar que posicion va a jugar
+        self.position
+        
         #GAME STATUS ATTRIBUTES, de momento el modulo de procesamiento
         # de datos no actualiza estos atributos
         self.playMode = None
