@@ -3,12 +3,21 @@ import Random
 import basic_math
 
 def FSM:
-    def __init__(attrib, see, communication, position):
+    
+    BALL = "(b)"
+    GOAL = "(G)"
+    
+    def __init__(attrib, see, communicationModule, position, teamSide):
         self.state = "idle"
         self.attrib = attrib
         self.see = see
-        self.communication = communication
+        self.communicationModule = communicationModule
         self.position = position
+        
+        if teamSide == "l":
+            self.goal = "(g r)"
+        else:
+            self.goal = "(g l)"
         
         if position == "center mid":
             self.positionRef = "(f c)"
@@ -66,6 +75,8 @@ def FSM:
             # EL PUNTO DE REFERENCIA NO ESTA A LA VISTA
             command = f"turn({self.randomAngle()})"
         
+        self.communicationModule.inGameRespondServer(command)
+        
         # LOGICA DE TRANSICION
         if self.ballNear():
             self.state = "alert"
@@ -74,14 +85,76 @@ def FSM:
         
     #state 1
     def alert():
+        
+        lst = self.searchInSight(BALL)
+        
+        if lst is None:
+            command = f"turn({self.randomAngle()})"
+        else:
+            distance = lst[0]
+            angle = lst[1]
+        
+            if not basic_math.angle_math.angleInRange(angle, 20):
+                command = f"turn({self.randomAngle})"
+                
+            else:
+                comman = f"dash({self.randomDash() 0})"
+                
+            # LOGICA DE TRANSICIOM
+            if distance < 3:
+                self.state = "attack"
+        
+        self.communicationModule.inGameRespondServer(command)
+        
         return 0
         
     # state 2
     def offensive():
+        
+        lst = self.searchInSight(self.goal)
+        if lst is None:
+            command = f"turn({self.randomAngle()})"
+        else:
+            lst = self.searchInSight(BALL)
+            if lst is None:
+                command = f"turn({self.randomAngle()})"
+            else:
+                distance = lst[0]
+                angle = lst[1]
+                
+                if distance < 0.7:
+                    command = f"kick({self.randomPower()} {basic_math.angle_math.randomAngleRef(0)})"
+                else:
+                    command = f"dash({self.randomDash()} {basic_math.angle_math.randomAngleRef(angle)})"
+                
+                if 0.7 < distance < 5:
+                    self.state = "alert"
+                
+                if distance > 5:
+                    self.state = "idle"
+        
         return 0
     
     # state 3
     def attack():
+        
+        lst  = self.searchInSight(BALL)
+        if lis is None:
+            command = f"turn({self.randomAngle()})"
+        else:
+            distance = lst[0]
+            angle = lst[1]
+            
+            if basic_math.angle_math.angleInRange(angle, 20):
+                command = f"dash({self.randomDash(), 0 })"
+            else:
+                command =  f"turn({basic_math.angle_math.randomAngleRef(0)})"
+                
+            self.communicationModule.inGameRespondServer(command)
+        
+            if distance < 0.7:
+                state = "offensive"
+        
         return 0
         
     # -------------- EVENTS --------------------------------------------
@@ -156,6 +229,9 @@ def FSM:
         return random.randint(-360, 360)
     
     def randomDash(self):
+        return random.randint(0, 100)
+        
+    def randomPower(self):
         return random.randint(0, 100)
     
     # --------------GETTERS Y SETTERS-----------------------------------
