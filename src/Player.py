@@ -7,9 +7,9 @@ import random
 
 from Debug_module import Debug_module
 from Data_process_module import Data_process_module
-from Comunication_module import Comunication_module
+from Communication_module import Communication_module
 
-from FSM import FSM
+#from FSM import FSM
 
 class Player:
     
@@ -74,7 +74,7 @@ class Player:
         self.attrib = (self.senseBody, self.arm, self.focus, self.tackle, self.foul, self.see)
         
         # atributo para determinar que posicion va a jugar
-        self.position
+        self.position = None
         
         #GAME STATUS ATTRIBUTES, de momento el modulo de procesamiento
         # de datos no actualiza estos atributos
@@ -83,7 +83,9 @@ class Player:
         
         self.dataProcessModule = Data_process_module(self.attrib, self.playMode, self.debugger)
         self.communicationModule = Communication_module()
-        self.logicModule = FSM(self.attrib, self.see, self.communicationModule)
+        self.communicationModule.serverInit("control")
+        # self.logicModule = FSM(self.attrib, self.see, self.communicationModule)
+        self.logicModule = None
         
         
         
@@ -118,4 +120,8 @@ class Player:
         
     def printInfo(self):
         self.dataProcessModule.printLists()
+        
+    def sendCommand(self, command):
+        self.communicationModule.respondServer(command, False)
+        
         

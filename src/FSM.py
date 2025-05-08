@@ -1,8 +1,7 @@
 import DataMan
 import Random
 import basic_math
-
-def FSM:
+class FSM:
     
     BALL = "(b)"
     GOAL = "(G)"
