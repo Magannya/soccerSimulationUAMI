@@ -1,4 +1,4 @@
-import dataMan
+from .dataMan import *
 
 class Data_process_module:
     
@@ -58,8 +58,6 @@ class Data_process_module:
         self.foul = []
         
         self.attrib = []
-        
-        print("Comunication module init.")
         self.debugModule = dm
         
         # LISTAS sense_body
@@ -69,6 +67,7 @@ class Data_process_module:
         self.tackle = playerAttrib[3]
         self.foul = playerAttrib[4]
         self.see = playerAttrib[5]
+        print("Data_process_module init.")
         
     def sayHello(self):
         print("Hello from Data_process_module")

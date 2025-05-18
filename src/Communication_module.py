@@ -1,5 +1,5 @@
 import socket
-import dataMan
+from .dataMan import *
 
 class Communication_module:
     
@@ -13,7 +13,7 @@ class Communication_module:
         self.previousTime = 0
         self.debugger = debugger
         
-        print("Comunication module init.")
+        print("Comunication_module init.")
     
     def sayHello(self):
         print("Hello from Comunication module.")

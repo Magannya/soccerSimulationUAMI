@@ -1,13 +1,12 @@
 import socket
-import dataMan
 import sys
 import os
 import time
 import random
 
-from Debug_module import Debug_module
-from Data_process_module import Data_process_module
-from Communication_module import Communication_module
+from .Debug_module import Debug_module
+from .Data_process_module import Data_process_module
+from .Communication_module import Communication_module
 
 #from FSM import FSM
 
@@ -105,8 +104,6 @@ class Player:
             serverMessage = self.communicationModule.listenServer()
             
             self.dataProcessModule.updateState(serverMessage)
-            
-            
             
             playerResponse = self.randomCommand()
             

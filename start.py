@@ -1,19 +1,8 @@
-#ARCHIVO DEDICADO A INICIALIZAR UN AGENTE
+from src.Player import Player
 
-from lib import rcssConnect
-from src.Jugador import Jugador
-import curses
 
 def main():
-	player = Jugador("delantero")
-	player.printBodyState()
-	rcssConnect.sendCommand("(init test (version 15))")
-	rcssConnect.printResponse()
-	
-	while True:
-		rcssConnect.printResponse()
-	
-	rcssConnect.bye()
-	
+    p = Player()
+    print("start.py done.")
 if __name__ == "__main__":
-	main()
+    main()
