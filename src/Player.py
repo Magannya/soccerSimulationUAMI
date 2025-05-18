@@ -13,7 +13,7 @@ from Communication_module import Communication_module
 
 class Player:
     
-    def __init__(self, debugMode):
+    def __init__(self):
         # LISTAS sense_body
         self.senseBody = []
         self.arm = []
@@ -26,11 +26,9 @@ class Player:
         # LISTA see
         self.see = []
     
-        self.debugger = None
         self.dataProcesModule = None
         
-        if debugMode:
-            self.debugger = Debug_module()
+        self.debugger = Debug_module()
             
         self.senseBody = [
         ["view_mode", "high", "normal"],
@@ -82,7 +80,7 @@ class Player:
         self.serverTime = None
         
         self.dataProcessModule = Data_process_module(self.attrib, self.playMode, self.debugger)
-        self.communicationModule = Communication_module()
+        self.communicationModule = Communication_module(self.debugger)
         self.communicationModule.serverInit("control")
         # self.logicModule = FSM(self.attrib, self.see, self.communicationModule)
         self.logicModule = None
@@ -97,9 +95,10 @@ class Player:
             
     #------------------------------MAIN---------------------------------
     
+    # METODO PRINCIPAL PARA INICIAR LA INTERACCION CON EL SERVIDOR
     def start(self):
         print("wait for communication...")
-        self.comunicationModule.serverInit()
+        self.communicationModule.serverInit("test")
         
         gameOver = False
         while not gameOver:
@@ -107,21 +106,32 @@ class Player:
             
             self.dataProcessModule.updateState(serverMessage)
             
-            playerResponse = self.logicModule.think
-            
-            if self.playMode != "play_on":
-                inGame = True
-            else:
-                inGame = False
-            
-            self.communicationModule.respondServer(playerResponse, inGame)
             
             
-        
+            playerResponse = self.randomCommand()
+            
+            self.sendCommand(playerResponse)
+       
+    # ---------------------- COMPLEMENTARY -----------------------------
     def printInfo(self):
-        self.dataProcessModule.printLists()
+        print(self.attrib)
         
     def sendCommand(self, command):
-        self.communicationModule.respondServer(command, False)
+        
+        if self.playMode == "before_kick_off":
+            self.communicationModule.respondServer(command, False)
+        else:
+            self.communicationModule.respondServer(command, True)
+        
+    # ----------------------- TEST -------------------------------------
+    
+    def randomCommand(self):
+        dash = f"(dash {random.randint(0, 100)} {random.randint(0, 360)})"
+        turn = f"(turn {random.randint(0, 360)})"
+        
+        if random.randint(1, 2) == 1:
+            return dash
+        else:
+            return turn
         
         

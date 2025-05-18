@@ -115,7 +115,6 @@ class Data_process_module:
         print(self.see)
     
     def senseBodyUpdate(self, serverMessage):
-        
         # ACTUALIZACION DEL BLOQUE senseBody
         strIndex = serverMessage.find("view_mode")
         self.senseBody[0][1] = dataMan.subStrIS(serverMessage, strIndex, 1)
@@ -131,17 +130,17 @@ class Data_process_module:
         self.senseBody[2][2] = dataMan.subStrIStoFloat(serverMessage, strIndex, 2)
         
         i = 3
-        while i < 13:
+        while i < 12:
             strIndex = serverMessage.find(self.BODY_NAMES[i])
             self.senseBody[i][1] = dataMan.subStrIStoFloat(serverMessage, strIndex, 1)
             i += 1
         
         strIndex = serverMessage.find("collision")
-        self.senseBody[13][1] = dataMan.subStrIS(serverMessage, strIndex, 1)
+        self.senseBody[12][1] = dataMan.subStrIS(serverMessage, strIndex, 1)
         
         strIndex = serverMessage.find("focus_point")
-        self.senseBody[14][1] = dataMan.subStrIStoFloat(serverMessage, strIndex, 1)
-        self.senseBody[14][2] = dataMan.subStrIStoFloat(serverMessage, strIndex, 2)
+        self.senseBody[13][1] = dataMan.subStrIStoFloat(serverMessage, strIndex, 1)
+        self.senseBody[13][2] = dataMan.subStrIStoFloat(serverMessage, strIndex, 2)
         
         
         # ACTUALIZACION DEL BLOQUE arm

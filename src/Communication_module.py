@@ -3,7 +3,7 @@ import dataMan
 
 class Communication_module:
     
-    def __init__(self):
+    def __init__(self, debugger):
         
         self.remaningResponse = None    
         self.address = "Localhost"
@@ -11,7 +11,7 @@ class Communication_module:
         self.mySocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.timeChange = True
         self.previousTime = 0
-        self.debugger = None
+        self.debugger = debugger
         
         print("Comunication module init.")
     
@@ -42,7 +42,7 @@ class Communication_module:
     def serverInit(self, teamName):
         self.respondServer(f"(init {teamName} (version 18))", False)
         serverMessage, server = self.mySocket.recvfrom(1024)
-        #self.debugger.saveServerMessage(serverMessage.decode("utf-8"))
+        self.debugger.saveServerMessage(serverMessage.decode("utf-8"))
         self.updatePort(server[1])
         print(f"communication established at port: {self.port}")
         return True
@@ -80,7 +80,7 @@ class Communication_module:
         else:
             playerResponse += "\00"
             self.mySocket.sendto(playerResponse.encode(), (self.address, self.port))
-            #self.debugger.savePlayerResponse(playerResponse) 
+            self.debugger.savePlayerResponse(playerResponse)
             
     # COMPLEMENTARY ----------------------------------------------------
     

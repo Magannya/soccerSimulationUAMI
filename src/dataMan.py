@@ -169,9 +169,7 @@ def subStrIS(s, strIndex, spaceIndex):
         return out
         
 def subStrIStoFloat(s, strIndex, spaceIndex):
-    
     out = subStrIS(s, strIndex, spaceIndex)
-    
     if out is None:
         return None
     else:
