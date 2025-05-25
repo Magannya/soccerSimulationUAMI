@@ -105,6 +105,7 @@ class Player:
             
             self.dataProcessModule.updateState(serverMessage)
             
+            
             playerResponse = self.randomCommand()
             
             self.sendCommand(playerResponse)

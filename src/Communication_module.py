@@ -51,7 +51,6 @@ class Communication_module:
     def listenServer(self):
         serverMessage, server = self.sock.recvfrom(1024)
         serverMessage = serverMessage.decode("utf-8")
-        print(serverMessage)
         if len(serverMessage) == 0:
             print("Null server Message.")
         self.debugger.saveServerMessage(serverMessage)

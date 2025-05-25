@@ -67,6 +67,8 @@ class Data_process_module:
         self.tackle = playerAttrib[3]
         self.foul = playerAttrib[4]
         self.see = playerAttrib[5]
+        
+        self.playMode = playMode
         print("Data_process_module init.")
         
     def sayHello(self):
@@ -98,7 +100,8 @@ class Data_process_module:
             # TODO
             
         elif "hear" in serverMessage:
-            print("")
+            print("hearUpdate")
+            self.hearUpdate(serverMessage)
             
         else:
             print("")
@@ -179,3 +182,6 @@ class Data_process_module:
         strIndex = findForward(serverMessage, strIndex, "card")
         self.foul[1][1] = subStrIS(serverMessage, strIndex, 1)
         
+    def hearUpdate(self, serverMessage):
+        self.playMode = subStrIS(serverMessage, 0, 3)
+        print(self.playMode)
