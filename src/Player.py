@@ -12,6 +12,7 @@ from .Communication_module import Communication_module
 
 class Player:
     
+    
     def __init__(self):
         # LISTAS sense_body
         self.senseBody = []
@@ -78,12 +79,11 @@ class Player:
         self.playMode = None
         self.serverTime = None
         
-        self.dataProcessModule = Data_process_module(self.attrib, self.playMode, self.debugger)
-        self.communicationModule = Communication_module(self.debugger)
+        self.dataProcessModule = Data_process_module(self.attrib, self.debugger, self)
+        self.communicationModule = Communication_module(self.debugger, self)
         self.communicationModule.serverInit("control")
         # self.logicModule = FSM(self.attrib, self.see, self.communicationModule)
         self.logicModule = None
-        
         
         
     def sayHello(self):
@@ -101,10 +101,12 @@ class Player:
         
         gameOver = False
         while not gameOver:
+            
             serverMessage = self.communicationModule.listenServer()
             
             self.dataProcessModule.updateState(serverMessage)
             
+            #self.printChangePlayMode()
             
             playerResponse = self.randomCommand()
             
@@ -132,4 +134,4 @@ class Player:
         else:
             return turn
         
-        
+    # ------------------------- DEBUG ----------------------------------

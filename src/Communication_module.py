@@ -3,7 +3,7 @@ from .dataMan import *
 
 class Communication_module:
     
-    def __init__(self, debugger):
+    def __init__(self, debugger, player):
         
         self.remaningResponse = None    
         self.address = "Localhost"
@@ -13,6 +13,8 @@ class Communication_module:
         self.timeChange = True
         self.previousTime = 0
         self.debugger = debugger
+        
+        self.player = player
         
         print("Comunication_module init.")
     
