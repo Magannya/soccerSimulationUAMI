@@ -71,7 +71,7 @@ class Data_process_module:
         
     def sayHello(self):
         print("Hello from Data_process_module")
-        dataMan.sayHello()
+        sayHello()
         
     # SETTERS Y GETTERS ------------------------------------------------
     def setSenseBody(self, senseBody):
@@ -116,66 +116,66 @@ class Data_process_module:
     def senseBodyUpdate(self, serverMessage):
         # ACTUALIZACION DEL BLOQUE senseBody
         strIndex = serverMessage.find("view_mode")
-        self.senseBody[0][1] = dataMan.subStrIS(serverMessage, strIndex, 1)
-        self.senseBody[0][2] = dataMan.subStrIS(serverMessage, strIndex, 2)
+        self.senseBody[0][1] = subStrIS(serverMessage, strIndex, 1)
+        self.senseBody[0][2] = subStrIS(serverMessage, strIndex, 2)
         
         strIndex = serverMessage.find("stamina")
-        self.senseBody[1][1] = dataMan.subStrIStoFloat(serverMessage, strIndex, 1)
-        self.senseBody[1][2] = dataMan.subStrIStoFloat(serverMessage, strIndex, 2)
-        self.senseBody[1][3] = dataMan.subStrIStoFloat(serverMessage, strIndex, 3)
+        self.senseBody[1][1] = subStrIStoFloat(serverMessage, strIndex, 1)
+        self.senseBody[1][2] = subStrIStoFloat(serverMessage, strIndex, 2)
+        self.senseBody[1][3] = subStrIStoFloat(serverMessage, strIndex, 3)
         
         strIndex = serverMessage.find("speed")
-        self.senseBody[2][1] = dataMan.subStrIStoFloat(serverMessage, strIndex, 1)
-        self.senseBody[2][2] = dataMan.subStrIStoFloat(serverMessage, strIndex, 2)
+        self.senseBody[2][1] = subStrIStoFloat(serverMessage, strIndex, 1)
+        self.senseBody[2][2] = subStrIStoFloat(serverMessage, strIndex, 2)
         
         i = 3
         while i < 12:
             strIndex = serverMessage.find(self.BODY_NAMES[i])
-            self.senseBody[i][1] = dataMan.subStrIStoFloat(serverMessage, strIndex, 1)
+            self.senseBody[i][1] = subStrIStoFloat(serverMessage, strIndex, 1)
             i += 1
         
         strIndex = serverMessage.find("collision")
-        self.senseBody[12][1] = dataMan.subStrIS(serverMessage, strIndex, 1)
+        self.senseBody[12][1] = subStrIS(serverMessage, strIndex, 1)
         
         strIndex = serverMessage.find("focus_point")
-        self.senseBody[13][1] = dataMan.subStrIStoFloat(serverMessage, strIndex, 1)
-        self.senseBody[13][2] = dataMan.subStrIStoFloat(serverMessage, strIndex, 2)
+        self.senseBody[13][1] = subStrIStoFloat(serverMessage, strIndex, 1)
+        self.senseBody[13][2] = subStrIStoFloat(serverMessage, strIndex, 2)
         
         
         # ACTUALIZACION DEL BLOQUE arm
         strIndex = serverMessage.find("movable")
-        self.arm[0][1] = dataMan.subStrIStoFloat(serverMessage, strIndex, 1)
+        self.arm[0][1] = subStrIStoFloat(serverMessage, strIndex, 1)
         
         strIndex = serverMessage.find("expires")
-        self.arm[1][1] = dataMan.subStrIStoFloat(serverMessage, strIndex, 1)
+        self.arm[1][1] = subStrIStoFloat(serverMessage, strIndex, 1)
         
         strIndex = serverMessage.find("target")
-        self.arm[2][1] = dataMan.subStrIStoFloat(serverMessage, strIndex, 1)
-        self.arm[2][2] = dataMan.subStrIStoFloat(serverMessage, strIndex, 2)
+        self.arm[2][1] = subStrIStoFloat(serverMessage, strIndex, 1)
+        self.arm[2][2] = subStrIStoFloat(serverMessage, strIndex, 2)
         
         strIndex = serverMessage.find("count")
-        self.arm[3][1] = dataMan.subStrIStoFloat(serverMessage, strIndex, 1)
+        self.arm[3][1] = subStrIStoFloat(serverMessage, strIndex, 1)
         
         
         # ACTUALIZACION DEL BLOQUE focus
         # ESTA VARIABLE TARGET PODRIA CAMBIAR O UMENTAR DE PARAMETROS
-        strIndex = dataMan.findForward(serverMessage, strIndex+1, "target")
-        self.focus[0][1] = dataMan.subStrIS(serverMessage, strIndex, 1)
+        strIndex = findForward(serverMessage, strIndex+1, "target")
+        self.focus[0][1] = subStrIS(serverMessage, strIndex, 1)
         
-        strIndex = dataMan.findForward(serverMessage, strIndex, "count")
-        self.focus[1][1] = dataMan.subStrIStoFloat(serverMessage, strIndex, 1)
+        strIndex = findForward(serverMessage, strIndex, "count")
+        self.focus[1][1] = subStrIStoFloat(serverMessage, strIndex, 1)
         
         # ACTUALIZACION DEL BLOQUE tackle
-        strIndex = dataMan.findForward(serverMessage, strIndex, "expires")
-        self.tackle[0][1] = dataMan.subStrIStoFloat(serverMessage, strIndex, 1)
+        strIndex = findForward(serverMessage, strIndex, "expires")
+        self.tackle[0][1] = subStrIStoFloat(serverMessage, strIndex, 1)
         
-        strIndex = dataMan.findForward(serverMessage, strIndex, "count")
-        self.tackle[1][1] = dataMan.subStrIStoFloat(serverMessage, strIndex, 1)
+        strIndex = findForward(serverMessage, strIndex, "count")
+        self.tackle[1][1] = subStrIStoFloat(serverMessage, strIndex, 1)
         
         # ACTUALIZACION DEL BLOCKE foul
-        strIndex = dataMan.findForward(serverMessage, strIndex, "charged")
-        self.foul[0][1] = dataMan.subStrIStoFloat(serverMessage, strIndex, 1)
+        strIndex = findForward(serverMessage, strIndex, "charged")
+        self.foul[0][1] = subStrIStoFloat(serverMessage, strIndex, 1)
         
-        strIndex = dataMan.findForward(serverMessage, strIndex, "card")
-        self.foul[1][1] = dataMan.subStrIS(serverMessage, strIndex, 1)
+        strIndex = findForward(serverMessage, strIndex, "card")
+        self.foul[1][1] = subStrIS(serverMessage, strIndex, 1)
         

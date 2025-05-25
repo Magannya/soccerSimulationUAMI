@@ -8,7 +8,8 @@ class Communication_module:
         self.remaningResponse = None    
         self.address = "Localhost"
         self.port = 6000
-        self.mySocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        self.sock.settimeout(5)
         self.timeChange = True
         self.previousTime = 0
         self.debugger = debugger
@@ -41,15 +42,18 @@ class Communication_module:
     # PORT 6000 ESTA RESERVADO PARA INITS
     def serverInit(self, teamName):
         self.respondServer(f"(init {teamName} (version 18))", False)
-        serverMessage, server = self.mySocket.recvfrom(1024)
+        serverMessage, server = self.sock.recvfrom(1024)
         self.debugger.saveServerMessage(serverMessage.decode("utf-8"))
         self.updatePort(server[1])
         print(f"communication established at port: {self.port}")
         return True
     
     def listenServer(self):
-        serverMessage, server = self.mySocket.recvfrom(1024)
+        serverMessage, server = self.sock.recvfrom(1024)
         serverMessage = serverMessage.decode("utf-8")
+        print(serverMessage)
+        if len(serverMessage) == 0:
+            print("Null server Message.")
         self.debugger.saveServerMessage(serverMessage)
         
         self.timeChange = self.checkTimeChange(serverMessage)
@@ -62,11 +66,11 @@ class Communication_module:
         
         if self.timeChange:
             if self.remaningResponse is not None:
-                self.mySocket.sendto(self.remaningResponse.encode(), (self.address, self.port))
+                self.sock.sendto(self.remaningResponse.encode(), (self.address, self.port))
                 self.debugger.savePlayerResponse(playerResponse)
                 self.remaningResponse = None
             else:
-                self.mySocket.sendto(playerResponse.encode(), (self.address, self.port))
+                self.sock.sendto(playerResponse.encode(), (self.address, self.port))
                 self.debugger.savePlayerResponse(playerResponse)
         else:
             self.remaningResponse = playerResponse
@@ -75,17 +79,23 @@ class Communication_module:
     # ESTE METODO O EL METODO DE inGameRespondServer DESDE ESTE MISMO
     # METODO
     def respondServer(self, playerResponse, inGame):
+        playerResponse += "\00"
         if inGame:
             self.inGameRespondServer(playerResponse)
         else:
-            playerResponse += "\00"
-            self.mySocket.sendto(playerResponse.encode(), (self.address, self.port))
+            try:
+                self.sock.sendto(playerResponse.encode(), (self.address, self.port))
+            except Exception as e:
+                print("Socet time out.")
+                return -1
+                
             self.debugger.savePlayerResponse(playerResponse)
+            return 0
             
     # COMPLEMENTARY ----------------------------------------------------
     
     def checkTimeChange(self, serverMessage):
-        actualTime = dataMan.subStrToSpace(serverMessage, 1)
+        actualTime = subStrToSpace(serverMessage, 1)
         if actualTime != self.previousTime:
             self.previousTime = actualTime
             return True
