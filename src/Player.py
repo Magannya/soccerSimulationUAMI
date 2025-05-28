@@ -78,6 +78,7 @@ class Player:
         # de datos no actualiza estos atributos
         self.playMode = None
         self.serverTime = None
+        self.previousPlayMode = None
         
         self.dataProcessModule = Data_process_module(self.attrib, self.debugger, self)
         self.communicationModule = Communication_module(self.debugger, self)
@@ -106,7 +107,7 @@ class Player:
             
             self.dataProcessModule.updateState(serverMessage)
             
-            #self.printChangePlayMode()
+            self.printChangePlayMode()
             
             playerResponse = self.randomCommand()
             
@@ -135,3 +136,7 @@ class Player:
             return turn
         
     # ------------------------- DEBUG ----------------------------------
+    def printChangePlayMode(self):
+        if self.previousPlayMode != self.playMode:
+            print(f"({self.serverTime}) {self.playMode}")
+            self.previousPlayMode = self.playMode

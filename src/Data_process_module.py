@@ -184,4 +184,5 @@ class Data_process_module:
         
     def hearUpdate(self, serverMessage):
         self.player.serverTime = subStrIS(serverMessage, 0, 1)
+        self.player.previousPlayMode = self.player.playMode
         self.player.playMode = subStrIS(serverMessage, 0, 3)
