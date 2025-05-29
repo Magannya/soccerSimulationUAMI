@@ -43,7 +43,7 @@ class Communication_module:
     # PARA AGENTES > V7 DEBEMOS ACTUALIZAR EL PORT, DADO QUE EL 
     # PORT 6000 ESTA RESERVADO PARA INITS
     def serverInit(self, teamName):
-        self.respondServer(f"(init {teamName} (version 18))", False)
+        self.respondServer(f"(init {teamName} (version 18))")
         serverMessage, server = self.sock.recvfrom(1024)
         self.debugger.saveServerMessage(serverMessage.decode("utf-8"))
         self.updatePort(server[1])
@@ -79,16 +79,12 @@ class Communication_module:
     # HAY QUE CONSULTAR EL ESTADO DEL JUEGO PARA SABER SI VAMOS A OCUPAR
     # ESTE METODO O EL METODO DE inGameRespondServer DESDE ESTE MISMO
     # METODO
-    def respondServer(self, playerResponse, inGame):
+    def respondServer(self, playerResponse):
         playerResponse += "\00"
-        if inGame:
+        if self.inGame():
             self.inGameRespondServer(playerResponse)
         else:
-            try:
-                self.sock.sendto(playerResponse.encode(), (self.address, self.port))
-            except Exception as e:
-                print("Socet time out.")
-                return -1
+            self.sock.sendto(playerResponse.encode(), (self.address, self.port))
                 
             self.debugger.savePlayerResponse(playerResponse)
             return 0
@@ -105,3 +101,34 @@ class Communication_module:
         
     def updatePort(self, newPort):
         self.port = newPort
+        
+    def inGame(self):
+        
+        if "play_on" == self.player.playMode:
+            return True
+        elif "kick_in" == self.player.playMode:
+            return True
+        elif "kick_off_l" == self.player.playMode:
+            return True
+        elif "kick_off_r" == self.player.playMode:
+            return True
+        elif "goal_kick" == self.player.playMode:
+            return True
+        elif "free_kick" == self.player.playMode:
+            return True
+        elif "corner_kick" == self.player.playMode:
+            return True
+        elif "drop_ball" == self.player.playMode:
+            return True
+        elif "goal_l" == self.player.playMode:
+            return False
+        elif "goal_r"== self.player.playMode:
+            return False
+        elif "before_kick_off" == self.player.playMode:
+            return False
+        elif "foul_charge" == self.player.playMode:
+            return False
+        else:
+            print(f"Error unknown play mode: <{self.player.playMode}>.")
+            return False
+        

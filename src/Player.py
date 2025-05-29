@@ -76,7 +76,7 @@ class Player:
         
         #GAME STATUS ATTRIBUTES, de momento el modulo de procesamiento
         # de datos no actualiza estos atributos
-        self.playMode = None
+        self.playMode = "before_kick_off"
         self.serverTime = None
         self.previousPlayMode = None
         
@@ -103,26 +103,29 @@ class Player:
         gameOver = False
         while not gameOver:
             
-            serverMessage = self.communicationModule.listenServer()
-            
+            try:
+                serverMessage = self.communicationModule.listenServer()
+            except TimeoutError:
+                print("server time out.")
+                break
+                
             self.dataProcessModule.updateState(serverMessage)
             
             self.printChangePlayMode()
             
             playerResponse = self.randomCommand()
             
-            self.sendCommand(playerResponse)
+            if self.sendCommand(playerResponse) == -1:
+                gameOver = True
+        
+        print("Game Over.")
        
     # ---------------------- COMPLEMENTARY -----------------------------
     def printInfo(self):
         print(self.attrib)
         
     def sendCommand(self, command):
-        
-        if self.playMode == "before_kick_off":
-            self.communicationModule.respondServer(command, False)
-        else:
-            self.communicationModule.respondServer(command, True)
+        return self.communicationModule.respondServer(command)
         
     # ----------------------- TEST -------------------------------------
     
