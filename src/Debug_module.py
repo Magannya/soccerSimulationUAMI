@@ -13,7 +13,7 @@ class Debug_module:
     def __init__(self):
         self.errorManager = Error_manager()
         self.printManager = Print_manager()
-        print("Debug_module init")
+        #print("Debug_module init")
         
     def sayHello(self):
         print("Hello from Debug.")

@@ -69,7 +69,7 @@ class Data_process_module:
         self.see = playerAttrib[5]
         
         self.player = player
-        print("Data_process_module init.")
+        #print("Data_process_module init.")
         
     def sayHello(self):
         print("Hello from Data_process_module")

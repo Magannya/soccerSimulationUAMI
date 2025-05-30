@@ -82,7 +82,6 @@ class Player:
         
         self.dataProcessModule = Data_process_module(self.attrib, self.debugger, self)
         self.communicationModule = Communication_module(self.debugger, self)
-        self.communicationModule.serverInit("control")
         # self.logicModule = FSM(self.attrib, self.see, self.communicationModule)
         self.logicModule = None
         
@@ -98,7 +97,11 @@ class Player:
     # METODO PRINCIPAL PARA INICIAR LA INTERACCION CON EL SERVIDOR
     def start(self):
         print("wait for communication...")
-        self.communicationModule.serverInit("test")
+        try:
+            self.communicationModule.serverInit("test")
+        except TimeoutError:
+            print("Can not connect with server.")
+            return -1
         
         gameOver = False
         while not gameOver:
@@ -106,7 +109,7 @@ class Player:
             try:
                 serverMessage = self.communicationModule.listenServer()
             except TimeoutError:
-                print("server time out.")
+                print("Connection lost.")
                 break
                 
             self.dataProcessModule.updateState(serverMessage)

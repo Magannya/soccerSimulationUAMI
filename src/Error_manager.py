@@ -1,7 +1,7 @@
 class Error_manager:
         
     def __init__(self):
-        print("Error_manager init.")
+        #print("Error_manager init.")
         F_FLAG = True
         
     def fileAppend(self, errorMessage):

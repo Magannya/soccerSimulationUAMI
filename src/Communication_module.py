@@ -16,7 +16,7 @@ class Communication_module:
         
         self.player = player
         
-        print("Comunication_module init.")
+        #print("Comunication_module init.")
     
     def sayHello(self):
         print("Hello from Comunication module.")
