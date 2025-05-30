@@ -15,7 +15,6 @@ class Print_manager:
 	def __init__(self):
 		pass
 		#print("Print_manager init")
-		
 	def sayHello(self):
 		print("Hello from Print_manager.")
 		

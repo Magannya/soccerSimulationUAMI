@@ -118,8 +118,7 @@ class Player:
             
             playerResponse = self.randomCommand()
             
-            if self.sendCommand(playerResponse) == -1:
-                gameOver = True
+            self.sendCommand(playerResponse)
         
         print("Game Over.")
        
@@ -142,6 +141,9 @@ class Player:
             return turn
         
     # ------------------------- DEBUG ----------------------------------
+    def printFullState(self):
+        pass
+    
     def printChangePlayMode(self):
         if self.previousPlayMode != self.playMode:
             print(f"({self.serverTime}) {self.playMode}")
