@@ -167,7 +167,8 @@ def subStrIS(s, strIndex, spaceIndex):
         return None
     else:
         return out
-        
+
+# LO EL ALGORITMO ANTERIOR MAS EL CASTEO
 def subStrIStoFloat(s, strIndex, spaceIndex):
     out = subStrIS(s, strIndex, spaceIndex)
     if out is None:
@@ -209,3 +210,74 @@ def findForward(s, i, target):
         i += 1
     
     return -1
+
+def findNameForward(s, startIndex):
+    i = startIndex
+    c = s[i]
+    while c != '(':
+        i += 1
+        c = s[i]
+    
+
+def extractFieldObjects(s):
+    i = 1
+    print(len(s))
+    while i < len(s) - 2:
+        c = s[i]
+        #ENCUENTRA '('
+        while c != '(':
+            i += 1
+            c = s[i]
+        
+        # AVANZA 2
+        i += 2
+        c = s[i]
+        
+        # EXTRAE NOMBRE
+        auxName = ""
+        while c != ')':
+            auxName += c
+            i += 1
+            c = s[i]
+        
+        name = auxName
+        
+        # AVANZA 2
+        i += 2
+        c = s[i]
+        auxFloatString = ""
+        while c != ' ':
+            auxFloatString += c
+            i += 1
+            c = s[i]
+        
+        # CASTEA EL FLOTANTE
+        auxFloat = 0
+        try:
+            auxFloat = float(auxFloatString)
+        except Exception as e:
+            print(f"Failed to convert <{auxFloatString}> to float")
+            auxFloat = None
+        
+        distance = auxFloat
+        
+        # SIGUIENTE FLOAT
+        i += 1
+        c = s[i]
+        auxFloatString = ""
+        while c != ' ':
+            auxFloatString += c
+            i += 1
+            c = s[i]
+            if c == ')':
+                break
+        
+        # CASTEA EL FLOAT
+        try:
+            auxFloat = float(auxFloatString)
+        except Exception as e:
+            print(f"Failed to convert <{auxFloatString}> to float.")
+            auxFloat = None
+            
+        angle = auxFloat
+        print(f"<{name}> <{distance}> <{angle}>")

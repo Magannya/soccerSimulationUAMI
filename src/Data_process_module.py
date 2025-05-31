@@ -1,4 +1,5 @@
 from .dataMan import *
+from fieldObject import Field_Object
 
 class Data_process_module:
     
@@ -96,7 +97,7 @@ class Data_process_module:
             # TODO
             
         elif "see" in serverMessage:
-            pass
+            self.seeUpdate(serverMessage)
             # TODO
             
         elif "hear" in serverMessage:
@@ -186,3 +187,6 @@ class Data_process_module:
         self.player.serverTime = subStrIS(serverMessage, 0, 1)
         self.player.previousPlayMode = self.player.playMode
         self.player.playMode = subStrIS(serverMessage, 0, 3)
+        
+    def seeUpdate(self, serverMessage):
+        pass
