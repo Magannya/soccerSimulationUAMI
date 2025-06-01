@@ -179,7 +179,7 @@ def subStrIStoFloat(s, strIndex, spaceIndex):
         try:
             floatOut = float(out)
         except Exception as e:
-            print(f"failed to convert: {out} to float.")
+            print(f"Failed to convert: {out} to float.")
         
         return floatOut
             

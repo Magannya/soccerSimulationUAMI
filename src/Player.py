@@ -114,6 +114,8 @@ class Player:
                 
             self.dataProcessModule.updateState(serverMessage)
             
+            
+            
             self.printChangePlayMode()
             
             playerResponse = self.randomCommand()
