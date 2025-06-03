@@ -192,7 +192,6 @@ class Data_process_module:
         self.player.playMode = subStrIS(serverMessage, 0, 3)
         
     def seeUpdate(self, serverMessage):
-        print(serverMessage)
         serverTime = ""
         i = 5
         c = serverMessage[i]
@@ -230,7 +229,6 @@ class Data_process_module:
                 name += c
                 i += 1
                 c = serverMessage[i]
-            # print(f"End of name: c: <{c}> i: {i}")
             c = serverMessage[i]
             name += c
             i += 1
@@ -258,7 +256,6 @@ class Data_process_module:
                 i += 1
                 c = serverMessage[i]
             
-            #print(f"cicle: {cicles} <{name}> <{distanceString}> <{angleString}>")
             # CASTEO DE LAS VARIABLES
             distance = 0
             angle = 0
@@ -275,22 +272,20 @@ class Data_process_module:
                 angle = None
             
             # ACTUALIZACION O ASIGNACION
-            seeIndex = self.searchFieldObject(name)
-            if seeIndex is None:
-                print("seeIndex is none")
-                print([name, distance, angle])
+            
+            if not self.findFieldObject(name):
                 self.player.see.append([name, distance, angle])
+                
             else:
-                print("seeIndex exist in list")
-                seeIndex[1] = distance
-                seeIndex[2] = angle
+                index = self.getFieldObjectIndex(name)
+                self.player.see[index][1] = distance
+                self.player.see[index][2] = angle
             
             # EN ESTE PUNTO c = ' ' SI EL OBJETO TIENE MAS ATRUBUTOS, O
             # c = ')' SI EL OBJETO YA NO TIENE MAS ATRIBUTOS
             # EN AMBOS CASOS EL CICLO DEBE CONTINUAR PARA BUSCAR EL
             # SIGUIENTE OBJETO PERO SI EL SIGUIENTE CARACTER ES ')'
             # SIGNIFICA QUE ES EL FINAL DEL MENSAJE DEL SERVIDOR
-            
             
             while c != ')':
                 i += 1
@@ -300,7 +295,6 @@ class Data_process_module:
             c = serverMessage[i]
             
             if c == ')':
-                #print("End of server message.")
                 flag = False
             else:
                 i += 2
@@ -311,26 +305,31 @@ class Data_process_module:
         # QUE EXISTEN EN LA LISTA player.see PERO NO EN EL MENSAJE DEL SERVIDOR
         self.purgePlayerSee(nameLst)
         
-        print(f"nl len: {len(nameLst)} ps len: {len(self.player.see)}")
-        print(self.player.see)
-        
     # RECIBE UN NOMBRE DE OBJETO EN EL CAMPO Y REGRESA EL INDICE
     # DE LA LISTA 
-    def searchFieldObject(self, name):
+    def findFieldObject(self, name):
+        for fo in self.player.see:
+            if fo[0] == name:
+                return True
+        return False
         
-        for seeElement in self.player.see:
-            if seeElement[0] == name:
-                return seeElement
-            
-        return None
-    
+    def getFieldObjectIndex(self, name):
+        i = 0
+        for fo in self.player.see:
+            if fo[0] == name:
+                return i
+            else:
+                i += 1
+        return -1
+        
     # RECIBE UNA LISTA DE NOMBRES Y BUSCA CADA NOMBRE DE LA LISTA 
     # player.see, SI NO SE ENCUENTRA EN LA LISTA DE NOMBRES ES ELIMINADO
     # DE LA LISTA player.see    
     def purgePlayerSee(self, nameLst):
-        print(nameLst)
-        for fieldObject in self.player.see:
-            print(f"<{fieldObject[0]}>", end = "")
-            if fieldObject[0] not in nameLst:
-                print(True)
-                self.player.see.remove(fieldObject)
+        i = 0
+        lenght = len(self.player.see)
+        while i < len(self.player.see):
+            if not self.player.see[i][0] in nameLst:
+                del self.player.see[i]
+            else:
+                i += 1
