@@ -71,14 +71,12 @@ class Data_process_module:
         
         self.player = player
         
-        self.player.see.append(Field_Object("name 1", 0, 0))
         self.sayHello()
         print(self.player.see)
         #print("Data_process_module init.")
         
     def sayHello(self):
         print("Hello from Data_process_module")
-        self.player.see.append(Field_Object("name 2", 1, 1))
         
     # SETTERS Y GETTERS ------------------------------------------------
     def setSenseBody(self, senseBody):
@@ -195,113 +193,144 @@ class Data_process_module:
         
     def seeUpdate(self, serverMessage):
         print(serverMessage)
-        i = 1
-        auxLstNames = []
-        # AVANZAR PARA LLEGAR AL PRIMER '(' QUE INDICA EL INICIO DE LA LISTA
+        serverTime = ""
+        i = 5
         c = serverMessage[i]
+        
+        # ESTE BLOQUE ESTA DEDICADO A ACTUALIZAR EL player.serverTime
+        # DEBIDO A LA EXISTENCIA DE COMANDOS COMO: "(see 0)" QUE NO 
+        # TIENEN UNA CANTIDAD DE OBJETOS VISIBLES
+        while c != ' ':
+            serverTime += c
+            i += 1
+            c = serverMessage[i]
+            if c == ')':
+                self.player.serverTime = serverTime
+                self.player.see.clear()
+                return 0
+        
+        nameLst = []
+        
+        # AVANZAR HASTA EN CONTRAR EL CARACTER '('
+        # QUE REPRESENTA EL INICIO DE UN OBJETO EN EL CAMPO
         while c != '(':
             i += 1
-            if i > len(serverMessage) - 4:
-                return 0
             c = serverMessage[i]
         
         i += 1
         c = serverMessage[i]
+        
+        # INICIO DEL CIBLO WHILE QUE OBTENDRA TODOS LOS OBJETOS DEL CAMPO
         cicles = 0
-        # INICIO DEL ALGORITMO
-        while i < len(serverMessage) - 2:
-            # ENCONTRAR El NOMBRE DEL OBJETO
-            print(f"cicles: {cicles}")
-            c = serverMessage[i]
+        flag = True
+        while flag:
+            # OBTENER EL NOMBRE
             name = ""
             while c != ')':
                 name += c
                 i += 1
                 c = serverMessage[i]
+            # print(f"End of name: c: <{c}> i: {i}")
+            c = serverMessage[i]
             name += c
+            i += 1
+            c = serverMessage[i]
             
-            #print(f"<{name}> ", end = "")
-            auxLstNames.append(name)
+            # ESTA LISTA SERVIRA PARA PUGAR LA LISTA see
             
-            # EXTRAER LA DISTANCIA
-            distance = 0
+            nameLst.append(name)
+            
+            # OBTENER EL ATRIBUTO DISTANCIA
             distanceString = ""
-            i += 2
-            if i < len(serverMessage) - 4:
-                break
+            i += 1
             c = serverMessage[i]
             while c != ' ':
                 distanceString += c
                 i += 1
-                if i > len(serverMessage) - 4:
-                    break
                 c = serverMessage[i]
-            # CASTEO DE distance
-            try:
-                distance = float(distanceString)
-            except Exception as e:
-                print(f"Failed to convert <{distanceString}> to float.")
-                distance = None
             
-            #print(f"<{distance}> ", end = "")
-            # OBTENER EL ANGULO
-            angle = 0
+            # OBTENER EL ATRUBUTO ANGULO
             angleString = ""
             i += 1
-            if i < len(serverMessage) - 3:
-                break
+            c = serverMessage[i]
             while c != ' ' and c != ')':
                 angleString += c
                 i += 1
-                if i > len(serverMessage) - 4:
-                    break
                 c = serverMessage[i]
-            # CASTEO DE angle
+            
+            #print(f"cicle: {cicles} <{name}> <{distanceString}> <{angleString}>")
+            # CASTEO DE LAS VARIABLES
+            distance = 0
+            angle = 0
+            try:
+                distance = float(distanceString)
+            except Exception as e:
+                print(f"Unable to cast {distanceString} to float.")
+                distance = None
+            
             try:
                 angle = float(angleString)
             except Exception as e:
-                print(f"Failed to convert <{angleString}> to float.")
+                print(f"Unable to cast {angleString} to float.")
                 angle = None
-            #print(f"<{angle}>")
-            print(f"<{name}> <{distance}> <{angle}>")
-            # VALIDAR SI EL NOMBRE YA EXISTE EN LA LISTA
-            objectField = self.findNameInseeList(name)
-            print(objectField)
-            if objectField is not None:
-                # ACTUALIZAR LOS DATOS distance Y angle
-                objectField.setDistance(distance)
-                objectField.setAngle(angle)
-            else:
-                # CREAR EL OBJETO Y AÑADIRLO EN LA LISTA
-                fieldObject = Field_Object(name, distance, angle)
-                self.player.see.append(fieldObject)
             
-            # AVANZAR HASTA ENCONTRAR EL SIGUIENTE '('
-            #print(f"{i} - {len(serverMessage)} - {serverMessage[i]}")
-            if i < len(serverMessage) - 4:
-                while c != '(':
-                    i += 1
-                    c = serverMessage[i]
-            cicles += 1
-        # ELIMINAR TODOS LOS OBJETOS QUE NO ESTEN EN EL serverMessage
-        # PERO SI EN LA LISTA see
-        
-        print(auxLstNames)
-        
-        for of in self.player.see:
-            nameInList = False
-            print(f"of: <{of.getName()}>")
-            for n in auxLstNames:
-                if of.getName() == n:
-                    nameInList = True
-                    break
-            if not nameInList:
-                self.player.see.remove(of)
+            # ACTUALIZACION O ASIGNACION
+            seeIndex = self.searchFieldObject(name)
+            if seeIndex is None:
+                print("seeIndex is none")
+                print([name, distance, angle])
+                self.player.see.append([name, distance, angle])
+            else:
+                print("seeIndex exist in list")
+                seeIndex[1] = distance
+                seeIndex[2] = angle
+            
+            # EN ESTE PUNTO c = ' ' SI EL OBJETO TIENE MAS ATRUBUTOS, O
+            # c = ')' SI EL OBJETO YA NO TIENE MAS ATRIBUTOS
+            # EN AMBOS CASOS EL CICLO DEBE CONTINUAR PARA BUSCAR EL
+            # SIGUIENTE OBJETO PERO SI EL SIGUIENTE CARACTER ES ')'
+            # SIGNIFICA QUE ES EL FINAL DEL MENSAJE DEL SERVIDOR
+            
+            
+            while c != ')':
+                i += 1
+                c = serverMessage[i]
                 
-        #print(self.player.see)
-    
-    def findNameInseeList(self, name):
-        for of in self.player.see:
-            if of.getName() == name:
-                return of
+            i += 1
+            c = serverMessage[i]
+            
+            if c == ')':
+                #print("End of server message.")
+                flag = False
+            else:
+                i += 2
+                c = serverMessage[i] 
+            cicles += 1
+        
+        # PURGA DE LA LISTA: SE DEBEN ELIMINAR LOS OBJETOS EN EL CAMPO
+        # QUE EXISTEN EN LA LISTA player.see PERO NO EN EL MENSAJE DEL SERVIDOR
+        self.purgePlayerSee(nameLst)
+        
+        print(f"nl len: {len(nameLst)} ps len: {len(self.player.see)}")
+        print(self.player.see)
+        
+    # RECIBE UN NOMBRE DE OBJETO EN EL CAMPO Y REGRESA EL INDICE
+    # DE LA LISTA 
+    def searchFieldObject(self, name):
+        
+        for seeElement in self.player.see:
+            if seeElement[0] == name:
+                return seeElement
+            
         return None
+    
+    # RECIBE UNA LISTA DE NOMBRES Y BUSCA CADA NOMBRE DE LA LISTA 
+    # player.see, SI NO SE ENCUENTRA EN LA LISTA DE NOMBRES ES ELIMINADO
+    # DE LA LISTA player.see    
+    def purgePlayerSee(self, nameLst):
+        print(nameLst)
+        for fieldObject in self.player.see:
+            print(f"<{fieldObject[0]}>", end = "")
+            if fieldObject[0] not in nameLst:
+                print(True)
+                self.player.see.remove(fieldObject)
