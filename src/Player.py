@@ -133,7 +133,6 @@ class Player:
         self.sendCommand(f"(move {x} {y} )")
         self.sendCommand("(turn 0)")
 
-
         with open(os.path.join(os.path.dirname(__file__), 'data.txt'), 'w') as f:
             print("Iniciando el juego... \n", file=f)
             gameOver = False
