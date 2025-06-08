@@ -1,0 +1,2204 @@
+Iniciando el juego... 
+
+Enviando comando: (turn 176.64678221569466)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -3.9179741755481814)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -0.06993346586884286)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 19.671010679070918)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 21.393822858030376)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -7.3251735204542)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -41.29258925934951)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -0.960818975177574)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 31.78333626926289)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 35.93118583421182)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 13.854988389279242)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 2.939445259148954)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 1.807407763645699)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.018286416191074295)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 16.318706274706045)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 15.17821037086631)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 14.211524405992861)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 23.15586370172457)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 32.39013355042212)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 20.020699812336716)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 16.864371623143313)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 1.1190662834210912)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -0.6779221703394)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 3.3062179767305224)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 25.42298212944337)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 26.750476286489118)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 37.12512675747709)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 58.3880764446767)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 2.9994729282644244)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -10.364186585204152)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (kick 50 0)
+
+Estado de p.see: []
+
+Enviando comando: (turn -1.558680777599733)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.23400364635384108)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -32.487344298786894)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -26.83911465709636)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -1.9106137504456626)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 78.31318379329332)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 16.817920086645756)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 16.73871986468785)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.4109750037861204)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 25.588051202738)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 28.161522163578837)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 6.237574354121477)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.15384951110854672)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0971846771306275)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.059507658996523105)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -42.82550448965816)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -6.586124795864237)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -2.6124712012717737)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.03240593953620419)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -30.32878634448724)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -47.69751251797882)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -10.039833342406666)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 23.631250826215876)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 33.34700302186786)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 19.053181690067333)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 17.224425884168)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.9880987119016709)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -1.194257013564453)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -3.1346906694159884)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -5.660684999187225)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -0.08342033076877442)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -12.462549366370382)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -18.742329441927012)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -10.566207071551275)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -1.3081897943267222)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -0.16750409184842852)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (kick 50 0)
+
+Estado de p.see: []
+
+Enviando comando: (turn -1.168836508496156)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -3.334247102579269)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -8.181294989328677)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -177.16415633111117)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -5.657228997189463)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 32.111688864529754)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -6.249233030738139)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 84.35399415283086)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 34.464817977984694)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 15.514342957759595)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 20.302592848380897)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -46.11575694818015)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -85.13983083679705)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -68.77675734753643)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -64.92867891637962)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -70.13455719278387)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -14.060907495734455)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -22.79979021866029)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -27.539937668497856)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -10.036640366051074)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 12.322541657825212)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -28.96111812754188)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -15.439036235047183)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 91.60910722282244)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 35.029216005429845)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 9.500749964638345)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 16.735756768054216)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -13.887715498530952)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 16.326038475632885)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 7.781354814699114)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -7.270022414091926)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 26.13701078552066)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -1.7631323017841964)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -177.64070878417084)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 66.31206684276171)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 8.444552928188159)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -34.49187443060674)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 3.5021628650665093)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 35.9133769977812)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -26.681245197357327)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -45.02713174348008)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -25.692086681561563)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -82.06616923106355)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -3.055035834566354)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -125.16260979800968)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -27.029713134056436)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -16.977609481022682)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -2.774633318636461)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -1.9388067027523732)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 7.8127754301422385)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 9.567580690324831)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.9779619825791315)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.05068050137791147)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -2.274350736421468)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -0.8613916375363146)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 11.795155108815408)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 8.92349521909128)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 14.89294331176606)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -4.538841417404456)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.06896171111716853)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -8.425458668739282)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -0.5615373339553855)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -0.5694279046792872)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -0.027896525377627768)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -0.11833212652041425)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -2.1364489076721895)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -0.5967424966790134)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -0.0550165752244709)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -0.03991340054787429)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 10.631686206429947)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 18.59812252586849)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.40395870623194696)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -0.1776699075512056)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -2.1730985274018053)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 29.4255426069505)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 31.113195039910295)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 9.649319243034228)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.30546270689652033)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.04242971053301403)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 12.330121628823946)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 17.48705681815531)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 8.600050265328889)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 26.74397204836299)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 12.583275326874343)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 26.8247401953318)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 3.498940913405022)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.6718914423813089)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -0.361438739518519)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -9.24349626694459)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 43.579540616672546)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 9.637757720237289)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 3.7103958656865643)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 19.381261089754304)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 33.861023299433924)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 17.518529452654235)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 20.528996336601978)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 4.47267175867978)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 24.982536032076354)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 5.620193523739658)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 6.4893354239102905)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 113.32171603267267)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 9.042787582848348)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 84.04710626266098)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 43.60931886752746)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 63.593723627009496)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 83.24537169263311)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 56.261935036259615)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 46.20706366705588)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 21.526148500053978)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 1.9912671603144645)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 6.555492082831677)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 5.3142803468701345)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 6.99564050081284)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.21124551258805013)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 18.705704715936974)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 3.167755643602902)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 16.50883008579126)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 7.104398557195566)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.10011848992138539)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -9.56694002756899)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -15.040414294228299)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -9.650883350844254)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -32.739051140698564)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -1.6593818631067165)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 15.599471492390194)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 53.257102661160104)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 6.2718170853531205)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.1571783510021305)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 2.945112577874056)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 32.654825049996816)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 35.31986102987565)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -22.1906123035574)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 11.929788080764837)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 14.284935851018957)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 5.0916007817877755)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -109.34565378942148)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -17.441300149697327)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -109.00647455469851)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -69.75628182320224)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -30.077238451475637)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -9.479943045684166)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -0.0103866357609661)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 2.1448826108517665)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 33.16688792624751)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 6.972194975446513)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -45.307455787730106)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -65.56460971051703)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -10.356967561223712)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -0.4564563828162136)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 11.297456506101696)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 24.23935722666934)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 5.3277777088035805)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.02894006521202641)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -1.0776156251830002)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -0.0033827327658570994)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -4.16113799681267)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -32.04785514205261)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -19.217711912606774)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -4.9885903346985)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -0.15772121253704086)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 11.71694698862791)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 20.04478798737108)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.8377060651787644)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -11.09539150865075)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -9.949127147383848)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -14.752262783845055)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -22.011757626641327)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -1.096704058749367)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -0.18916008547711272)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -9.868028079583041)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -21.290968769391668)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -23.36946116423877)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -5.745640629933803)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -0.4197067472756544)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -32.37377955328043)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -23.32375092590607)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -10.383471022727917)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -30.531971601573304)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -44.541755929464756)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -26.326332333189328)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -27.03292344698366)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -7.141354202909014)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -0.17135533501158307)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 1.0455062564633124)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 3.8003682868491353)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 15.894780448452167)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (kick 50 0)
+
+Estado de p.see: []
+
+Enviando comando: (turn 2.0166918716253974)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 13.545233215687517)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 21.754072221933143)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -3.6518847167708373)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -10.692124860774129)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -27.17241767011828)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -9.444371625694288)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -18.03416853374057)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -8.427565134399885)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -4.732857877511435)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -0.9953768756587351)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 3.857334166720989)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 11.0181916615347)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 22.76142605178788)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.5917674812148164)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 1.29798929657764)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -20.860961822662432)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -10.743269092211222)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 4.418055154558715)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 7.200291720809446)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 11.39065257368867)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 13.258799832945186)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 13.06455212680629)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 20.242019799224437)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.7797424060186415)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -0.15462013632350136)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (kick 50 0)
+
+Estado de p.see: []
+
+Enviando comando: (turn -2.5353252265118726)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -0.23123476159642564)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.4432757006152599)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.01120491834356585)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.08640316980230978)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 1.1287725860122464)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.1246648442869116)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 3.820468727467869)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 9.457498569811776)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.19081467743555436)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0912467338561953)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (kick 50 0)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.04207034759508588)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0659337193213787)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -61.13755074509453)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -4.496924594965748)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -13.130165315445026)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -6.178482496131153)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -38.022803932076926)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -35.19725555173267)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -10.389251303266235)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 30.994358929522832)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 6.270748559973015)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -11.380960555898184)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -64.39061509860375)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -50.86197000007792)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -31.238164102467636)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -93.25810302301062)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -27.941473873372132)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -3.912999847829269)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -0.8186314648150983)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn -0.10306791671402493)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+
+Enviando comando: (turn 0.0)
+Estado de p.see: []
+Enviando comando: (dash 50)
+
+Estado de p.see: []
+

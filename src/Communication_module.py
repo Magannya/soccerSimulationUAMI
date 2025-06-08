@@ -6,7 +6,7 @@ class Communication_module:
     def __init__(self, debugger, player):
         
         self.remaningResponse = None    
-        self.address = "Localhost"
+        self.address = "localhost"
         self.port = 6000
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.sock.settimeout(5)
@@ -16,7 +16,7 @@ class Communication_module:
         
         self.player = player
         
-        #print("Comunication_module init.")
+        self.sayHello()
     
     def sayHello(self):
         print("Hello from Comunication module.")

@@ -1,0 +1,21 @@
+# Python virtual environment
+venv/
+ENV/
+env/
+.venv/
+
+control/
+CONTROL/
+.control/
+# Python cache files
+__pycache__/
+
+# Byte-compiled files
+*.pyc
+*.pyo
+
+# .txt files
+*.txt
+
+# Files without extension
+*.
