@@ -71,8 +71,6 @@ class Data_process_module:
         
         self.player = player
         
-        self.sayHello()
-        print(self.player.see)
         #print("Data_process_module init.")
         
     def sayHello(self):
@@ -136,17 +134,17 @@ class Data_process_module:
         self.player.senseBody[2][2] = subStrIStoFloat(serverMessage, strIndex, 2)
         
         i = 3
-        while i < 12:
+        while i < 13:
             strIndex = serverMessage.find(self.BODY_NAMES[i])
             self.player.senseBody[i][1] = subStrIStoFloat(serverMessage, strIndex, 1)
             i += 1
         
         strIndex = serverMessage.find("collision")
-        self.player.senseBody[12][1] = subStrIS(serverMessage, strIndex, 1)
+        self.player.senseBody[13][1] = subStrIS(serverMessage, strIndex, 1)
         
         strIndex = serverMessage.find("focus_point")
-        self.player.senseBody[13][1] = subStrIStoFloat(serverMessage, strIndex, 1)
-        self.player.senseBody[13][2] = subStrIStoFloat(serverMessage, strIndex, 2)
+        self.player.senseBody[14][1] = subStrIStoFloat(serverMessage, strIndex, 1)
+        self.player.senseBody[14][2] = subStrIStoFloat(serverMessage, strIndex, 2)
         
         
         # ACTUALIZACION DEL BLOQUE arm

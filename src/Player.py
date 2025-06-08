@@ -38,6 +38,7 @@ class Player:
         ["kick", 0],
         ["dash", 0],
         ["turn", 0],
+        ["say", 0],
         ["turn_neck", 0],
         ["catch", 0],
         ["move", 0],
@@ -103,6 +104,25 @@ class Player:
             print("Can not connect with server.")
             return -1
         
+        print("")
+        print(f"{self.senseBody[0][0]}\t{self.senseBody[0][1]}\t{self.senseBody[0][2]}")
+        print(f"{self.senseBody[1][0]}\t\t{self.senseBody[1][1]}\t{self.senseBody[1][2]}\t{self.senseBody[1][3]}")
+        print(f"{self.senseBody[2][0]}\t\t{self.senseBody[2][1]}\t{self.senseBody[2][2]}")
+        print(f"{self.senseBody[3][0]}\t{self.senseBody[3][1]}")
+        print(f"{self.senseBody[4][0]}\t\t{self.senseBody[4][1]}")
+        print(f"{self.senseBody[5][0]}\t\t{self.senseBody[5][1]}")
+        print(f"{self.senseBody[6][0]}\t\t{self.senseBody[6][1]}")
+        print(f"{self.senseBody[7][0]}\t\t{self.senseBody[7][1]}")
+        print(f"{self.senseBody[8][0]}\t{self.senseBody[8][1]}")
+        print(f"{self.senseBody[9][0]}\t\t{self.senseBody[9][1]}")
+        print(f"{self.senseBody[10][0]}\t\t{self.senseBody[10][1]}")
+        print(f"{self.senseBody[11][0]}\t{self.senseBody[11][1]}")
+        print(f"{self.senseBody[12][0]}\t{self.senseBody[12][1]}")
+        print(f"{self.senseBody[13][0]}\t{self.senseBody[13][1]}")
+        print(f"{self.senseBody[14][0]}\t{self.senseBody[14][1]}")
+        print(f"server time:\t{self.serverTime}")
+        print(f"play mode:\t{self.playMode}")
+        
         gameOver = False
         while not gameOver:
             
@@ -114,13 +134,11 @@ class Player:
                 
             self.dataProcessModule.updateState(serverMessage)
             
-            
-            
-            self.printChangePlayMode()
-            
             playerResponse = self.randomCommand()
             
             self.sendCommand(playerResponse)
+            
+            self.printFullState()
         
         print("Game Over.")
        
@@ -134,17 +152,38 @@ class Player:
     # ----------------------- TEST -------------------------------------
     
     def randomCommand(self):
-        dash = f"(dash {random.randint(0, 100)} {random.randint(0, 360)})"
-        turn = f"(turn {random.randint(0, 360)})"
         
-        if random.randint(1, 2) == 1:
-            return dash
+        r = random.randint(1, 3) 
+        
+        if  r == 1:
+            return f"(dash {random.randint(0, 100)} {random.randint(0, 360)})"
+        elif r == 2:
+            return f"(turn {random.randint(0, 360)})"
         else:
-            return turn
+            return f"(turn_neck {random.randint(-90, 90)})"
         
     # ------------------------- DEBUG ----------------------------------
     def printFullState(self):
-        pass
+        for i in range(0, 17):
+            print("\r" + "\033[2K", end = "")
+            print("\033[1A", end = "")
+        print(f"{self.senseBody[0][0]}\t{self.senseBody[0][1]}\t{self.senseBody[0][2]}")
+        print(f"{self.senseBody[1][0]}\t\t{self.senseBody[1][1]}\t{self.senseBody[1][2]}\t{self.senseBody[1][3]}")
+        print(f"{self.senseBody[2][0]}\t\t{self.senseBody[2][1]}\t{self.senseBody[2][2]}")
+        print(f"{self.senseBody[3][0]}\t{self.senseBody[3][1]}")
+        print(f"{self.senseBody[4][0]}\t\t{self.senseBody[4][1]}")
+        print(f"{self.senseBody[5][0]}\t\t{self.senseBody[5][1]}")
+        print(f"{self.senseBody[6][0]}\t\t{self.senseBody[6][1]}")
+        print(f"{self.senseBody[7][0]}\t\t{self.senseBody[7][1]}")
+        print(f"{self.senseBody[8][0]}\t{self.senseBody[8][1]}")
+        print(f"{self.senseBody[9][0]}\t\t{self.senseBody[9][1]}")
+        print(f"{self.senseBody[10][0]}\t\t{self.senseBody[10][1]}")
+        print(f"{self.senseBody[11][0]}\t{self.senseBody[11][1]}")
+        print(f"{self.senseBody[12][0]}\t{self.senseBody[12][1]}")
+        print(f"{self.senseBody[13][0]}\t{self.senseBody[13][1]}")
+        print(f"{self.senseBody[14][0]}\t{self.senseBody[14][1]}")
+        print(f"server time:\t{self.serverTime}")
+        print(f"play mode:\t{self.playMode}")
     
     def printChangePlayMode(self):
         if self.previousPlayMode != self.playMode:
