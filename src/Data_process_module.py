@@ -1,5 +1,4 @@
 from .dataMan import *
-from .fieldObject import Field_Object
 
 class Data_process_module:
     
