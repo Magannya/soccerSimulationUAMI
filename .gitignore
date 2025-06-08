@@ -13,3 +13,9 @@ __pycache__/
 # Byte-compiled files
 *.pyc
 *.pyo
+
+# .txt files
+*.txt
+
+# Files without extension
+*.

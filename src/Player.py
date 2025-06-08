@@ -105,6 +105,35 @@ class Player:
             print("Can not connect with server.")
             return -1
         
+        gameOver = False
+        while not gameOver:
+            
+            try:
+                serverMessage = self.communicationModule.listenServer()
+            except TimeoutError:
+                print("Connection lost.")
+                break
+                
+            self.dataProcessModule.updateState(serverMessage)
+            
+            
+            
+            self.printChangePlayMode()
+            
+            playerResponse = self.randomCommand()
+            
+            self.sendCommand(playerResponse)
+        
+        print("Game Over.")
+
+    def startStick(self):
+        print("wait for communication...")
+        try:
+            self.communicationModule.serverInit("test")
+        except TimeoutError:
+            print("Can not connect with server.")
+            return -1
+        
         try:
             serverMessage = self.communicationModule.listenServer()
         except TimeoutError:
