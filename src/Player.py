@@ -7,6 +7,7 @@ import random
 from .Debug_module import Debug_module
 from .Data_process_module import Data_process_module
 from .Communication_module import Communication_module
+from .logicModuleTest import Logic_Module_Test
 
 #from FSM import FSM
 
@@ -84,7 +85,7 @@ class Player:
         self.dataProcessModule = Data_process_module(self.attrib, self.debugger, self)
         self.communicationModule = Communication_module(self.debugger, self)
         # self.logicModule = FSM(self.attrib, self.see, self.communicationModule)
-        self.logicModule = None
+        self.logicModule = Logic_Module_Test(self)
         
         
     def sayHello(self):
@@ -134,11 +135,16 @@ class Player:
                 
             self.dataProcessModule.updateState(serverMessage)
             
-            playerResponse = self.randomCommand()
+            playerResponse = self.logicModule.think()
+            #playerResponse = self.randomCommand()
             
-            self.sendCommand(playerResponse)
+            if playerResponse is None:
+                print(f"Cannot respond: {playerResponse}")
+            else:
+                print(f"playerResponse: {playerResponse}")
+                self.sendCommand(playerResponse)
             
-            self.printFullState()
+            #self.printFullState()
         
         print("Game Over.")
        
